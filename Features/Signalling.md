@@ -22,6 +22,15 @@
 
 **Programmable pre-signals**
 
+Programmable pre-signals are combo pre-signals, with programmable conditions for whether the signal is red or green.  
+Programmable pre-signals are block signals, with no support for PBS.  
+Programmable pre-signal programs cannot test any properties of trains, and are run even if there is no train approaching the signal.  
+In most cases, routefinding restrictions are more useful.
+
+Unlike routefinding restrictions, programmable pre-signal programs end when the first "Set signal state" line is reached.
+
+![Programmable pre-signals example](Features/images/prog-presignals-0.png)
+
 **Slots**
 
 **Counters**
