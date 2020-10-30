@@ -29,6 +29,8 @@ In most cases, routefinding restrictions are more useful.
 
 Unlike routefinding restrictions, programmable pre-signal programs end when the first "Set signal state" line is reached.
 
+Programmable signals are not shown in the signal window by default, **"Show programmable pre-signal feature"** must be enabled.
+
 ![Programmable pre-signals example](Features/images/prog-presignals-0.png)
 
 **Slots**
@@ -41,5 +43,9 @@ The main use case for counters is counting trains and round-robin behaviour.
 For counting the number of trains on a particular section of track, slots should be used instead.
 
 Using counters to store state makes "logic trains" and similar workarounds unnecessary.
+
+Counters are not shown in the user interace by default, **"Show advanced routing restriction features"** must be enabled.
+
+Counters can be created, deleted, renamed and have their value manually changed by selecting "Manage counters" in the train list window "Manage list" dropdown.
 
 ![Aesthetically suboptimal](Features/images/counter-before.png) ![A bit tidier, using counters](Features/images/counter-after.png) ![Details](Features/images/counter-detail.png)
