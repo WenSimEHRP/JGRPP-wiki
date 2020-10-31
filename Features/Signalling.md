@@ -18,7 +18,7 @@
   Counters can be used in conditionals in routefinding restrictions and programmable pre-signal programs, and in conditional orders.  
   In most cases, slots should be used instead.
 
-**Routefinding restrictions**
+### Routefinding restrictions
 
 Routefinding restriction programs can be attached to any kind of signal.  
 These programs are run by trains, and can check various train properties, and slot and counter values.  
@@ -174,7 +174,8 @@ Advanced conditions:
 * Counter value  
   This checks the value of a counter.
 
-**Programmable pre-signals**
+
+### Programmable pre-signals
 
 Programmable pre-signals are combo pre-signals, with programmable conditions for whether the signal is red or green.  
 Programmable pre-signals are block signals, with no support for PBS.  
@@ -188,7 +189,7 @@ Programmable signals are not shown in the signal window by default, **"Show prog
 ![Programmable pre-signals example](Features/images/prog-presignals-0.png)
 
 
-**Slots**
+### Slots
 
 Slots are analogous to token systems used in real-life railways, in particular single-line sections.  
 A slot has a capacity, the number of trains which can be in the slot/have a token.  
@@ -231,7 +232,7 @@ Other potential uses for slots include:
 * Conflict prevention in general
 
 
-**Counters**
+### Counters
 
 Counters are named variables which can be modified by a routefinding restriction program when a train passes a signal.  
 Counters can be used in conditionals in routefinding restrictions and programmable pre-signal programs, and in conditional orders.  
