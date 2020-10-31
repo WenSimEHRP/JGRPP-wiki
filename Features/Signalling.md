@@ -29,14 +29,29 @@ By default, electric signals with a routefinding restriction program attached ha
 This does not apply when using custom signal graphics, unless the "Show restricted electric signals using default graphics" setting is enabled.
 
 Programs are executed in order from top to bottom.  
-In case where one action cancels another, the last executed action takes effect.
+In the case where one action cancels another, the last executed action takes effect.
+
+Example:  
+![Programmable pre-signals example](Features/images/routing-restrictions-example-0.png)
+
+This is a possible way to implement a combined bay and through station.  
+The example assumes that only bay-platform traffic calls next at "Southerly Station", which is to the south-east.  
+The two signals in front of the bay platforms share the program in the upper window.  
+The signal in front of the north/west bound through platform has the program in the lower window.
+
+The bay platform signals deny access if the train is entering from the back of the signal and the next order (the order after the call at New Bedtown) *is not* Southerly Station.  
+This has the effect of stopping trains which need to continue north/west from using the bay platforms.  
+The "train is entering from the back of the signal" test is to avoid restricting trains trying to leave the platforms.
+
+The through platform signal adds a pathfinder penalty if the train is entering from the back of the signal and the next order (the order after the call at New Bedtown) *is* Southerly Station.  
+This has the effect of adding a penalty for trains which could use the bay platforms, such that those trains will always use a bay platforms if one is available. However if all the bay platforms are full or otherwise unreachable, it can still use the through platform, and reverse out again afterwards.
 
 Actions:
 * Deny  
-  The YAPF pathfinder will see this signal as a dead end, and will not look beyond the signal to find the destination.  
+  The pathfinder will see this signal as a dead end, and will not look beyond the signal to find the destination.  
   This can be used to prevent trains from taking a particular route.
 * Penalty  
-  The YAPF pathfinder will add a penalty value to the cost of pathfinding past this signal.  
+  The pathfinder will add a penalty value to the cost of pathfinding past this signal.  
   This can be used to fine-tune train pathfinding.  
   The current suggested values in the dropdown are: small = 500, medium = 2000, and large = 8000.
 * Reserve through  
