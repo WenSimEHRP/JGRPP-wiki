@@ -187,7 +187,49 @@ Programmable signals are not shown in the signal window by default, **"Show prog
 
 ![Programmable pre-signals example](Features/images/prog-presignals-0.png)
 
+
 **Slots**
+
+Slots are analogous to token systems used in real-life railways, in particular single-line sections.  
+A slot has a capacity, the number of trains which can be in the slot/have a token.  
+A train can be a member of any number of different slots at once (have any number of different tokens at once).  
+Trains can acquire or release membership of slots (acquire or release tokens) at signals, or using conditional orders.  
+Slots can be used in conditionals in routefinding restrictions and programmable pre-signal programs, and in conditional orders.
+
+Slots are not shown in the user interace by default, **"Show advanced routing restriction features"** must be enabled.
+
+Slots can be created, deleted, renamed, have their capacity changes, and have trains manually added/removed from the slot by selecting "Manage slots" in the train list window "Manage list" dropdown.
+
+Example:
+
+![Slots example](Features/images/slots-example-0.png)
+
+In this example, only one recycling train should be full-loading at the station at a time.  
+Other recycling trains may be held somewhere more convenient some distance away from the station until it is free.
+
+At the first, right-most signal, recycling trains headed for the station try to reserve the slot.
+
+At the second signal, recycling trains which are not in the slot (they did not manage to acquire the slot) may not pathfind past the signal.  
+This forces them to pathfind via the adjacent queuing sidings.
+
+At the siding exit signals, recycling trains wait indefinitely until they can acquire the slot.
+
+![Slots example](Features/images/slots-example-1.png)
+
+At the platform exit signal, if the train is leaving the platform (entering the signal from the front), the slot is released, allowing another train to acquire it.
+
+The slot is shown in the slots management window as 1/1, this means that it is occupied by 1 train and has a capacity of 1, it is currently full.  
+The train occupying the slot is shown on the right, this is the train currently in the platform.
+
+Other potential uses for slots include:
+* Complex one train working lines
+* Bidirectionally signalled lines
+* Congestion/queueing control
+* Deadlock prevention on tricky flat junctions
+* Putting trains in loops/sidings to allow trains behind to overtake
+* Conditional order dispatch across multiple trains
+* Conflict prevention in general
+
 
 **Counters**
 
