@@ -22,7 +22,7 @@ One way roads may have T-junctions on the drive side (i.e. the outer/slow lane),
 
 Drive-through road stops may be made one way, this allows both lanes to be used in the same direction.
 
-Drive through roads stops with more than tile should have all tiles made one way.
+Drive through roads stops with more than one tile should have all tiles made one way.
 
 ![One way drive-through road stops](Features/images/one-way-2.png)
 
