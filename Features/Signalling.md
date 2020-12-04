@@ -173,6 +173,13 @@ Advanced conditions:
   This checks how much unused capacity there is in the slot, this is the slot capacity minus how many trains are members of the slot.
 * Counter value  
   This checks the value of a counter.
+* Current time/date  
+  This checks the current time/date. This requires that the savegame setting "Show time in minutes instead of days" is enabled.  
+  This is not affected by any use of the setting "Use client time settings instead of savegame time settings".  
+  The time values which can be tested are:  
+  * Minute (0 - 59)  
+  * Hour (0 - 23)  
+  * Hour and minute (0 - 2359)
 
 
 ### Programmable pre-signals
