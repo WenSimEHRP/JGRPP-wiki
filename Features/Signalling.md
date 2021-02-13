@@ -94,10 +94,6 @@ Conditions:
   (Trains with no cargo capacity at all are considered full: 100%).
 * Entry direction  
   This checks which side the train is entering the signal from: front, back or compass direction.
-* PBS entry signal  
-  This checks the tile of the PBS signal where the PBS reservation is starting from.  
-  Note: When a PBS reservation passes through a signal using the "Reserve through" action, the passed signal does not become the PBS entry signal.  
-  Note: When a second PBS reservation is started at a signal using the "Long reserve" action, the long reserve signal does become the PBS entry signal.
 * Train group  
   This checks whether the train is in a particular group.  
   This works with nested groups.
@@ -165,6 +161,14 @@ Advanced actions
     Set the value of the counter to a particular value when the front of the train passes this signal.
 
 Advanced conditions:
+* PBS entry signal  
+  This checks the tile of the PBS signal where the PBS reservation is starting from.  
+  Note: When a PBS reservation passes through a signal using the "Reserve through" or "Long reserve" actions, the passed signal does not become the PBS entry signal.  
+* PBS end signal  
+  This checks the tile of the PBS signal at the current end of the PBS reservation. This requires the realistic train braking model.  
+  Note: When a PBS reservation passes through a signal using the "Reserve through" action, the passed signal does not become the PBS end signal.  
+  Note: When a second PBS reservation is started at a signal using the "Long reserve" action or due to the train reserving ahead, the signal does become the new reservation end signal.  
+  This test should be used when checking which signal is used to enter a block when using realistic braking, not PBS entry signal signal, which could return a signal closer to the train.
 * Train in slot  
   This checks whether the train is currently a member of the slot.
 * Slot occupancy  
@@ -180,6 +184,8 @@ Advanced conditions:
   * Minute (0 - 59)  
   * Hour (0 - 23)  
   * Hour and minute (0 - 2359)
+* Reserved tiles ahead  
+  This checks the number of tiles of reservation ahead of the train (rounded down). This requires the realistic train braking model.
 
 
 ### Programmable pre-signals
