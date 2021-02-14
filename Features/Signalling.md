@@ -127,7 +127,15 @@ The more advanced features below are only shown if the "Show advanced routing re
 
 Advanced actions  
 * Wait at PBS signal  
-  The train waits at this PBS signal.
+  The sub-actions which this can take are:  
+  * Wait at PBS signal  
+    The train waits at this PBS signal.
+  * Cancel wait at PBS signal  
+    Cancels a previous wait at PBS signal action.
+  * Wait at start PBS signal for reservation ending here  
+    If a train would make a PBS reservation which ends at this signal, the train will instead wait at the start signal and not make the reservation.
+  * Cancel wait at start PBS signal for reservation ending here  
+    Cancel a previous wait at start PBS signal for reservation ending here.
 * Slot operation  
   See **Slots** section below for details of what slots are.  
   The sub-actions which this can take are:  
