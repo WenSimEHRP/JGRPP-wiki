@@ -172,11 +172,13 @@ Advanced conditions:
 * PBS entry signal  
   This checks the tile of the PBS signal where the PBS reservation is starting from.  
   Note: When a PBS reservation passes through a signal using the "Reserve through" or "Long reserve" actions, the passed signal does not become the PBS entry signal.  
+  This is mainly useful to control the long reserve, reserve through and possibly wait at start PBS signal for reservation ending here actions.
 * PBS end signal  
   This checks the tile of the PBS signal at the current end of the PBS reservation. This requires the realistic train braking model.  
   Note: When a PBS reservation passes through a signal using the "Reserve through" action, the passed signal does not become the PBS end signal.  
   Note: When a second PBS reservation is started at a signal using the "Long reserve" action or due to the train reserving ahead, the signal does become the new reservation end signal.  
-  This test should be used when checking which signal is used to enter a block when using realistic braking, not PBS entry signal signal, which could return a signal closer to the train.
+  This test should be used when checking which signal is used to enter a block when using realistic braking, not PBS entry signal signal, which could return a signal closer to the train.  
+  This is mainly useful to control the reserve through and possibly wait at start PBS signal for reservation ending here actions. This is not useful for controlling the long reserve action.
 * Train in slot  
   This checks whether the train is currently a member of the slot.
 * Slot occupancy  
@@ -193,7 +195,12 @@ Advanced conditions:
   * Hour (0 - 23)  
   * Hour and minute (0 - 2359)
 * Reserved tiles ahead  
-  This checks the number of tiles of reservation ahead of the train (rounded down). This requires the realistic train braking model.
+  This checks the number of tiles of reservation ahead of the train (rounded down). This requires the realistic train braking model.  
+  This is mainly useful to control the long reserve action.
+
+Note that the PBS entry/end signal conditionals are somewhat tricky to use and can have non-intuitive behaviour when used with pathfinding/penalty actions,
+because pathfinding also takes place beyond the current signal block where any reservation is being made. In this case a prediction of what the PBS signal would be
+is made.
 
 
 ### Programmable pre-signals
