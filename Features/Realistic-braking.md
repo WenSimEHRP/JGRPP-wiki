@@ -35,7 +35,7 @@ As well as the above, trains will brake in advance of:
 * End of reservation (including end of line, depots, etc.)
 * Current order speed restrictions
 
-Trains reserving ahead multiple signal blocks is implemented by the "Long Reserve" mechanism, see the [Signalling](wiki/Signalling) page.
+Trains reserving ahead multiple signal blocks is implemented by the "Long Reserve" mechanism, see the [Signalling](Signalling#routefinding-restrictions) page.
 
 Trains only extend their reservation when approaching/passing a signal. (This is the only time that the hypothetical train driver gets an update on how much track there is available ahead).
 
