@@ -13,7 +13,7 @@ In particular pre-signals and two-way signals are not permitted, and PBS is used
 This is a significant change from the layouts suggested by many beginner tutorials.
 
 It is possible to change the braking model during a running game.  
-However this may be blocked if there are signals prsent which are not allowed in the realistic mode.  
+However this may be blocked if there are signals present which are not allowed in the realistic mode.  
 These can be found using the `find_non_realistic_braking_signal` console command. (To save some typing, you can do `find<TAB KEY>`).
 
 
