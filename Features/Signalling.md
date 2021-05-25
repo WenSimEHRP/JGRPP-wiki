@@ -122,6 +122,13 @@ Conditions:
   This checks the train's current power to weight ratio.
 * Max T.E. / weight  
   This checks the train's current maximum tractive effort to weight ratio.
+* Engine class  
+  This checks whether the train has at least one engine of a particular class. The engine classes are:
+  * Steam
+  * Diesel
+  * Electric
+  * Monorail
+  * Maglev
 
 The more advanced features below are only shown if the "Show advanced routing restriction features" setting is enabled.
 
