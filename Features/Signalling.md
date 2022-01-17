@@ -305,15 +305,41 @@ order jumps lead to the order for the waypoint/depot/station where the train is 
 
 **NB: It is strongly recommended that a timetabled wait time is added to the sidings waypoint, depot or station order where the train waits.**
 
+#### Example 4: Bidirectionally signalled lines
+
+In this example a single track line is signalled in both directions.  
+Multiple trains can travel in the same direction on the line at once.  
+Slots are used to avoid a deadlock where trains travel in opposite directions on the single line at the same time and block each other.
+
+One slot is required for each direction. Each slot should have a capacity at least as large as the number of trains which could
+be travelling in the same direction at the same time.
+
+![Slots example](Features/images/slots-example-6.png)
+
+Here two trains have entered the single line heading north. Both trains acquired the northbound slot, such that the occupancy of the northbound slot is two,
+and the southbound slot is empty.
+
+If the southbound slot was not empty, the trains would wait at the signal before the single track and not acquire the northbound slot.
+
+The slot is released after the train has left the single track section.
+
+![Slots example](Features/images/slots-example-7.png)
+
+At the other end, a train is waiting because the northbound slot is not empty. It does not acquire the southbound slot and proceed past the signal
+until the northbound slot is empty, indicating that there are no trains using the single line heading north.
+
+This type of layout is useful when terrain, expense or other constraints make double-tracked lines impractical, but more capacity is required than can be achieved
+by not signalling the single track at all such that only one train could occupy the single track at once.
+
 #### Other potential uses for slots:
 
 * Complex one train working lines
-* Bidirectionally signalled lines
 * Congestion/queueing control
 * Deadlock prevention on tricky flat junctions
 * Putting trains in loops/sidings to allow trains behind to overtake
 * Conditional order dispatch across multiple trains
 * Conflict prevention in general
+* Prioritisation at junctions
 
 
 ### Counters
