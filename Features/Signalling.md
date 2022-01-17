@@ -257,7 +257,28 @@ At the platform exit signal, if the train is leaving the platform (entering the 
 The slot is shown in the slots management window as 1/1, this means that it is occupied by 1 train and has a capacity of 1, it is currently full.  
 The train occupying the slot is shown on the right, this is the train currently in the platform.
 
-Other potential uses for slots include:
+##### Example 2: Using slots and conditional orders to divert and hold trains in queuing sidings
+
+![Slots example](Features/images/slots-example-2.png)
+
+This example is similar to example 1, except that conditional orders are used to divert trains which cannot acquire the slot into the queuing sidings.  
+This is useful when the train whould not otherwise go past the sidings, such that it would be impractical to divert the train into the sidings using
+pathfinder deny or penalty routing restrictions on signals.
+
+After passing the waypoint at order 16, the conditional order at order 17 is evaluated.  
+If the train is already in or can acquire the slot, the train immediately jumps to order 21.  
+This bypasses the orders for the queuing siding, such that it need not go near the sidings at all.  
+If the slot is already full and the train cannot acquire the slot, the train immediately proceeds to order 18.  
+This diverts the train into the siding via another reversing siding.  
+The train is held in the siding by a routing restriction on all the siding exit signals which waits until the train can acquire the slot.
+
+![Slots example](Features/images/slots-example-3.png)
+
+See above for a diagram of the positions of orders 16 to 21.  
+Using conditional orders in this ways allows more flexible placement or selection of queuing sidings.
+
+##### Other potential uses for slots:
+
 * Complex one train working lines
 * Bidirectionally signalled lines
 * Congestion/queueing control
