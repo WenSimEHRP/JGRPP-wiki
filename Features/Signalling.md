@@ -236,7 +236,7 @@ Slots are not shown in the user interace by default, **"Show advanced routing re
 
 Slots can be created, deleted, renamed, have their capacity changes, and have trains manually added/removed from the slot by selecting "Manage slots" in the train list window "Manage list" dropdown.
 
-Example:
+##### Example 1: Using slots and pathfinder deny to hold trains in queuing sidings
 
 ![Slots example](Features/images/slots-example-0.png)
 
