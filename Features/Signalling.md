@@ -277,6 +277,34 @@ The train is held in the siding by a routing restriction on all the siding exit 
 See above for a diagram of the positions of orders 16 to 21.  
 Using conditional orders in this ways allows more flexible placement or selection of queuing sidings.
 
+##### Example 3: Using conditional orders and slots for dynamic dispatch of trains
+
+![Slots example](Features/images/slots-example-4.png)
+
+In this example a single set of trains with shared orders services multiple producing stations.  
+When one of the producing stations has more than a threshold quantity of cargo waiting, a single train is dispatched from
+the sidings to that station.  
+(Alternatively a depot or station could be used instead of sidings).  
+Each producing station has an associated slot of capacity 1. This is to ensure that only one train at a time is dispatched to each station.  
+
+This allows using fewer trains than there are loading stations to be serviced.
+
+For each of the producing stations:
+
+1. Use a conditional order to check whether there is enough cargo waiting at the station, if not skip this station.
+2. Try to acquire the slot for this station, if not (meaning that another train has already been dispatched there) skip this station.
+3. Go to the producing station and load cargo.
+4. Release the slot for the station.
+5. Go to the accepting station and unload cargo.
+6. Return to the sidings.
+
+The train will not move from the waiting sidings waypoint/depot/station if there are no stations available to load from such that the conditional
+order jumps lead to the order for the waypoint/depot/station where the train is already waiting.
+
+![Slots example](Features/images/slots-example-5.png)
+
+**NB: It is strongly recommended that a timetabled wait time is added to the sidings waypoint, depot or station order where the train waits.**
+
 ##### Other potential uses for slots:
 
 * Complex one train working lines
