@@ -236,7 +236,7 @@ Slots are not shown in the user interace by default, **"Show advanced routing re
 
 Slots can be created, deleted, renamed, have their capacity changes, and have trains manually added/removed from the slot by selecting "Manage slots" in the train list window "Manage list" dropdown.
 
-##### Example 1: Using slots and pathfinder deny to hold trains in queuing sidings
+#### Example 1: Using slots and pathfinder deny to hold trains in queuing sidings
 
 ![Slots example](Features/images/slots-example-0.png)
 
@@ -257,7 +257,7 @@ At the platform exit signal, if the train is leaving the platform (entering the 
 The slot is shown in the slots management window as 1/1, this means that it is occupied by 1 train and has a capacity of 1, it is currently full.  
 The train occupying the slot is shown on the right, this is the train currently in the platform.
 
-##### Example 2: Using slots and conditional orders to divert and hold trains in queuing sidings
+#### Example 2: Using slots and conditional orders to divert and hold trains in queuing sidings
 
 ![Slots example](Features/images/slots-example-2.png)
 
@@ -277,7 +277,7 @@ The train is held in the siding by a routing restriction on all the siding exit 
 See above for a diagram of the positions of orders 16 to 21.  
 Using conditional orders in this ways allows more flexible placement or selection of queuing sidings.
 
-##### Example 3: Using conditional orders and slots for dynamic dispatch of trains
+#### Example 3: Using conditional orders and slots for dynamic dispatch of trains
 
 ![Slots example](Features/images/slots-example-4.png)
 
@@ -305,7 +305,7 @@ order jumps lead to the order for the waypoint/depot/station where the train is 
 
 **NB: It is strongly recommended that a timetabled wait time is added to the sidings waypoint, depot or station order where the train waits.**
 
-##### Other potential uses for slots:
+#### Other potential uses for slots:
 
 * Complex one train working lines
 * Bidirectionally signalled lines
