@@ -176,6 +176,19 @@ Advanced actions
     Decrease the value of the counter when the front of the train passes this signal. The value will not decrease below 0.
   * Set  
     Set the value of the counter to a particular value when the front of the train passes this signal.
+* Penalty config  
+  The sub-actions which this can take are:  
+  * No PBS back penalty  
+    Do not apply the pathfinder penalty for passing this signal from the back side.
+  * Cancel no PBS back penalty  
+    Cancel a previous do not apply the pathfinder penalty for passing this signal from the back side.
+* Speed adaptation control  
+  The sub-actions which this can take are:  
+  * Make exempt  
+    The train is made exempt from automatic speed adaptation when the train passes this signal.
+  * Remove exemption  
+    A previous exemption from automatic speed adaptation is removed when the train passes this signal.
+  
 
 Advanced conditions:
 * PBS entry signal  
