@@ -55,10 +55,12 @@ Actions:
   This can be used to fine-tune train pathfinding.  
   The current suggested values in the dropdown are: small = 500, medium = 2000, and large = 8000.
 * Reserve through  
-  PBS will not end a reservation at this PBS signal, it is as if the signal is not there at all in the forward direction.
+  PBS will not end a reservation at this PBS signal, it is as if the signal is not there at all in the forward direction.  
+  This action has no effect when applied to a signalled tunnel/bridge entrance or exit.
 * Long reserve  
   If a train makes a PBS reservation that ends at this PBS signal, a second separate reservation will be attempted starting from this signal.  
-  The first reservation is not cancelled if the second reservation is not possible.
+  The first reservation is not cancelled if the second reservation is not possible.  
+  This action has no effect when applied to a signalled tunnel/bridge entrance.
 * News control  
   This allows turning off the train is stuck/lost news messages for trains waiting at this particular signal.
 
