@@ -95,7 +95,7 @@ Conditions:
   This checks the current load percentage of the train.  
   (Trains with no cargo capacity at all are considered full: 100%).
 * Entry direction  
-  This checks which side the train is entering the signal from: front, back or compass direction.
+  This checks which side the train is entering the signal from: front, back, compass direction, or entering/exiting tunnel/bridge.
 * Train group  
   This checks whether the train is in a particular group.  
   This works with nested groups.
@@ -162,6 +162,10 @@ Advanced actions
     When attempting to make a PBS reservation which ends at this signal, try to acquire membership in the slot, if the slot is full and the train cannot become a member, make the reservation anyway.
   * PBS end: Release  
     When a PBS reservation is made which ends at this signal, release membership of this slot.
+  * Try to acquire (on reserve)  
+    This is mostly the same as the try to acquire sub-action, except that attempting to acquire the slot is only done when making the reservation, not when the train may later go past the already reserved signal.  
+    This distinction can be important when using realistic braking, long reservations and/or more complicated reservation setups.
+    For example, if the slot is used to control reservations further on, then the slot shouldn't be acquired when the train goes past if another slot for a different reservation has already been acquired.
 * Reverse behind signal  
   The train reverses behind this signal. The signal must be a PBS signal (not one-way), and the train must be entering from the back direction.
 * Speed restriction  
@@ -210,12 +214,14 @@ Advanced conditions:
 * Counter value  
   This checks the value of a counter.
 * Current time/date  
-  This checks the current time/date. This requires that the savegame setting "Show time in minutes instead of days" is enabled.  
+  This checks the current time/date. The hour and minute values require that the savegame setting "Show time in minutes instead of days" is enabled.  
   This is not affected by any use of the setting "Use client time settings instead of savegame time settings".  
   The time values which can be tested are:  
   * Minute (0 - 59)  
   * Hour (0 - 23)  
   * Hour and minute (0 - 2359)
+  * Day (1 - 31)
+  * Month (1 - 12)
 * Reserved tiles ahead  
   This checks the number of tiles of reservation ahead of the train (rounded down). This requires the realistic train braking model.  
   This is mainly useful to control the long reserve action.
@@ -250,6 +256,8 @@ Slots can be used in conditionals in routefinding restrictions and programmable 
 Slots are not shown in the user interace by default, **"Show advanced routing restriction features"** must be enabled.
 
 Slots can be created, deleted, renamed, have their capacity changes, and have trains manually added/removed from the slot by selecting "Manage slots" in the train list window "Manage list" dropdown.
+
+Road vehicles, aircraft and ships can also use slots. These can only use conditional orders to check and control slot membership (not signals), but otherwise function the same as train slots. Each vehicle type has a separate set of slots. 
 
 #### Example 1: Using slots and pathfinder deny to hold trains in queuing sidings
 
