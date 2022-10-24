@@ -27,4 +27,5 @@ These occur at the same real time speed regardless of the value of the day lengt
 * Vehicle running costs  
   (Note that running costs are per unit real time that the vehicle is running, but as years becomes longer, the headline yearly figure also increases).
 * Vehicle ageing
+* Ageing of cargo in vehicles
 * Animations and visual effects
