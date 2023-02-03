@@ -31,7 +31,8 @@ This does not apply when using custom signal graphics, unless the "Show restrict
 Programs are executed in order from top to bottom.  
 In the case where one action cancels another, the last executed action takes effect.
 
-Example:  
+#### Example
+
 ![Programmable pre-signals example](Features/images/routing-restrictions-example-0.png)
 
 This is a possible way to implement a combined bay and through station.  
@@ -46,7 +47,8 @@ The "train is entering from the back of the signal" test is to avoid restricting
 The through platform signal adds a pathfinder penalty if the train is entering from the back of the signal and the next order (the order after the call at New Bedtown) *is* Southerly Station.  
 This has the effect of adding a penalty for trains which could use the bay platforms, such that those trains will always use a bay platforms if one is available. However if all the bay platforms are full or otherwise unreachable, it can still use the through platform, and reverse out again afterwards.
 
-Actions:
+#### Actions
+
 * Deny  
   The pathfinder will see this signal as a dead end, and will not look beyond the signal to find the destination.  
   This can be used to prevent trains from taking a particular route.
@@ -64,7 +66,8 @@ Actions:
 * News control  
   This allows turning off the train is stuck/lost news messages for trains waiting at this particular signal.
 
-Conditional blocks:
+#### Conditional blocks
+
 * If  
   This starts a new conditional block. The contents of which are only executed if the condition is true.
 * Else if  
@@ -78,7 +81,8 @@ Conditional blocks:
 
 Conditional blocks may be nested inside other conditional blocks.
 
-Conditions:
+#### Conditions
+
 * Train length  
   This checks the train length in tiles (rounded up).
 * Max speed  
@@ -132,9 +136,10 @@ Conditions:
   * Monorail
   * Maglev
 
+#### Advanced actions
+
 The more advanced features below are only shown if the "Show advanced routing restriction features" setting is enabled.
 
-Advanced actions  
 * Wait at PBS signal  
   The sub-actions which this can take are:  
   * Wait at PBS signal  
@@ -192,9 +197,11 @@ Advanced actions
     The train is made exempt from automatic speed adaptation when the train passes this signal.
   * Remove exemption  
     A previous exemption from automatic speed adaptation is removed when the train passes this signal.
-  
 
-Advanced conditions:
+#### Advanced conditions
+
+The more advanced features below are only shown if the "Show advanced routing restriction features" setting is enabled.
+
 * PBS entry signal  
   This checks the tile of the PBS signal where the PBS reservation is starting from.  
   Note: When a PBS reservation passes through a signal using the "Reserve through" or "Long reserve" actions, the passed signal does not become the PBS entry signal.  
