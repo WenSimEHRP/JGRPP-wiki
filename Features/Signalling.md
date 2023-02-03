@@ -151,7 +151,7 @@ The more advanced features below are only shown if the "Show advanced routing re
   * Cancel wait at start PBS signal for reservation ending here  
     Cancel a previous wait at start PBS signal for reservation ending here.
 * Slot operation  
-  See **Slots** section below for details of what slots are.  
+  See [**Slots**](#slots) section below for details of what slots are.  
   The sub-actions which this can take are:  
   * Acquire or wait  
     Try to acquire membership in the slot, if the slot is full and the train cannot become a member, wait at this PBS signal.
@@ -177,7 +177,7 @@ The more advanced features below are only shown if the "Show advanced routing re
   Set a speed restriction on the train when the train passes the signal.  
   A value of 0 removes the restriction.
 * Counter operation  
-  See **Counters** section below for details of what counters are.  
+  See [**Counters**](#counters) section below for details of what counters are.  
   The sub-actions which this can take are:  
   * Increase  
     Increase the value of the counter when the front of the train passes this signal.
