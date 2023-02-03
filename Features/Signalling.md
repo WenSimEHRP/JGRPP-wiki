@@ -1,19 +1,19 @@
 ## Signalling features
 
-* **Routefinding restrictions**  
+* [**Routefinding restrictions**](#routefinding-restrictions)  
   Routefinding restriction programs can be attached to any kind of signal.  
   These programs are run by trains, and can check various train properties, and slot and counter values.  
   These programs can be used to control pathfinding, PBS, slots, counters, reversing, speed restrictions and other miscellaneous operations.  
-* **Programmable pre-signals**  
+* [**Programmable pre-signals**](#programmable-pre-signals)  
   Programmable pre-signals are combo pre-signals, with programmable conditions for whether the signal is red or green.  
   Programmable pre-signals are block signals, with no support for PBS.
-* **Slots**  
+* [**Slots**](#slots)  
   Slots are analogous to token systems used in real-life railways, in particular single-line sections.  
   A slot has a capacity, the number of trains which can be in the slot/have a token.  
   A train can be a member of any number of different slots at once (have any number of different tokens at once).  
   Trains can acquire or release membership of slots (acquire or release tokens) at signals, or using conditional orders.  
   Slots can be used in conditionals in routefinding restrictions and programmable pre-signal programs, and in conditional orders.
-* **Counters**  
+* [**Counters**](#counters)  
   Counters are named variables which can be modified when a train passes a signal.  
   Counters can be used in conditionals in routefinding restrictions and programmable pre-signal programs, and in conditional orders.  
   In most cases, slots should be used instead.
