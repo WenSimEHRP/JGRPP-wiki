@@ -1,4 +1,4 @@
-## GRF features
+## Other features
 
 ### Extra station names
 
@@ -8,4 +8,5 @@ These extra station name strings are used when all the default names have been u
 
 A sample GRF can be found here: [extra station names sample GRF](https://github.com/JGRennison/extra-station-names-sample-grf).
 
-For GRF author documentation, [see here](https://htmlpreview.github.io/?https://github.com/JGRennison/OpenTTD-patches/blob/jgrpp/docs/newgrf-additions.html#a0globalsettings).
+For GRF author documentation, see here: [NML](https://jgrennison.github.io/OpenTTD-patches/newgrf-additions-nml.html#global-variable-properties),
+[NFO](https://jgrennison.github.io/OpenTTD-patches/newgrf-additions.html#a0globalsettings).

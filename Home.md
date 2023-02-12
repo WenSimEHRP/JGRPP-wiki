@@ -6,7 +6,7 @@ This wiki contains information/examples on how to use a few of the features in t
 * [Realistic train braking](wiki/Realistic-braking)
 * [Order window features](wiki/Order-window-features)
 * [Day length](wiki/Day-length)
-* [GRF features](wiki/GRF-features)
+* [Other features](wiki/Other-features)
 
 For general information, see the [README](https://github.com/JGRennison/OpenTTD-patches/blob/jgrpp/README.md).
 
