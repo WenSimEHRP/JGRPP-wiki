@@ -31,9 +31,9 @@ This does not apply when using custom signal graphics, unless the "Show restrict
 Programs are executed in order from top to bottom.  
 In the case where one action cancels another, the last executed action takes effect.
 
-#### Example
+#### Example 1: Combined bay and through station
 
-![Programmable pre-signals example](Features/images/routing-restrictions-example-0.png)
+![Routing restrictions example 1](Features/images/routing-restrictions-example-0.png)
 
 This is a possible way to implement a combined bay and through station.  
 The example assumes that only bay-platform traffic calls next at "Southerly Station", which is to the south-east.  
@@ -46,6 +46,22 @@ The "train is entering from the back of the signal" test is to avoid restricting
 
 The through platform signal adds a pathfinder penalty if the train is entering from the back of the signal and the next order (the order after the call at New Bedtown) *is* Southerly Station.  
 This has the effect of adding a penalty for trains which could use the bay platforms, such that those trains will always use a bay platforms if one is available. However if all the bay platforms are full or otherwise unreachable, it can still use the through platform, and reverse out again afterwards.
+
+#### Example 2: Station with single passing track
+
+![Routing restrictions example 2](Features/images/routing-restrictions-example-1.png)
+
+This is a possible way to implement a station with a single bi-directional passing track.
+
+Trains will use the platform tracks if unoccupied, otherwise if the platform is occupied and the train does not call at this station,
+trains will use the central track to bypass the occupied platform.
+
+The pathfinder penalty for a station tile defaults to 800, therefore the total penalty for a 4 tile platform is 3200.  
+Here the same station platform penalty is added to the central track (1600 on each of the two signals).  
+The backwards facing signal on entrance to the central track is large enough that the platform track has a lower pathfinder cost than the central track when unoccupied.  
+However when the platform track is occupied but the central track is not, the central track has a lower pathfinder cost.
+
+The long reserve action on the central track signals is to better allow non-stop trains using the central track to overtake trains currently occupying the platform.
 
 #### Actions
 
