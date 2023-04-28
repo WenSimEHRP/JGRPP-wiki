@@ -324,7 +324,7 @@ The train occupying the slot is shown on the right, this is the train currently 
 ![Slots example](Features/images/slots-example-2.png)
 
 This example is similar to example 1, except that conditional orders are used to divert trains which cannot acquire the slot into the queuing sidings.  
-This is useful when the train whould not otherwise go past the sidings, such that it would be impractical to divert the train into the sidings using
+This is useful when the train would not otherwise go past the sidings, such that it would be impractical to divert the train into the sidings using
 pathfinder deny or penalty routing restrictions on signals.
 
 After passing the waypoint at order 16, the conditional order at order 17 is evaluated.  
