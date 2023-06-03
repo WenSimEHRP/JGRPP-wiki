@@ -134,6 +134,7 @@ Conditional blocks may be nested inside other conditional blocks.
   * Waiting
   * Lost
   * Requires servicing
+  * Stopping at station/waypoint
 * Weight  
   This checks the train's current weight.
 * Power  
