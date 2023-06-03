@@ -7,6 +7,7 @@ This wiki contains information/examples on how to use a few of the features in t
 * [Order window features](wiki/Order-window-features)
 * [Day length](wiki/Day-length)
 * [Other features](wiki/Other-features)
+* [Network server administration](wiki/Network-server-administration)
 
 For general information, see the [README](https://github.com/JGRennison/OpenTTD-patches/blob/jgrpp/README.md).
 
