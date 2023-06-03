@@ -14,7 +14,7 @@ The settings_access mechanism can be use to authorise a network client such that
 
 The `network.settings_password` setting needs to be set to a secure password (in the same way as the rcon password is set).
 
-Run `setting network.settings_password PASSWORD` on the server,  
+Run `setting network.settings_password PASSWORD` or just `settings_password PASSWORD` on the server,  
 or set the `settings_password` field in the `[network]` section of secrets.cfg before starting the server.
 
 On the network client run `settings_access PASSWORD` in the console.
@@ -32,3 +32,11 @@ If the save is loaded anywhere else the company passwords cannot be decrypted an
 
 This includes autosaves and manual saves made from the server (e.g. using a server console or rcon).  
 This does not include savegames made from attached network clients, or the temporary savegames sent to network clients when joining.
+
+
+### Offering companies for sale
+
+The `offer_company_sale COMPANY_ID` console command offers a company for sale to other companies/players in the same way as if it was about to go bankrupt.  
+This must be run the network server (if necessary by using rcon).
+
+(This can also be used in single-player).
