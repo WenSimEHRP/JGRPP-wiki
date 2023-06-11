@@ -18,6 +18,7 @@ As the day length setting is increased, these will occur more slowly in real tim
 * Ratings calculations (towns and stations)
 * Inflation
 * Introduction and expiry of vehicle, object, station, house, etc. models
+* Vehicle ageing
 
 ### Things which stay the same in real time
 
@@ -26,6 +27,5 @@ These occur at the same real time speed regardless of the value of the day lengt
 * Vehicle movement
 * Vehicle running costs  
   (Note that running costs are per unit real time that the vehicle is running, but as years becomes longer, the headline yearly figure also increases).
-* Vehicle ageing
 * Ageing of cargo in vehicles
 * Animations and visual effects
