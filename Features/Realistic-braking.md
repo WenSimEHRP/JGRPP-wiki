@@ -112,3 +112,24 @@ AIs may not be able to build and run a workable railway in this mode, in particu
 AIs should be tested with this mode enabled before expecting them to usefully compete.
 
 ![Bad use of conditional orders](Features/images/realistic-braking-bad-cond-orders.png)
+
+
+### Multi-aspect signals
+
+NewGRFs may provide alternative signal graphics and signal styles, and when realistic train braking is enabled, these can also include graphics for additional signal aspects, instead of just red and green.
+
+![Multi-aspect signals](Features/images/multi-aspect-signals.png)
+
+An example of such a GRF is: [Multi-Aspect Signals NewGRF](https://github.com/JGRennison/multi-aspect-signals-grf), this is available in the online content downloader, in-game.
+
+When the "Realistic train braking is aspect limited" setting is enabled, the distance that the train "driver" can tell is clear beyond the signal is limited to the maximum aspect that the signal
+could display, as defined by the multi-aspect signal GRF in use.  
+In effect, the train "driver" can no longer see an unlimited number of signals ahead.
+
+It is still possible for a train reservation to be longer than that, for example when using the long reserve or reserve through routing restriction actions, but the train "driver" will
+not then be able to "see" the full length of the reservation.
+
+When enabled, additional thought is required when designing track layouts and choosing where and at what spacing to place signals, especially at higher speeds.  
+This is an advanced feature which is not suitable for beginner players.
+
+Additional signal styles which are are added by signal GRFs may propagate aspects between signals differently, or only be able to show a more restrictve set of signal aspects to the "driver".
