@@ -17,7 +17,7 @@ However this may be blocked if there are signals present which are not allowed i
 These can be found using the `find_non_realistic_braking_signal` console command. (To save some typing, you can do `find<TAB KEY>`).
 
 
-### Behaviour changes
+### Train behaviour changes
 
 Trains will brake in advance such that they can come to a halt within their PBS reservation, and meet any speed restrictions within their reservation.
 
@@ -46,6 +46,14 @@ Unlike the "original" train braking model, trains can reserve into, out of and t
 
 Changing the track layout in a way that would obstruct or affect the reservation of a moving train is not permitted. Here "moving" means either that the train has a non-zero speed or that it is not in the stopped state.
 
+
+### Signal behaviour changes
+
+Normal block signals on plain line track behave as automatic signals, and may show a green aspect even when there is no train reservation.  
+In all other cases normal block signals default to a red aspect, the same as PBS signals.  
+"Plain line" means that the track beyond the signal has no junctions, and leads to either another one-way signal in the same direction, or an end-of-line.
+
+![Plain link block signals](Features/images/realistic-braking-auto-signals.png)
 
 ### Speed/distance calculations
 
