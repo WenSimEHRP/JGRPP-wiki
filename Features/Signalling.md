@@ -65,22 +65,35 @@ The long reserve action on the central track signals is to better allow non-stop
 
 #### Actions
 
-* Deny  
-  The pathfinder will see this signal as a dead end, and will not look beyond the signal to find the destination.  
-  This can be used to prevent trains from taking a particular route.
-* Penalty  
-  The pathfinder will add a penalty value to the cost of pathfinding past this signal.  
-  This can be used to fine-tune train pathfinding.  
-  The current suggested values in the dropdown are: small = 500, medium = 2000, and large = 8000.
-* Reserve through  
-  PBS will not end a reservation at this PBS signal, it is as if the signal is not there at all in the forward direction.  
-  This action has no effect when applied to a signalled tunnel/bridge entrance or exit.
-* Long reserve  
-  If a train makes a PBS reservation that ends at this PBS signal, a second separate reservation will be attempted starting from this signal.  
-  The first reservation is not cancelled if the second reservation is not possible.  
-  This action has no effect when applied to a signalled tunnel/bridge entrance.
-* News control  
-  This allows turning off the train is stuck/lost news messages for trains waiting at this particular signal.
+<ul>
+
+##### Deny
+
+The pathfinder will see this signal as a dead end, and will not look beyond the signal to find the destination.  
+This can be used to prevent trains from taking a particular route.
+
+##### Penalty
+
+The pathfinder will add a penalty value to the cost of pathfinding past this signal.  
+This can be used to fine-tune train pathfinding.  
+The current suggested values in the dropdown are: small = 500, medium = 2000, and large = 8000.
+
+##### Reserve through
+
+PBS will not end a reservation at this PBS signal, it is as if the signal is not there at all in the forward direction.  
+This action has no effect when applied to a signalled tunnel/bridge entrance or exit.
+
+##### Long reserve
+
+If a train makes a PBS reservation that ends at this PBS signal, a second separate reservation will be attempted starting from this signal.  
+The first reservation is not cancelled if the second reservation is not possible.  
+This action has no effect when applied to a signalled tunnel/bridge entrance.
+
+##### News control
+
+This allows turning off the train is stuck/lost news messages for trains waiting at this particular signal.
+
+</ul>
 
 #### Conditional blocks
 
@@ -102,172 +115,253 @@ Ctrl-clicking the "Remove" button removes the condition but does not remove the 
 
 #### Conditions
 
-* Train length  
-  This checks the train length in tiles (rounded up).
-* Max speed  
-  This checks the train's maximum speed.
-* Current order  
-  This checks the destination of the train's current order.
-* Next order  
-  This checks the destination of the train's next order after the current order.
-* Last visited station  
-  This checks which station the train last visited.
-* Cargo  
-  This checks whether the train can or can't carry a particular cargo.
-* Load percentage  
-  This checks the current load percentage of the train.  
-  (Trains with no cargo capacity at all are considered full: 100%).
-* Entry direction  
-  This checks which side the train is entering the signal from: front, back, compass direction, or entering/exiting tunnel/bridge.
-* Train group  
-  This checks whether the train is in a particular group.  
-  This works with nested groups.
-* Train owner  
-  This checks which company owns the train.
-* Train status  
-  This checks the current status of the train, the statuses which can be checked are:  
-  * Empty
-  * Full
-  * Broken down
-  * Needs repair
-  * Reversing
-  * Heading to station or waypoint
-  * Heading to depot
-  * Loading
-  * Waiting
-  * Lost
-  * Requires servicing
-  * Stopping at station/waypoint
-* Weight  
-  This checks the train's current weight.
-* Power  
-  This checks the train's power.
-* Max T.E.  
-  This checks the train's maximum tractive effort.
-* Power / weight  
-  This checks the train's current power to weight ratio.
-* Max T.E. / weight  
-  This checks the train's current maximum tractive effort to weight ratio.
-* Engine class  
-  This checks whether the train has at least one engine of a particular class. The engine classes are:
-  * Steam
-  * Diesel
-  * Electric
-  * Monorail
-  * Maglev
-* Direction of order target  
-  This checks which direction the tile of the train's current or next order is in, relative to the signal tile.
+<ul>
+
+##### Train length
+
+This checks the train length in tiles (rounded up).
+
+##### Max speed
+
+This checks the train's maximum speed.
+
+##### Current order
+
+This checks the destination of the train's current order.
+
+##### Next order
+
+This checks the destination of the train's next order after the current order.
+
+##### Last visited station
+
+This checks which station the train last visited.
+
+##### Cargo
+
+This checks whether the train can or can't carry a particular cargo.
+
+##### Load percentage
+
+This checks the current load percentage of the train.  
+(Trains with no cargo capacity at all are considered full: 100%).
+
+##### Entry direction
+
+This checks which side the train is entering the signal from: front, back, compass direction, or entering/exiting tunnel/bridge.
+
+##### Train group
+
+This checks whether the train is in a particular group.  
+This works with nested groups.
+
+##### Train owner
+
+This checks which company owns the train.
+
+##### Train status
+
+This checks the current status of the train, the statuses which can be checked are:  
+* Empty
+* Full
+* Broken down
+* Needs repair
+* Reversing
+* Heading to station or waypoint
+* Heading to depot
+* Loading
+* Waiting
+* Lost
+* Requires servicing
+* Stopping at station/waypoint
+
+##### Weight
+
+This checks the train's current weight.
+
+##### Power
+
+This checks the train's power.
+
+##### Max T.E.
+
+This checks the train's maximum tractive effort.
+
+##### Power / weight
+
+This checks the train's current power to weight ratio.
+
+##### Max T.E. / weight
+
+This checks the train's current maximum tractive effort to weight ratio.
+
+##### Engine class
+
+This checks whether the train has at least one engine of a particular class. The engine classes are:
+* Steam
+* Diesel
+* Electric
+* Monorail
+* Maglev
+
+##### Direction of order target
+
+This checks which direction the tile of the train's current or next order is in, relative to the signal tile.
+
+</ul>
 
 #### Advanced actions
 
 The more advanced features below are only shown if the "Show advanced routing restriction features" setting is enabled.
 
+<ul>
+
+##### Wait at PBS signal
+
+The sub-actions which this can take are:  
 * Wait at PBS signal  
-  The sub-actions which this can take are:  
-  * Wait at PBS signal  
-    The train waits at this PBS signal.
-  * Cancel wait at PBS signal  
-    Cancels a previous wait at PBS signal action.
-  * Wait at start PBS signal for reservation ending here  
-    If a train would make a PBS reservation which ends at this signal, the train will instead wait at the start signal and not make the reservation.
-  * Cancel wait at start PBS signal for reservation ending here  
-    Cancel a previous wait at start PBS signal for reservation ending here.
-* Slot operation  
-  See [**Slots**](#slots) section below for details of what slots are.  
-  The sub-actions which this can take are:  
-  * Acquire or wait  
-    Try to acquire membership in the slot, if the slot is full and the train cannot become a member, wait at this PBS signal.
-  * Try to acquire  
-    Try to acquire membership in the slot, if the slot is full and the train cannot become a member, carry on anyway.
-  * Release (front)  
-    Release membership of this slot when the front of the train passes the signal.
-  * Release (back)  
-    Release membership of this slot when the back of the train passes the signal.
-  * PBS end: Acquire or wait  
-    When attempting to make a PBS reservation which ends at this signal, try to acquire membership in the slot, if the slot is full and the train cannot become a member, wait at the start PBS signal.
-  * PBS end: Try to acquire  
-    When attempting to make a PBS reservation which ends at this signal, try to acquire membership in the slot, if the slot is full and the train cannot become a member, make the reservation anyway.
-  * PBS end: Release  
-    When a PBS reservation is made which ends at this signal, release membership of this slot.
-  * Try to acquire (on reserve)  
-    This is mostly the same as the try to acquire sub-action, except that attempting to acquire the slot is only done when making the reservation, not when the train may later go past the already reserved signal.  
-    This distinction can be important when using realistic braking, long reservations and/or more complicated reservation setups.
-    For example, if the slot is used to control reservations further on, then the slot shouldn't be acquired when the train goes past if another slot for a different reservation has already been acquired.
-* Reverse behind signal  
-  The train reverses behind this signal. The signal must be a PBS signal (not one-way), and the train must be entering from the back direction.
-* Speed restriction  
-  Set a speed restriction on the train when the train passes the signal.  
-  A value of 0 removes the restriction.
-* Counter operation  
-  See [**Counters**](#counters) section below for details of what counters are.  
-  The sub-actions which this can take are:  
-  * Increase  
-    Increase the value of the counter when the front of the train passes this signal.
-  * Decrease  
-    Decrease the value of the counter when the front of the train passes this signal. The value will not decrease below 0.
-  * Set  
-    Set the value of the counter to a particular value when the front of the train passes this signal.
-* Penalty config  
-  The sub-actions which this can take are:  
-  * No PBS back penalty  
-    Do not apply the pathfinder penalty for passing this signal from the back side.
-  * Cancel no PBS back penalty  
-    Cancel a previous do not apply the pathfinder penalty for passing this signal from the back side.
-* Speed adaptation control  
-  The sub-actions which this can take are:  
-  * Make exempt  
-    The train is made exempt from automatic speed adaptation when the train passes this signal.
-  * Remove exemption  
-    A previous exemption from automatic speed adaptation is removed when the train passes this signal.
-* Signal mode control  
-  This action may be used to override whether a reservation made from a combined normal/shunt style signal  
-  uses normal or shunt mode. The normal/shunt mode affects the displayed signal aspect, and the train driving  
-  model if the train braking is aspect limited setting is enabled.  
-  This action is executed after the reservation has been made.  
-  This requires the realistic train braking model.
+  The train waits at this PBS signal.
+* Cancel wait at PBS signal  
+  Cancels a previous wait at PBS signal action.
+* Wait at start PBS signal for reservation ending here  
+  If a train would make a PBS reservation which ends at this signal, the train will instead wait at the start signal and not make the reservation.
+* Cancel wait at start PBS signal for reservation ending here  
+  Cancel a previous wait at start PBS signal for reservation ending here.
+
+##### Slot operation
+
+See [**Slots**](#slots) section below for details of what slots are.  
+The sub-actions which this can take are:  
+* Acquire or wait  
+  Try to acquire membership in the slot, if the slot is full and the train cannot become a member, wait at this PBS signal.
+* Try to acquire  
+  Try to acquire membership in the slot, if the slot is full and the train cannot become a member, carry on anyway.
+* Release (front)  
+  Release membership of this slot when the front of the train passes the signal.
+* Release (back)  
+  Release membership of this slot when the back of the train passes the signal.
+* PBS end: Acquire or wait  
+  When attempting to make a PBS reservation which ends at this signal, try to acquire membership in the slot, if the slot is full and the train cannot become a member, wait at the start PBS signal.
+* PBS end: Try to acquire  
+  When attempting to make a PBS reservation which ends at this signal, try to acquire membership in the slot, if the slot is full and the train cannot become a member, make the reservation anyway.
+* PBS end: Release  
+  When a PBS reservation is made which ends at this signal, release membership of this slot.
+* Try to acquire (on reserve)  
+  This is mostly the same as the try to acquire sub-action, except that attempting to acquire the slot is only done when making the reservation, not when the train may later go past the already reserved signal.  
+  This distinction can be important when using realistic braking, long reservations and/or more complicated reservation setups.
+  For example, if the slot is used to control reservations further on, then the slot shouldn't be acquired when the train goes past if another slot for a different reservation has already been acquired.
+
+##### Reverse behind signal
+
+The train reverses behind this signal. The signal must be a PBS signal (not one-way), and the train must be entering from the back direction.
+
+##### Speed restriction
+
+Set a speed restriction on the train when the train passes the signal.  
+A value of 0 removes the restriction.
+
+##### Counter operation
+
+See [**Counters**](#counters) section below for details of what counters are.  
+The sub-actions which this can take are:  
+* Increase  
+  Increase the value of the counter when the front of the train passes this signal.
+* Decrease  
+  Decrease the value of the counter when the front of the train passes this signal. The value will not decrease below 0.
+* Set  
+  Set the value of the counter to a particular value when the front of the train passes this signal.
+
+##### Penalty config
+
+The sub-actions which this can take are:  
+* No PBS back penalty  
+  Do not apply the pathfinder penalty for passing this signal from the back side.
+* Cancel no PBS back penalty  
+  Cancel a previous do not apply the pathfinder penalty for passing this signal from the back side.
+
+##### Speed adaptation control
+
+The sub-actions which this can take are:  
+* Make exempt  
+  The train is made exempt from automatic speed adaptation when the train passes this signal.
+* Remove exemption  
+  A previous exemption from automatic speed adaptation is removed when the train passes this signal.
+
+##### Signal mode control
+
+This action may be used to override whether a reservation made from a combined normal/shunt style signal  
+uses normal or shunt mode. The normal/shunt mode affects the displayed signal aspect, and the train driving  
+model if the train braking is aspect limited setting is enabled.  
+This action is executed after the reservation has been made.  
+This requires the realistic train braking model.
+
+</ul>
 
 #### Advanced conditions
 
 The more advanced features below are only shown if the "Show advanced routing restriction features" setting is enabled.
 
-* Train in slot  
-  This checks whether the train is currently a member of the slot.
-* Slot occupancy  
-  This checks how many trains are members of the slot.
-* Slot occupancy remaining  
-  This checks how much unused capacity there is in the slot, this is the slot capacity minus how many trains are members of the slot.
-* Counter value  
-  This checks the value of a counter.
-* Current time/date  
-  This checks the current time/date. The hour and minute values require that the savegame setting "Show time in minutes instead of days" is enabled.  
-  This is not affected by any use of the setting "Use client time settings instead of savegame time settings".  
-  The time values which can be tested are:  
-  * Minute (0 - 59)  
-  * Hour (0 - 23)  
-  * Hour and minute (0 - 2359)
-  * Day (1 - 31)
-  * Month (1 - 12)
-* Reserved tiles ahead  
-  This checks the number of tiles of reservation ahead of the train (rounded down). This requires the realistic train braking model.  
-  This is mainly useful to control the long reserve action.
-* PBS reservation passes tile  
-  This checks whether the train's reservation passes through the tile, at any point along its length.  
-* PBS entry signal  
-  This checks the tile of the PBS signal where the PBS reservation is starting from.  
-  Note: When a PBS reservation passes through a signal using the "Reserve through" or "Long reserve" actions, the passed signal does not become the PBS entry signal.  
-  This is mainly useful to control the long reserve, reserve through and possibly wait at start PBS signal for reservation ending here actions.  
-  This condition may not be used with the signal mode control action.
-* PBS end signal  
-  This checks the tile of the PBS signal at the current end of the PBS reservation. This requires the realistic train braking model.  
-  Note: When a PBS reservation passes through a signal using the "Reserve through" action, the passed signal does not become the PBS end signal.  
-  Note: When a second PBS reservation is started at a signal using the "Long reserve" action or due to the train reserving ahead, the signal does become the new reservation end signal.  
-  This test should be used when checking which signal is used to enter a block when using realistic braking, not PBS entry signal signal, which could return a signal closer to the train.  
-  This is mainly useful to control the reserve through and possibly wait at start PBS signal for reservation ending here actions. This is not useful for controlling the long reserve action.  
-  This condition may not be used with the signal mode control action.
-* PBS reservation end tile  
-  This condition may ONLY be used with the signal mode control action.  
-  This condition checks the tile at the end of the reservation (the last reserved tile), after the reservation has been made from this signal.  
-  This requires the realistic train braking model.
+<ul>
+
+##### Train in slot
+
+This checks whether the train is currently a member of the slot.
+
+##### Slot occupancy
+
+This checks how many trains are members of the slot.
+
+##### Slot occupancy remaining
+
+This checks how much unused capacity there is in the slot, this is the slot capacity minus how many trains are members of the slot.
+
+##### Counter value
+
+This checks the value of a counter.
+
+##### Current time/date
+
+This checks the current time/date. The hour and minute values require that the savegame setting "Show time in minutes instead of days" is enabled.  
+This is not affected by any use of the setting "Use client time settings instead of savegame time settings".  
+The time values which can be tested are:  
+* Minute (0 - 59)  
+* Hour (0 - 23)  
+* Hour and minute (0 - 2359)
+* Day (1 - 31)
+* Month (1 - 12)
+
+##### Reserved tiles ahead
+
+This checks the number of tiles of reservation ahead of the train (rounded down). This requires the realistic train braking model.  
+This is mainly useful to control the long reserve action.
+
+##### PBS reservation passes tile
+
+This checks whether the train's reservation passes through the tile, at any point along its length.  
+
+##### PBS entry signal
+
+This checks the tile of the PBS signal where the PBS reservation is starting from.  
+Note: When a PBS reservation passes through a signal using the "Reserve through" or "Long reserve" actions, the passed signal does not become the PBS entry signal.  
+This is mainly useful to control the long reserve, reserve through and possibly wait at start PBS signal for reservation ending here actions.  
+This condition may not be used with the signal mode control action.
+
+##### PBS end signal
+
+This checks the tile of the PBS signal at the current end of the PBS reservation. This requires the realistic train braking model.  
+Note: When a PBS reservation passes through a signal using the "Reserve through" action, the passed signal does not become the PBS end signal.  
+Note: When a second PBS reservation is started at a signal using the "Long reserve" action or due to the train reserving ahead, the signal does become the new reservation end signal.  
+This test should be used when checking which signal is used to enter a block when using realistic braking, not PBS entry signal signal, which could return a signal closer to the train.  
+This is mainly useful to control the reserve through and possibly wait at start PBS signal for reservation ending here actions. This is not useful for controlling the long reserve action.  
+This condition may not be used with the signal mode control action.
+
+##### PBS reservation end tile
+
+This condition may ONLY be used with the signal mode control action.  
+This condition checks the tile at the end of the reservation (the last reserved tile), after the reservation has been made from this signal.  
+This requires the realistic train braking model.
+
+</ul>
 
 Note that the PBS entry/end signal conditionals are somewhat tricky to use and can have non-intuitive behaviour when used with pathfinding/penalty actions,
 because pathfinding also takes place beyond the current signal block where any reservation is being made. In this case a prediction of what the PBS signal would be
