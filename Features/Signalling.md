@@ -97,6 +97,9 @@ The long reserve action on the central track signals is to better allow non-stop
 
 Conditional blocks may be nested inside other conditional blocks.
 
+When a conditional block is selected, clicking the "Remove" button removes the entire block and its contents.  
+Ctrl-clicking the "Remove" button removes the condition but does not remove the contents of the block.
+
 #### Conditions
 
 * Train length  
