@@ -132,4 +132,4 @@ not then be able to "see" the full length of the reservation.
 When enabled, additional thought is required when designing track layouts and choosing where and at what spacing to place signals, especially at higher speeds.  
 This is an advanced feature which is not suitable for beginner players.
 
-Additional signal styles which are are added by signal GRFs may propagate aspects between signals differently, or only be able to show a more restrictve set of signal aspects to the "driver".
+Additional signal styles which are are added by signal GRFs may propagate aspects between signals differently, or only be able to show a more restrictive set of signal aspects to the "driver".
