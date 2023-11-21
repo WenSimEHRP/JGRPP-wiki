@@ -351,7 +351,7 @@ This condition may not be used with the signal mode control action.
 This checks the tile of the PBS signal at the current end of the PBS reservation. This requires the realistic train braking model.  
 Note: When a PBS reservation passes through a signal using the "Reserve through" action, the passed signal does not become the PBS end signal.  
 Note: When a second PBS reservation is started at a signal using the "Long reserve" action or due to the train reserving ahead, the signal does become the new reservation end signal.  
-This test should be used when checking which signal is used to enter a block when using realistic braking, not PBS entry signal signal, which could return a signal closer to the train.  
+This test should be used when checking which signal is used to enter a block when using realistic braking, instead of the PBS entry signal condition, which could return a signal closer to the train.  
 This is mainly useful to control the reserve through and possibly wait at start PBS signal for reservation ending here actions. This is not useful for controlling the long reserve action.  
 This condition may not be used with the signal mode control action.
 
