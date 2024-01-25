@@ -491,12 +491,35 @@ until the northbound slot is empty, indicating that there are no trains using th
 This type of layout is useful when terrain, expense or other constraints make double-tracked lines impractical, but more capacity is required than can be achieved
 by not signalling the single track at all such that only one train could occupy the single track at once.
 
+#### Example 5: Diverting slow trains into a siding to allow fast trains behind to overtake
+
+![Slots example](Features/images/slots-example-8.png)
+
+In this example, slow trains are automatically diverted into a siding if they're followed by one or more fast trains, to allow them to overtake.  
+This example uses the train's cargo (passengers) to differentiate between fast and slow trains, but this could instead be done using other conditions
+such as maximum speed, current destination, train group, train weight, etc.
+
+Well ahead of the siding (shown in the inset viewport), trains considered "fast" try to acquire the slot.  
+The slot capacity should be large enough to that a fast train will always be able to acquire the slot, even if there
+are other fast trains in the section.  
+
+The signal at the end of the siding is set to deny trains which are in the slot. Fast trains which have acquired the slot should never use the siding.  
+Trains which are in the siding should wait there until there are no trains in the slot.
+
+The signal on the mainline track adds a pathfinder penalty for trains which are not in the slot, if the slot is not empty.  
+This diverts slow trains into the siding if there is one or more fast trains behind and the siding is empty.  
+Deny or a very large penalty should not be used, as this can cause a deadlock if two slow trains
+are followed by a fast train, and the second slow train stops on the mainline waiting for the siding to become available.  
+This signal also releases the slot from fast trains as they go past.
+
+The distance between the slot acquire signal and the siding should be far enough that a slow train in front won't have reached the siding yet, but not so long
+that a slow train in the siding doesn't get a chance to exit before another fast train comes past.
+
 #### Other potential uses for slots:
 
 * Complex one train working lines
 * Congestion/queueing control
 * Deadlock prevention on tricky flat junctions
-* Putting trains in loops/sidings to allow trains behind to overtake
 * Conditional order dispatch across multiple trains
 * Conflict prevention in general
 * Prioritisation at junctions
