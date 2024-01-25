@@ -463,7 +463,7 @@ order jumps lead to the order for the waypoint/depot/station where the train is 
 
 ![Slots example](Features/images/slots-example-5.png)
 
-**NB: It is strongly recommended that a timetabled wait time is added to the sidings waypoint, depot or station order where the train waits.**
+A timetabled wait time should be added to the sidings waypoint, depot or station order where the train waits.
 
 #### Example 4: Bidirectionally signalled lines
 
