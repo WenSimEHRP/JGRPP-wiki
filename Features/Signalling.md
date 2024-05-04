@@ -235,7 +235,8 @@ The sub-actions which this can take are:
 * Acquire or wait  
   Try to acquire membership in the slot, if the slot is full and the train cannot become a member, wait at this PBS signal.
 * Try to acquire  
-  Try to acquire membership in the slot, if the slot is full and the train cannot become a member, carry on anyway.
+  Try to acquire membership in the slot, if the slot is full and the train cannot become a member, carry on anyway.  
+  When reserving ahead it is attempted when making the reservation, no second attempt is made when later passing the already reserved signal.
 * Release (front)  
   Release membership of this slot when the front of the train passes the signal.
 * Release (back)  
@@ -246,10 +247,6 @@ The sub-actions which this can take are:
   When attempting to make a PBS reservation which ends at this signal, try to acquire membership in the slot, if the slot is full and the train cannot become a member, make the reservation anyway.
 * PBS end: Release  
   When a PBS reservation is made which ends at this signal, release membership of this slot.
-* Try to acquire (on reserve)  
-  This is mostly the same as the try to acquire sub-action, except that attempting to acquire the slot is only done when making the reservation, not when the train may later go past the already reserved signal.  
-  This distinction can be important when using realistic braking, long reservations and/or more complicated reservation setups.
-  For example, if the slot is used to control reservations further on, then the slot shouldn't be acquired when the train goes past if another slot for a different reservation has already been acquired.
 
 ##### Reverse behind signal
 
