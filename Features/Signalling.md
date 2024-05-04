@@ -241,6 +241,8 @@ The sub-actions which this can take are:
   Release membership of this slot when the front of the train passes the signal.
 * Release (back)  
   Release membership of this slot when the back of the train passes the signal.
+* Release (on reserve)  
+  Release membership of this slot when making a reservation from this signal (this is the executed in the same conditions as the "acquire or wait" and "try to acquire" sub-actions).
 * PBS end: Acquire or wait  
   When attempting to make a PBS reservation which ends at this signal, try to acquire membership in the slot, if the slot is full and the train cannot become a member, wait at the start PBS signal.
 * PBS end: Try to acquire  
