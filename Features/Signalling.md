@@ -89,6 +89,9 @@ If a train makes a PBS reservation that ends at this PBS signal, a second separa
 The first reservation is not cancelled if the second reservation is not possible.  
 This action has no effect when applied to a signalled tunnel/bridge entrance.
 
+The "Long reserve (unless stopping)" sub-action can be used to only enable long reserve when the train is not stopping at a station or waypoint,
+earlier in the train's reservation. This is useful for signals at platform ends where it would not be useful to enable long reserve for trains which will be stopping.
+
 ##### News control
 
 This allows turning off the train is stuck/lost news messages for trains waiting at this particular signal.
