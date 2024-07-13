@@ -34,9 +34,15 @@ This includes autosaves and manual saves made from the server (e.g. using a serv
 This does not include savegames made from attached network clients, or the temporary savegames sent to network clients when joining.
 
 
+### Merging companies
+
+The `merge_companies MAIN_COMPANY_ID TO_MERGE_COMPANY_ID` console command directly merges one company into another.  
+The first company ID MAIN_COMPANY_ID will be left with the combined assets of both companies.  
+The second company ID TO_MERGE_COMPANY_ID will be removed, with all assets transfered to the first company ID.  
+This must be run on the network server (if necessary by using rcon), or can be used in single-player mode.
+
+
 ### Offering companies for sale
 
 The `offer_company_sale COMPANY_ID` console command offers a company for sale to other companies/players in the same way as if it was about to go bankrupt.  
-This must be run the network server (if necessary by using rcon).
-
-(This can also be used in single-player).
+This must be run on the network server (if necessary by using rcon), or can be used in single-player mode.
