@@ -3,9 +3,10 @@ import sys
 sys.path.insert(0, os.path.abspath('..'))
 
 # 项目信息
-project = 'JGR\'s Patchpack Wiki'
-author = 'Your Name'
+project = 'OpenTTD JGRPP 中文百科'
+author = 'JGRennison and WenSim'
 release = '0.1'
+copyright = '2024 JGRennison 与 WenSim'
 
 # Sphinx 扩展
 extensions = [
