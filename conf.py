@@ -7,48 +7,36 @@ project = 'OpenTTD JGRPP 中文百科'
 author = 'JGRennison and WenSim'
 release = '0.1'
 copyright = '2024 JGRennison 与 WenSim'
-
-# Sphinx 扩展
-extensions = [
-    'sphinx.ext.autodoc',
-    'sphinx.ext.napoleon',
-    'myst_parser',  # 用于解析 Markdown 文件
-]
-
-# 模板路径
 templates_path = ['_templates']
 
-# 语言
 language = 'zh_CN'
-
-# 排除的文件和目录
-exclude_patterns = []
-
-# Markdown 设置
 source_suffix = {
     '.rst': 'restructuredtext',
     '.md': 'markdown',
 }
-
-# 主文档
 master_doc = 'index'
+epub_show_urls = 'footnote'
 
-# Napoleon 设置 (用于 Google 和 NumPy 风格的 docstrings)
-napoleon_google_docstring = True
-napoleon_numpy_docstring = True
-napoleon_include_init_with_doc = False
-napoleon_include_private_with_doc = False
-napoleon_include_special_with_doc = True
-napoleon_use_admonition_for_examples = False
-napoleon_use_admonition_for_notes = False
-napoleon_use_admonition_for_references = False
-napoleon_use_ivar = False
-napoleon_use_param = True
-napoleon_use_rtype = True
+latex_engine = 'xelatex'
+latex_use_xindy = False
+latex_elements = {
+    'preamble': '\\usepackage[UTF8]{ctex}\n',
+}
 
-# MyST 设置 (用于 Markdown 文件)
+myst_heading_anchors = 3
+
+html_theme = 'sphinx_rtd_theme'
+
+extensions = [
+    'sphinx.ext.autodoc',
+    'sphinx.ext.duration',
+    'sphinx.ext.autodoc',
+    'sphinx.ext.autosummary',
+    'sphinx.ext.autosectionlabel',
+    'myst_parser',
+]
+
 myst_enable_extensions = [
-    "colon_fence",
     "deflist",
     "fieldlist",
     "html_admonition",
@@ -60,6 +48,3 @@ myst_enable_extensions = [
     "substitution",
     "tasklist",
 ]
-myst_heading_anchors = 3
-
-html_theme = 'sphinx_rtd_theme'
