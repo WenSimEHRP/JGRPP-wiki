@@ -33,7 +33,7 @@ In the case where one action cancels another, the last executed action takes eff
 
 #### Example 1: Combined bay and through station
 
-![Routing restrictions example 1](Features/images/routing-restrictions-example-0.png)
+![Routing restrictions example 1](images/routing-restrictions-example-0.png)
 
 This is a possible way to implement a combined bay and through station.  
 The example assumes that only bay-platform traffic calls next at "Southerly Station", which is to the south-east.  
@@ -49,7 +49,7 @@ This has the effect of adding a penalty for trains which could use the bay platf
 
 #### Example 2: Station with single passing track
 
-![Routing restrictions example 2](Features/images/routing-restrictions-example-1.png)
+![Routing restrictions example 2](images/routing-restrictions-example-1.png)
 
 This is a possible way to implement a station with a single bi-directional passing track.
 
@@ -381,7 +381,7 @@ Unlike routefinding restrictions, programmable pre-signal programs end when the 
 
 Programmable signals are not shown in the signal window by default, **"Show programmable pre-signal feature"** must be enabled.
 
-![Programmable pre-signals example](Features/images/prog-presignals-0.png)
+![Programmable pre-signals example](images/prog-presignals-0.png)
 
 
 ### Slots
@@ -400,7 +400,7 @@ Road vehicles, aircraft and ships can also use slots. These can only use conditi
 
 #### Example 1: Using slots and pathfinder deny to hold trains in queuing sidings
 
-![Slots example](Features/images/slots-example-0.png)
+![Slots example](images/slots-example-0.png)
 
 In this example, only one recycling train should be full-loading at the station at a time.  
 Other recycling trains may be held somewhere more convenient some distance away from the station until it is free.
@@ -412,7 +412,7 @@ This forces them to pathfind via the adjacent queuing sidings.
 
 At the siding exit signals, recycling trains wait indefinitely until they can acquire the slot.
 
-![Slots example](Features/images/slots-example-1.png)
+![Slots example](images/slots-example-1.png)
 
 At the platform exit signal, if the train is leaving the platform (entering the signal from the front), the slot is released, allowing another train to acquire it.
 
@@ -421,7 +421,7 @@ The train occupying the slot is shown on the right, this is the train currently 
 
 #### Example 2: Using slots and conditional orders to divert and hold trains in queuing sidings
 
-![Slots example](Features/images/slots-example-2.png)
+![Slots example](images/slots-example-2.png)
 
 This example is similar to example 1, except that conditional orders are used to divert trains which cannot acquire the slot into the queuing sidings.  
 This is useful when the train would not otherwise go past the sidings, such that it would be impractical to divert the train into the sidings using
@@ -434,14 +434,14 @@ If the slot is already full and the train cannot acquire the slot, the train imm
 This diverts the train into the siding via another reversing siding.  
 The train is held in the siding by a routing restriction on all the siding exit signals which waits until the train can acquire the slot.
 
-![Slots example](Features/images/slots-example-3.png)
+![Slots example](images/slots-example-3.png)
 
 See above for a diagram of the positions of orders 16 to 21.  
 Using conditional orders in this ways allows more flexible placement or selection of queuing sidings.
 
 #### Example 3: Using conditional orders and slots for dynamic dispatch of trains
 
-![Slots example](Features/images/slots-example-4.png)
+![Slots example](images/slots-example-4.png)
 
 In this example a single set of trains with shared orders services multiple producing stations.  
 When one of the producing stations has more than a threshold quantity of cargo waiting, a single train is dispatched from
@@ -463,7 +463,7 @@ For each of the producing stations:
 The train will not move from the waiting sidings waypoint/depot/station if there are no stations available to load from such that the conditional
 order jumps lead to the order for the waypoint/depot/station where the train is already waiting.
 
-![Slots example](Features/images/slots-example-5.png)
+![Slots example](images/slots-example-5.png)
 
 A timetabled wait time should be added to the sidings waypoint, depot or station order where the train waits.
 
@@ -476,7 +476,7 @@ Slots are used to avoid a deadlock where trains travel in opposite directions on
 One slot is required for each direction. Each slot should have a capacity at least as large as the number of trains which could
 be travelling in the same direction at the same time.
 
-![Slots example](Features/images/slots-example-6.png)
+![Slots example](images/slots-example-6.png)
 
 Here two trains have entered the single line heading north. Both trains acquired the northbound slot, such that the occupancy of the northbound slot is two,
 and the southbound slot is empty.
@@ -485,7 +485,7 @@ If the southbound slot was not empty, the trains would wait at the signal before
 
 The slot is released after the train has left the single track section.
 
-![Slots example](Features/images/slots-example-7.png)
+![Slots example](images/slots-example-7.png)
 
 At the other end, a train is waiting because the northbound slot is not empty. It does not acquire the southbound slot and proceed past the signal
 until the northbound slot is empty, indicating that there are no trains using the single line heading north.
@@ -495,7 +495,7 @@ by not signalling the single track at all such that only one train could occupy 
 
 #### Example 5: Diverting slow trains into a siding to allow fast trains behind to overtake
 
-![Slots example](Features/images/slots-example-8.png)
+![Slots example](images/slots-example-8.png)
 
 In this example, slow trains are automatically diverted into a siding if they're followed by one or more fast trains, to allow them to overtake.  
 This example uses the train's cargo (passengers) to differentiate between fast and slow trains, but this could instead be done using other conditions
@@ -540,4 +540,4 @@ Counters are not shown in the user interace by default, **"Show advanced routing
 
 Counters can be created, deleted, renamed and have their value manually changed by selecting "Manage counters" in the train list window "Manage list" dropdown.
 
-![Aesthetically suboptimal](Features/images/counter-before.png) ![A bit tidier, using counters](Features/images/counter-after.png) ![Details](Features/images/counter-detail.png)
+![Aesthetically suboptimal](images/counter-before.png) ![A bit tidier, using counters](images/counter-after.png) ![Details](images/counter-detail.png)

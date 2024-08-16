@@ -7,7 +7,7 @@ This feature allows freight trains longer than the station platform to load/unlo
 <details>
   <summary>Demo</summary>
 
-  ![Through load example](Features/images/through-load.gif)
+  ![Through load example](images/through-load.gif)
 
 </details>
 
@@ -15,7 +15,7 @@ To enabled this feature in the order window, enable the "Show advanced loading m
 
 The \[near end\]/\[middle\]/\[far end\] position selector can also be changed to \[through load\].
 
-![Through load orders](Features/images/through-load-orders.png)
+![Through load orders](images/through-load-orders.png)
 
 
 ### Reverse order lists
@@ -28,12 +28,12 @@ Then select the "Reverse order list" or "Append reversed order list" options in 
 
 Orders at start:
 
-![Orders, showing manage list drop-down](Features/images/reverse-orders-0.png)
+![Orders, showing manage list drop-down](images/reverse-orders-0.png)
 
 Orders after reversing:
 
-![Orders after reversing](Features/images/reverse-orders-1.png)
+![Orders after reversing](images/reverse-orders-1.png)
 
 Orders after appending reversed orders:
 
-![Orders after appending reversed orders](Features/images/reverse-orders-2.png)
+![Orders after appending reversed orders](images/reverse-orders-2.png)

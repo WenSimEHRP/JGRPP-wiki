@@ -1,6 +1,6 @@
 ## Realistic train braking
 
-![Trains reserving ahead](Features/images/realistic-braking-header.png)
+![Trains reserving ahead](images/realistic-braking-header.png)
 
 Version 0.40 adds a realistic train braking feature.
 
@@ -35,7 +35,7 @@ As well as the above, trains will brake in advance of:
 * End of reservation (including end of line, depots, etc.)
 * Current order speed restrictions
 
-Trains reserving ahead multiple signal blocks is implemented by the "Long Reserve" mechanism, see the [Signalling](Signalling#routefinding-restrictions) page.
+Trains reserving ahead multiple signal blocks is implemented by the "Long Reserve" mechanism, see the [Signalling](./Signalling.md#routefinding-restrictions) page.
 
 Trains only extend their reservation when approaching/passing a signal. (This is the only time that the hypothetical train driver gets an update on how much track there is available ahead).
 
@@ -53,7 +53,7 @@ Normal block signals on plain line track behave as automatic signals, and may sh
 In all other cases normal block signals default to a red aspect, the same as PBS signals.  
 "Plain line" means that the track beyond the signal has no junctions, and leads to either another one-way signal in the same direction, or an end-of-line.
 
-![Plain link block signals](Features/images/realistic-braking-auto-signals.png)
+![Plain link block signals](images/realistic-braking-auto-signals.png)
 
 ### Speed/distance calculations
 
@@ -89,9 +89,9 @@ This is because trains may reserve more one than passing loop ahead or beyond th
 To avoid this, additional signal(s) should be added which give the hypothetical driver advance notice of the state of the signal at the end of the line or passing loop.  
 These extra signals should use the "reserve through" routing restriction action so that they are not considered a place to end a reservation, which would otherwise cause deadlocks or other problems.
 
-![Passing loop extra signals](Features/images/realistic-braking-passing-loops.png)
+![Passing loop extra signals](images/realistic-braking-passing-loops.png)
 
-![Single line exit extra signal](Features/images/realistic-braking-branch.png)
+![Single line exit extra signal](images/realistic-braking-branch.png)
 
 
 ### Things to avoid
@@ -111,14 +111,14 @@ For similar reasons changing the orders of a moving train to call at a station c
 AIs may not be able to build and run a workable railway in this mode, in particular AIs which use traditional block signal patterns are unlikely to do well.  
 AIs should be tested with this mode enabled before expecting them to usefully compete.
 
-![Bad use of conditional orders](Features/images/realistic-braking-bad-cond-orders.png)
+![Bad use of conditional orders](images/realistic-braking-bad-cond-orders.png)
 
 
 ### Multi-aspect signals
 
 NewGRFs may provide alternative signal graphics and signal styles, and when realistic train braking is enabled, these can also include graphics for additional signal aspects, instead of just red and green.
 
-![Multi-aspect signals](Features/images/multi-aspect-signals.png)
+![Multi-aspect signals](images/multi-aspect-signals.png)
 
 An example of such a GRF is: [Multi-Aspect Signals NewGRF](https://github.com/JGRennison/multi-aspect-signals-grf), this is available in the online content downloader, in-game.
 

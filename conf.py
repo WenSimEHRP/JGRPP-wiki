@@ -1,11 +1,9 @@
-# conf.py
-
 import os
 import sys
 sys.path.insert(0, os.path.abspath('..'))
 
 # 项目信息
-project = 'Your Project Name'
+project = 'JGR\'s Patchpack Wiki'
 author = 'Your Name'
 release = '0.1'
 
@@ -32,7 +30,7 @@ source_suffix = {
 }
 
 # 主文档
-master_doc = 'Home'
+master_doc = 'index'
 
 # Napoleon 设置 (用于 Google 和 NumPy 风格的 docstrings)
 napoleon_google_docstring = True
@@ -46,3 +44,19 @@ napoleon_use_admonition_for_references = False
 napoleon_use_ivar = False
 napoleon_use_param = True
 napoleon_use_rtype = True
+
+# MyST 设置 (用于 Markdown 文件)
+myst_enable_extensions = [
+    "colon_fence",
+    "deflist",
+    "fieldlist",
+    "html_admonition",
+    "html_image",
+    "linkify",
+    "replacements",
+    "smartquotes",
+    "strikethrough",
+    "substitution",
+    "tasklist",
+]
+myst_heading_anchors = 3

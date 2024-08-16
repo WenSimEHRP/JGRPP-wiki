@@ -20,3 +20,16 @@ NewGRF extensions:
 * [NFO documentation](https://jgrennison.github.io/OpenTTD-patches/newgrf-additions.html)
 
 [Readme](./readme.md)
+
+```{toctree}
+:maxdepth: 2
+:caption: Contents
+
+Features/Day-length.md
+Features/Network-server-administration.md
+Features/One-way-roads.md
+Features/Order-window-features.md
+Features/Other-features.md
+Features/Realistic-braking.md
+Features/Signalling.md
+```
