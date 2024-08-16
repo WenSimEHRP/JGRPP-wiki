@@ -60,3 +60,5 @@ myst_enable_extensions = [
     "tasklist",
 ]
 myst_heading_anchors = 3
+
+html_theme = 'sphinx_rtd_theme'
