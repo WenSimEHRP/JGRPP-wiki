@@ -17,11 +17,11 @@ source_suffix = {
 master_doc = 'index'
 epub_show_urls = 'footnote'
 
-latex_engine = 'xelatex'
-latex_use_xindy = False
-latex_elements = {
-    'preamble': '\\usepackage[UTF8]{ctex}\n',
-}
+# latex_engine = 'xelatex'
+# latex_use_xindy = False
+# latex_elements = {
+#     'preamble': '\\usepackage[UTF8]{ctex}\n',
+# }
 
 myst_heading_anchors = 3
 
