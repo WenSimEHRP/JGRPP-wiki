@@ -8,7 +8,6 @@ For the official English version, please visit the [GitHub page](https://github.
 你可以于 [GitHub](https://github.com/jgrennison/openttd-patches/wiki) 上找到官方英语原版。
 ```
 
-
 关于项目，请查看[项目自述文件](https://github.com/JGRennison/OpenTTD-patches/blob/jgrpp/README.md)。\
 关于百科，请查看[百科自述文件](./readme.md)。
 

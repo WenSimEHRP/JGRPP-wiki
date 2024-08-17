@@ -392,9 +392,11 @@ Programmable signals are not shown in the signal window by default, **"Show prog
 
 默认情况下，“槽位”选项不会在界面中显示。必须启用“Show advanced routing restriction features”以显示槽位功能。
 
-在游戏中，可以通过列车列表下拉菜单中的“槽位管理”选项创建、删除、重命名、改变容量、手动添加列车至槽位，或手动从槽位移除列车。
+在游戏中，可以通过列车列表下拉菜单中的“槽位管理”选项创建、删除、重命名、改变容量、
+手动添加列车至槽位，或手动从槽位移除列车。
 
-汽车、飞机与船只也可以使用槽位。不过，这些载具只能通过条件性命令来检查槽位的占用率或占用与退出槽位。每种载具类别的槽位之间互相分离。
+汽车、飞机与船只也可以使用槽位。不过，这些载具只能通过条件性命令来检查槽位的占用率或占用与退出槽位。
+每种载具类别的槽位之间互相分离。
 
 ### 样例一：使用槽位与“拒绝通过”操作使列车在侧线等候
 
@@ -438,39 +440,37 @@ Programmable signals are not shown in the signal window by default, **"Show prog
 上图显示了命令 #16—#21 的位置关系。
 使用条件性命令可以使排队侧线的布局与选择更加灵活。
 
-### Example 3: Using conditional orders and slots for dynamic dispatch of trains
+### 样例三：使用条件性命令与槽位动态调度列车
 
-![Slots example](images/slots-example-4.png)
+![槽位样例图片](images/slots-example-4.png)
 
-In this example a single set of trains with shared orders services multiple producing stations.
-When one of the producing stations has more than a threshold quantity of cargo waiting, a single train is dispatched from
-the sidings to that station.
-(Alternatively a depot or station could be used instead of sidings).
-Each producing station has an associated slot of capacity 1. This is to ensure that only one train at a time is dispatched to each station.
+在这个例子中，一组共享调度命令的火车从生产火车站运输货物。
+当其中一座火车站的货物超过等待阈值时，列车会决定从侧线调度一列火车到该站。
+（例子中的侧线也可以替换成车库或者车站）。每座火车站都有一个关联的槽位，容量均为 1，
+保证一次只调度一列车至车站。
 
-This allows using fewer trains than there are loading stations to be serviced.
+通过这种操作可以节省需要的火车数量。火车数量可以少于火车站的数量。
 
-For each of the producing stations:
+对于每一个生产火车站，列车调度计划中有一套特殊的设置：
 
-1. Use a conditional order to check whether there is enough cargo waiting at the station, if not skip this station.
-2. Try to acquire the slot for this station, if not (meaning that another train has already been dispatched there) skip this station.
-3. Go to the producing station and load cargo.
-4. Release the slot for the station.
-5. Go to the accepting station and unload cargo.
-6. Return to the sidings.
+1. 使用条件性命令以确保车站有足够的货物，如果没有则跳过
+2. 尝试占用此车站的槽位，如果占用失败（即此时已经有列车调度至该车站）则跳过
+3. 前往车站并装载货物
+4. 退出车站槽位
+5. 前往接收站并卸载货物
+6. 返回侧线
 
-The train will not move from the waiting sidings waypoint/depot/station if there are no stations available to load from such that the conditional
-order jumps lead to the order for the waypoint/depot/station where the train is already waiting.
+如果条件未满足，没有可以前往的火车站，列车不会离开调度侧线（或车库/路点/车站），从而将列车重新引导至调度侧线。
 
-![Slots example](images/slots-example-5.png)
+![槽位样例图片](images/slots-example-5.png)
 
-A timetabled wait time should be added to the sidings waypoint, depot or station order where the train waits.
+需要注意的是，应该在侧线命令中添加表定等待时间。
 
-### Example 4: Bidirectionally signalled lines
+### 样例四：双向信号化单线区间
 
-In this example a single track line is signalled in both directions.
-Multiple trains can travel in the same direction on the line at once.
-Slots are used to avoid a deadlock where trains travel in opposite directions on the single line at the same time and block each other.
+在这个样例中有一个双向信号化单线区间。在上行/下行两个方向上均有信号灯，按一定间隔均匀放置。
+多列火车可以同时在同一方向上行驶。
+使用槽位可以避免火车在单线区间中同时朝相反方向行驶而相互阻塞的死锁情况。
 
 One slot is required for each direction. Each slot should have a capacity at least as large as the number of trains which could
 be travelling in the same direction at the same time.
