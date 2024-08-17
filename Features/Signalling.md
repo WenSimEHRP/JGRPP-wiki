@@ -16,11 +16,12 @@
   列车可以通过信号或条件指令占用或退出槽位。
   在寻路限制和与可编程逻辑信号的程序中以及条件性命令中都可以使用槽位。
 
-* [**计数器**](#counters)
+* [**计数器**](#计数器)
 
-  计数器是一种命名的变量，可在列车通过信号时变化。
-  在寻路限制和与可编程逻辑信号的程序中以及条件性命令中都可以使用计数器。
-  在大多数情况下，应改用槽位，而不是计数器。
+  计数器是寻路限制程序在火车通过信号时修改的命名变量，
+  可以在寻路限制和可编程逻辑信号程序中使用，也可以在条件指令中使用。
+  在大多数情况下应使用槽位替代计数器。
+  计数器的主要用途是统计火车数量和循环操作。
 
 ## 寻路限制
 
@@ -85,7 +86,10 @@ This has the effect of adding a penalty for trains which could use the bay platf
 默认值为：小 = 500，中 = 2000，大 = 8000。
 本选项可以用来精细调整列车寻路行为。
 
-#### Reserve through
+#### 通过预留
+
+PBS 不会在这个 PBS 信号处结束预留，就好像信号在前进方向上根本不存在一样。
+当应用于有信号的隧道/桥梁入口或出口时，此操作没有效果。
 
 PBS will not end a reservation at this PBS signal, it is as if the signal is not there at all in the forward direction.
 This action has no effect when applied to a signalled tunnel/bridge entrance or exit.
@@ -267,7 +271,7 @@ A value of 0 removes the restriction.
 
 #### Counter operation
 
-See [**Counters**](#counters) section below for details of what counters are.
+See [**Counters**](#计数器) section below for details of what counters are.
 The sub-actions which this can take are:
 
 * Increase
@@ -392,8 +396,8 @@ Programmable signals are not shown in the signal window by default, **"Show prog
 
 默认情况下，“槽位”选项不会在界面中显示。必须启用“Show advanced routing restriction features”以显示槽位功能。
 
-在游戏中，可以通过列车列表下拉菜单中的“槽位管理”选项创建、删除、重命名、改变容量、
-手动添加列车至槽位，或手动从槽位移除列车。
+在游戏中，可以通过列车列表下拉菜单中的“槽位管理”选项创建、删除、重命名槽位，改变槽位容量，以及
+手动添加列车至槽位与手动从槽位移除列车。
 
 汽车、飞机与船只也可以使用槽位。不过，这些载具只能通过条件性命令来检查槽位的占用率或占用与退出槽位。
 每种载具类别的槽位之间互相分离。
@@ -472,49 +476,42 @@ Programmable signals are not shown in the signal window by default, **"Show prog
 多列火车可以同时在同一方向上行驶。
 使用槽位可以避免火车在单线区间中同时朝相反方向行驶而相互阻塞的死锁情况。
 
-One slot is required for each direction. Each slot should have a capacity at least as large as the number of trains which could
-be travelling in the same direction at the same time.
+上行与下行方向各有一个关联槽位。每个槽位的容量等同于区间中可以同时行驶的列车数量。
 
-![Slots example](images/slots-example-6.png)
+![槽位样例图片](images/slots-example-6.png)
 
-Here two trains have entered the single line heading north. Both trains acquired the northbound slot, such that the occupancy of the northbound slot is two,
-and the southbound slot is empty.
+图中两列北上列车正在单线区间内。北向槽位的最大容量为 2，且两列车均占用了北向槽位。
+此时南向槽位为空。
 
-If the southbound slot was not empty, the trains would wait at the signal before the single track and not acquire the northbound slot.
+如果南向槽位当中有列车，即南向槽位非空，列车会在单线区间前的信号处等待，且不会占用北向槽位。
+列车离开单线区间后即退出槽位。
 
-The slot is released after the train has left the single track section.
+![槽位样例图片](images/slots-example-7.png)
 
-![Slots example](images/slots-example-7.png)
+与此同时，一列车正因为北向槽位当中有列车而在区间另一端等待。在北向槽位清空，没有列车北上之前，这列车不会占用南向槽位，也不会通过信号。
 
-At the other end, a train is waiting because the northbound slot is not empty. It does not acquire the southbound slot and proceed past the signal
-until the northbound slot is empty, indicating that there are no trains using the single line heading north.
+当地形、费用或其他限制因素使得双轨线路不切实际，但又需要更大的运载能力时，这种布局就非常有用。
+如果不在单线区间内设置信号，那么一次只能有一列火车在区间内行驶。
 
-This type of layout is useful when terrain, expense or other constraints make double-tracked lines impractical, but more capacity is required than can be achieved
-by not signalling the single track at all such that only one train could occupy the single track at once.
+### 样例五：列车超车——慢速列车分流
 
-### Example 5: Diverting slow trains into a siding to allow fast trains behind to overtake
+![槽位样例图片](images/slots-example-8.png)
 
-![Slots example](images/slots-example-8.png)
+在这个样例中，如果慢速列车后面有一列或多列快速列车，它们就会自动转向侧线，以便快车超车。
+信号根据列车是否可以运载乘客来区分快慢列车，但也可以使用其他条件，如最高速度、当前目的地、列车编组、列车重量等。
 
-In this example, slow trains are automatically diverted into a siding if they're followed by one or more fast trains, to allow them to overtake.
-This example uses the train's cargo (passengers) to differentiate between fast and slow trains, but this could instead be done using other conditions
-such as maximum speed, current destination, train group, train weight, etc.
+快速列车将尝试在侧线前占用槽位。为了保证快速列车可以顺畅通过，槽位的容量应当足够大，以便多列列车占用槽位。
 
-Well ahead of the siding (shown in the inset viewport), trains considered "fast" try to acquire the slot.
-The slot capacity should be large enough to that a fast train will always be able to acquire the slot, even if there
-are other fast trains in the section.
+侧线末尾的信号被设置为拒绝让槽位内的列车通过。已在槽位内的快车绝不应该使用侧线通过。
+在侧线内的列车会一直等待，直到槽位内没有剩余列车。
 
-The signal at the end of the siding is set to deny trains which are in the slot. Fast trains which have acquired the slot should never use the siding.
-Trains which are in the siding should wait there until there are no trains in the slot.
+主线上的信号在槽位未空时会对未在槽位内的列车附加惩罚以在侧线无车且慢车后有快车时将慢车分流至侧线，
+且在槽位内的快车在通过信号后会退出槽位。
+附加的惩罚值不应过大，并且绝不能将“添加惩罚”替换为“拒绝通过”，否则在两列慢车在前，一列快车在后的场景下，
+两列车会相互阻塞，从而堵住侧线。
 
-The signal on the mainline track adds a pathfinder penalty for trains which are not in the slot, if the slot is not empty.
-This diverts slow trains into the siding if there is one or more fast trains behind and the siding is empty.
-Deny or a very large penalty should not be used, as this can cause a deadlock if two slow trains
-are followed by a fast train, and the second slow train stops on the mainline waiting for the siding to become available.
-This signal also releases the slot from fast trains as they go past.
-
-The distance between the slot acquire signal and the siding should be far enough that a slow train in front won't have reached the siding yet, but not so long
-that a slow train in the siding doesn't get a chance to exit before another fast train comes past.
+使列车占用槽位的信号与侧线之间应当保持足够的距离以确保慢车不会立刻进入侧线，
+距离也不应过长，防止快车连续通过导致慢车无法离开侧线。
 
 ### 槽位的其他可能用途
 
@@ -525,17 +522,18 @@ that a slow train in the siding doesn't get a chance to exit before another fast
 * 整体性冲突预防
 * 设置交叉优先
 
-## Counters
+## 计数器
 
-Counters are named variables which can be modified by a routefinding restriction program when a train passes a signal.
-Counters can be used in conditionals in routefinding restrictions and programmable pre-signal programs, and in conditional orders.
-The main use case for counters is counting trains and round-robin behaviour.
-For counting the number of trains on a particular section of track, slots should be used instead.
+计数器是寻路限制程序在火车通过信号时修改的命名变量，
+可以在寻路限制和可编程逻辑信号程序中使用，也可以在条件指令中使用。
+计数器的主要用途是统计火车数量和循环操作。
 
-Using counters to store state makes "logic trains" and similar workarounds unnecessary.
+如果要统计特定轨道区段上的火车数量，应使用槽位。
 
-Counters are not shown in the user interace by default, **"Show advanced routing restriction features"** must be enabled.
+使用计数器存储当前状态可以替代原版游戏中的“逻辑列车”和类似的变通方法。
 
-Counters can be created, deleted, renamed and have their value manually changed by selecting "Manage counters" in the train list window "Manage list" dropdown.
+计数器默认情况下不会显示在用户界面中，必须启用**“Show advanced routing restriction features”**以显示计数器。
 
-![Aesthetically suboptimal](images/counter-before.png) ![A bit tidier, using counters](images/counter-after.png) ![Details](images/counter-detail.png)
+在游戏中，可以通过列车列表下拉菜单中的“计数器管理”选项创建、删除、重命名，与设置计数器。
+
+![一团乱麻](images/counter-before.png) ![整洁美观](images/counter-after.png) ![信号详情](images/counter-detail.png)

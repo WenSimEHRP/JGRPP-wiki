@@ -2,39 +2,35 @@
 
 ![Trains reserving ahead](images/realistic-braking-header.png)
 
-Version 0.40 adds a realistic train braking feature.
+真实制动于 0.40 被加入游戏中。
 
-This is controlled by the "train braking model" setting.
-The "original" model allows trains to stop instantly.
-In the "realistic" model, described in this document, trains have a stopping distance and will reserve ahead accordingly, trains cannot stop instantly.
+真实制动由“列车制动模型”选项控制。
+“原版”模型允许列车立刻停止。
+在本页面中描述的“现实”模型中，火车会有一段制动距离，并会相应地提前预留轨道，无法立刻停止。
 
-The realistic model as described below has many implications for signalling and track layout design, and is therefore an advanced feature which may not be suitable for beginners.
-In particular pre-signals and two-way signals are not permitted, and PBS is used for all signalling, including from normal block signals.
-This is a significant change from the layouts suggested by many beginner tutorials.
+真实列车制动是一项高级功能，对信号系统和轨道设计有很大影响，因此可能不适合新手。启用真实制动时将无法原版中的逻辑信号（出入口信号、复合信号、块信号），
+且只能使用路径信号（块信号使用路径信号的逻辑，并被作为路径信号处理）。
 
-It is possible to change the braking model during a running game.
-However this may be blocked if there are signals present which are not allowed in the realistic mode.
-These can be found using the `find_non_realistic_braking_signal` console command. (To save some typing, you can do `find<TAB KEY>`).
+模型可以在游戏进行时被更改，但如果地图上尚存有不兼容的信号则无法更改。
+可以使用 `find_non_realistic_braking_signal` 控制台命令找到这些信号。
 
-## Train behaviour changes
+## 列车行为
 
-Trains will brake in advance such that they can come to a halt within their PBS reservation, and meet any speed restrictions within their reservation.
+火车会提前制动，以便在其路径预留范围内停车，并满足预留范围内的任何速度限制。
+火车会尝试提前预留，直到制动距离足够长，以便以该信号的目标速度通过**下一个**信号。目标速度受以下因素影响：
 
-Trains will attempt to reserve ahead until the braking distance is long enough that they can pass the **next** signal at the target speed at that signal.
-The target speed is affected by:
+- 火车的最高速度
+- 桥梁速度限制
+- 铁轨类型速度限制
+- 寻路限制速度限制
 
-* Train maximum speed
-* Bridge speed limit
-* Rail type speed limit
-* Routing restriction speed restrictions
+此外，火车还会在以下设施/命令前提前制动：
 
-As well as the above, trains will brake in advance of:
-
-* Stations/waypoints where the train is stopping
-* Curves (in realistic acceleration mode)
-* Reversing signals or waypoints
-* End of reservation (including end of line, depots, etc.)
-* Current order speed restrictions
+- 停靠的车站/路标
+- 曲线（在现实加速模式下）
+- 反向信号或路点
+- 预留范围的终点（包括线路终点、车库等）
+- 当前指令速度限制
 
 Trains reserving ahead multiple signal blocks is implemented by the "Long Reserve" mechanism, see the [Signalling](./Signalling.md#寻路限制) page.
 
