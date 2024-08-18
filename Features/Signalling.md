@@ -7,9 +7,9 @@
 
 * [**可编程逻辑信号**](#programmable-pre-signals)
 
-  可编程逻辑信号是带有可编程条件来决定灯号的复合信号，此类信号不是路径信号，因此没有路径信号的一些特性。
+  可编程逻辑信号是带有可编程条件来决定灯号的复合信号，此类信号不是路径信号，因此没有路径信号的一些特性。[^1]
 
-* [**槽位**](#槽位)
+* [**槽位**](#槽位)[^2]
 
   槽位类似于现实铁路中使用的令牌系统，尤其是单线区段。
   槽位具有最大容量。一列火车可以同时在任意多个不同槽位中。
@@ -22,6 +22,9 @@
   可以在寻路限制和可编程逻辑信号程序中使用，也可以在条件指令中使用。
   在大多数情况下应使用槽位替代计数器。
   计数器的主要用途是统计火车数量和循环操作。
+
+[^1]: 译注：在使用真实制动时无法使用可编程逻辑信号，因为真实制动只允许使用路径信号。详见[真实制动页面](./Realistic-braking.md)
+[^2]: 译注：旧版译名为“条目”
 
 ## 寻路限制
 
@@ -88,20 +91,17 @@ This has the effect of adding a penalty for trains which could use the bay platf
 
 #### 通过预留
 
-PBS 不会在这个 PBS 信号处结束预留，就好像信号在前进方向上根本不存在一样。
-当应用于有信号的隧道/桥梁入口或出口时，此操作没有效果。
+列车预留路径不会在这个信号处结束，就好像信号在前进方向上根本不存在一样。
+此操作在应用于有信号的隧道/桥梁入口或出口时没有效果。
 
-PBS will not end a reservation at this PBS signal, it is as if the signal is not there at all in the forward direction.
-This action has no effect when applied to a signalled tunnel/bridge entrance or exit.
+#### 长预留
 
-#### Long reserve
+如果列车的预留路径在这个信号处终止，游戏会尝试从这个信号开始预留另一段路径。
+第一段路径和第二段路径无关。第二段路径预留失败不影响第一段路径。
+此操作在应用于有信号的隧道/桥梁入口或出口时没有效果。
 
-If a train makes a PBS reservation that ends at this PBS signal, a second separate reservation will be attempted starting from this signal.
-The first reservation is not cancelled if the second reservation is not possible.
-This action has no effect when applied to a signalled tunnel/bridge entrance.
-
-The "Long reserve (unless stopping)" sub-action can be used to only enable long reserve when the train is not stopping at a station or waypoint,
-earlier in the train's reservation. This is useful for signals at platform ends where it would not be useful to enable long reserve for trains which will be stopping.
+“长预留（除非停车）”子操作只在列车的第一段路径不经过其将要停靠的车站或路点时才会尝试开始预留另一段路径。
+本子操作用于站台末的信号时可以防止停靠的列车使用长预留导致效率降低。
 
 #### 新闻控制
 
@@ -133,15 +133,15 @@ Ctrl-clicking the "Remove" button removes the condition but does not remove the 
 
 #### 最高速度
 
-检查当前列车的最高速度
+检查当前列车的最高速度。
 
 #### 当前指令
 
-This checks the destination of the train's current order.
+检查列车当前指令的目的地。
 
 #### Next order
 
-This checks the destination of the train's next order after the current order.
+检查列车下个指令的目的地。
 
 #### Last visited station
 
@@ -151,12 +151,12 @@ This checks which station the train last visited.
 
 检查列车是否可以运载某种货物。
 
-#### Load percentage
+#### 装载百分比
 
-This checks the current load percentage of the train.
-(Trains with no cargo capacity at all are considered full: 100%).
+检查列车已装载的比例。
+如果列车没有货物容量，游戏将认为其装载比例为 100%。
 
-#### Entry direction
+#### 进入方向
 
 This checks which side the train is entering the signal from: front, back, compass direction, or entering/exiting tunnel/bridge.
 
@@ -198,23 +198,24 @@ This checks the current status of the train, the statuses which can be checked a
 
 检查当前列车的最大牵引力
 
-#### Power / weight
+#### 功率/重量比例
 
-This checks the train's current power to weight ratio.
+检查当前列车的功率/重量比例
 
-#### Max T.E. / weight
+#### 最大牵引力/重量比例
 
-This checks the train's current maximum tractive effort to weight ratio.
+检查当前列车的最大牵引力/重量比例
 
 #### 机车类别
 
-This checks whether the train has at least one engine of a particular class. The engine classes are:
+检查列车是否至少有一辆特定类别的机车。\
+机车类别为：
 
-* Steam
-* Diesel
-* Electric
-* Monorail
-* Maglev
+* 蒸汽
+* 内燃
+* 电力
+* 单轨
+* 磁浮
 
 #### Direction of order target
 
@@ -237,21 +238,21 @@ The sub-actions which this can take are:
 * Cancel wait at start PBS signal for reservation ending here
   Cancel a previous wait at start PBS signal for reservation ending here.
 
-#### Slot operation
+#### 槽位操作
 
-See [**Slots**](#槽位) section below for details of what slots are.
-The sub-actions which this can take are:
+[**槽位**](#槽位)的详细解释在下方。\
+所有子操作：
 
-* Acquire or wait
+* 占用或等待
   Try to acquire membership in the slot, if the slot is full and the train cannot become a member, wait at this PBS signal.
-* Try to acquire
+* 尝试占用
   Try to acquire membership in the slot, if the slot is full and the train cannot become a member, carry on anyway.
   When reserving ahead it is attempted when making the reservation, no second attempt is made when later passing the already reserved signal.
-* Release (front)
+* 车头退出
   Release membership of this slot when the front of the train passes the signal.
-* Release (back)
+* 车尾退出
   Release membership of this slot when the back of the train passes the signal.
-* Release (on reserve)
+* 预留退出
   Release membership of this slot when making a reservation from this signal (this is the executed in the same conditions as the "acquire or wait" and "try to acquire" sub-actions).
 * PBS end: Acquire or wait
   When attempting to make a PBS reservation which ends at this signal, try to acquire membership in the slot, if the slot is full and the train cannot become a member, wait at the start PBS signal.
@@ -327,7 +328,7 @@ This checks how much unused capacity there is in the slot, this is the slot capa
 
 This checks the value of a counter.
 
-#### Current time/date
+#### 当前时间/日期
 
 This checks the current time/date. The hour and minute values require that the savegame setting "Show time in minutes instead of days" is enabled.
 This is not affected by any use of the setting "Use client time settings instead of savegame time settings".
@@ -387,7 +388,7 @@ Programmable signals are not shown in the signal window by default, **"Show prog
 
 ![Programmable pre-signals example](images/prog-presignals-0.png)
 
-## 槽位
+## 槽位[^2]
 
 槽位类似于现实铁路中使用的令牌系统，尤其是单线区段。
 槽位具有最大容量。一列火车可以同时在任意多个不同槽位中。
@@ -536,4 +537,8 @@ Programmable signals are not shown in the signal window by default, **"Show prog
 
 在游戏中，可以通过列车列表下拉菜单中的“计数器管理”选项创建、删除、重命名，与设置计数器。
 
-![一团乱麻](images/counter-before.png) ![整洁美观](images/counter-after.png) ![信号详情](images/counter-detail.png)
+![一团乱麻](images/counter-before.png)
+
+![整洁美观](images/counter-after.png)
+
+![信号详情](images/counter-detail.png)
