@@ -1,6 +1,6 @@
 # OpenTTD JGRPP 中文百科
 
-[![Documentation Status](https://readthedocs.org/projects/jgrpp-wiki/badge/?version=latest)](https://jgrpp-wiki.readthedocs.io/zh-cn/latest/?badge=latest)
+[![Documentation Status](https://readthedocs.org/projects/jgrzh/badge/?version=latest)](https://ottdzh.readthedocs.io/projects/jgrpp/latest/?badge=latest)
 [![Action status](https://github.com/WenSimEHRP/JGRPP-wiki/actions/workflows/build_doc.yml/badge.svg)](https://github.com/wensimehrp/jgrpp-wiki/actions)
 
 
