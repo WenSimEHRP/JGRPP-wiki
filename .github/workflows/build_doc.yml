@@ -3,7 +3,7 @@ name: Trigger Read the Docs Build
 on:
   push:
     branches:
-      - main
+      - zh-wiki
   workflow_dispatch:
 
 jobs:

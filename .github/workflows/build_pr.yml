@@ -3,7 +3,7 @@ name: Trigger Read the Docs Build for PRs
 on:
   pull_request:
     branches:
-      - main
+      - zh-wiki
 
 jobs:
   build:
