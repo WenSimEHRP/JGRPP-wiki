@@ -1,20 +1,21 @@
 import os
 import sys
-sys.path.insert(0, os.path.abspath('..'))
 
-project = 'OpenTTD JGRPP 中文百科'
-author = 'JGRennison and WenSim'
-release = '0.1'
-copyright = '2024 JGRennison 与 WenSim'
-templates_path = ['_templates']
+sys.path.insert(0, os.path.abspath(".."))
 
-language = 'zh_CN'
+project = "OpenTTD JGRPP 中文百科"
+author = "JGRennison and WenSim"
+release = "0.1"
+copyright = "2024 JGRennison 与 WenSim"
+templates_path = ["_templates"]
+
+language = "zh_CN"
 source_suffix = {
-    '.rst': 'restructuredtext',
-    '.md': 'markdown',
+    ".rst": "restructuredtext",
+    ".md": "markdown",
 }
-master_doc = 'index'
-epub_show_urls = 'footnote'
+master_doc = "index"
+epub_show_urls = "footnote"
 
 # latex_engine = 'xelatex'
 # latex_use_xindy = False
@@ -24,15 +25,15 @@ epub_show_urls = 'footnote'
 
 myst_heading_anchors = 3
 
-html_theme = 'sphinx_rtd_theme'
+html_theme = "sphinx_rtd_theme"
 
 extensions = [
-    'sphinx.ext.autodoc',
-    'sphinx.ext.duration',
-    'sphinx.ext.autodoc',
-    'sphinx.ext.autosummary',
-    'sphinx.ext.autosectionlabel',
-    'myst_parser',
+    "sphinx.ext.autodoc",
+    "sphinx.ext.duration",
+    "sphinx.ext.autodoc",
+    "sphinx.ext.autosummary",
+    "sphinx.ext.autosectionlabel",
+    "myst_parser",
 ]
 
 myst_enable_extensions = [
