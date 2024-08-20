@@ -388,9 +388,9 @@ Programmable signals are not shown in the signal window by default, **"Show prog
 
 ![Programmable pre-signals example](images/prog-presignals-0.png)
 
-## 槽位[^2]
+## 槽位
 
-槽位类似于现实铁路中使用的令牌系统，尤其是单线区段。
+槽位[^2]类似于现实铁路中使用的令牌系统，尤其是单线区段。
 槽位具有最大容量。一列火车可以同时在任意多个不同槽位中。
 列车可以通过信号或条件指令占用或退出槽位。
 在寻路限制和与可编程逻辑信号的程序中以及条件性命令中都可以使用槽位。

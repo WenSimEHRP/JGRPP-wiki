@@ -17,6 +17,8 @@
 我个人习惯单独制定停站时长，所以行车时间相对而言较为重要。
 之后开启“自动时刻表”并让列车运行即可。
 
+![alt text](images/60_Minute_timetabling_image-000.png)
+
 [^3]: 译注：两者在名称上极为相似，但“计划调度”（Scheduled Dispatch）是 JGRPP 独有的功能，
 允许制定更复杂的时刻表，
 而“调度计划”（Order List）自《运输大亨》起就在游戏中，
@@ -24,6 +26,8 @@
 
 列车运行时会自动填充时刻表，同时也设立车站间运行的标准时间。
 时刻表窗口的右侧栏中就是确切的到发时间。
+
+![alt text](images/60_Minute_timetabling_image-001.png)
 
 你可以在列车的时刻表填充完成之后查看列车的运行时间。
 确定所有运行时间之后就可以制定计划调度时刻表了。
@@ -33,51 +37,72 @@
 我在样例中规定每个站点的停站时间为一分钟。
 在修改完之后就可以打开计划调度页面了。
 
+![alt text](images/60_Minute_timetabling_image-002.png)
+
 在启用计划调度之后，你还需要将时刻表指定到一项命令。
 这里我们将时刻表指定到“吉和北站”，也是东侧的终点站。
+
+![alt text](images/60_Minute_timetabling_image-003.png)
+
+![alt text](images/60_Minute_timetabling_image-004.png)
 
 我们已经设置完毕了计划调度指令，可以添加发车时间[^4]了。
 遵循这个时刻表的列车在该站时只会在发车时间发车。
 
+![alt text](images/60_Minute_timetabling_image-005.png)
+
 [^4]: 译注：旧版译名为“出发条目”。
 
-不过，既然我们做的是 60 分钟时刻表，在运营前要做的第一件事自然就是将时刻表时长修改为 60 分钟。
-时刻表会每小时重复一次。
+既然我们做的是 60 分钟时刻表，在运营前要做的第一件事自然就是将时刻表时长修改为 60 分钟。
+60 分钟的时刻表会每小时[^5]重复一次。有助于简化计划调度操作，也有助于与其他路线混合运行。
+在添加发车时间时可以按 Ctrl 键批量添加发车时间。
+不过制定 24 小时时刻表的时候你就需要手动添加发车时间了[^6]。
+在这里我将时刻表设定为从 0000 开始到 0100 结束，每 5 分钟一班。
 
-First things first though, we want to change the "Duration" to only 60 minutes.
-What this does is change your trains schedule to run through 60 minute rotations on every hour
-in game. Keeps things simple, simulates a perpetual hour rotation and thus makes it easy to
-create and set your schedules, and then intermingle them with other routes eventually.
-So here I've ctrl clicked the "add departure slot" button to bring up this "set time" menu. This will
-add multiple departure slots at once so you don't have to fill them in individually. This was not
-always a feature so in order to do 24 hour timetables you had to set each on individually. How
-times have changed. Here I have it set to add a departure slot every five minutes starting from
-0000 and finishing at 0100, the end of the hour.
+![alt text](images/60_Minute_timetabling_image-006.png)
 
-Here's what you end up with, all the departure slots for the current hour are laid out in front of
-you. This hour will repeat infinitely and will fill in current times automatically. It's also given us
-some information such as "this schedule requires 3 vehicles" to ensure that a train is back in the
-station by the time another dispatch slot is ready to be picked up.
+![alt text](images/60_Minute_timetabling_image-007.png)
 
-Then I created two more trains (make sure to ctrl click these when you hit "Clone Train" so all
-the orders are shared) so that to make sure all these departure slots are picked up by the time
-the train has done it's full route and "returned to base."
+![alt text](images/60_Minute_timetabling_image-008.png)
 
-And here's our system in action. Trains depart Yoshiwa North every five minutes, make their
-stops and then return to Yoshiwa North to pick up another return slot. If you do this right there
-should only be one train waiting at a time.
+[^5]: 译注：游戏时间。
+[^6]: 译注：实际上在 24 小时时刻表中也可以使用批量功能，
+作者原意为“24 小时时刻表需要更多的手动调整”，而不是“功能在 24 小时时刻表中不可用”。
 
-Here's an example of what you can do with this in game (this is from an older game on JGR
-Server 03). "LHAM 08" is a local train (stops at every station) and thus needs to leave right after
-"EHAM 04" which is an express (only stopping at select station stops). Depending on the length
-of the route there may need to be an overtake eventually, but doing this simple move ensures
-that the local stays out of the way of the express without using tons of infrastructure and allows
-you to get a lot more out of less tracks and infrastructure.
+结果就是这样的。全部发车时间设置完毕。时刻表的一小时将无限循环，
+发车时间也会被自动调整到对应时间。
+计划调度时刻表窗口还提供了一些额外信息，
+如“本时刻表需要 3 辆载具”说明使用 3 部载具恰好完全利用所有出发时间。
 
-Another example from an old JGR server 03 game, this is a regional rail system for the city of
-Hamamatsu. On the map light blue means 3 trains per hour (so a train every 20 minutes), red is
-6 trains per hour (a train every 10 minutes), and yellow is 12 trains per hour (a train every 5
-minutes). Everything is timed out so that without significant delays, a regional train will run
-through the yellow section where the central station is located every 5 minutes. This leads to
-being able to move a really massive amount of passengers around without just spamming trains
-and dealing with frequent jams.
+![alt text](images/60_Minute_timetabling_image-009.png)
+
+这里我又购买了两列列车（在复制列车时按住 Ctrl 键点击就可以共享调度计划）
+来保证可以完全利用所有出发时间。
+
+![alt text](images/60_Minute_timetabling_image-010.png)
+
+我们的系统已经开始运作了。列车每 5 分钟从吉和北站发车，在走完全程后又折回终点站，
+再次等候发车。如果操作正确，一次只应该有一列车在车站等候发车时间。
+
+![alt text](images/60_Minute_timetabling_image-011.png)
+
+---
+
+![alt text](images/60_Minute_timetabling_image-012.png)
+
+这里有一个来自 Reddit JGR Server 3 的例子。LHAM 08 是一列普通列车，各站停车，
+而 EHAM 04 是一列快车，不在所有站点停靠。诚然，快车的路线可能比慢车短，
+并且哪怕让快车在慢车后面开出，快车也可以在路途中超越快车。
+不过如果能让慢车在快车后开出事情就简单得多了。
+你不需要建设一些快车专用轨道和站台，需要做的只是在列车的时刻表当中设置一下。
+这样可以大大节省轨道与基础设施的数量。
+
+---
+
+![alt text](images/60_Minute_timetabling_image-013.png)
+
+这是另外一个例子，同样来源于 Reddit JGR Server 3。图中是滨松市的铁路系统，
+其中淡蓝色意味着每小时三班车（即 20 分/班），红色是每小时六班车（10 分/班），
+黄色是每小时十二班车（5 分/班）。所有的列车都使用计划调度精确定时。
+在系统中，每五分钟就会有一列车经过中央站的黄色标记部分运行，如果没有大面积延误事件。
+借助计划调度，可以使用尽可能少的载具，实现尽可能少的拥堵，同时输送大量客流。
