@@ -13,27 +13,49 @@ for the original thread.
 你可以于 [TT-forums](https://www.tt-forums.net/viewtopic.php?p=1270083#p1270083) 上找到原文。
 ```
 
-关于项目，请查看[项目自述文件](https://github.com/JGRennison/OpenTTD-patches/blob/jgrpp/README.md)。\
-关于百科，请查看[百科自述文件](./readme.md)。
-
-TT-Forums [项目链接](https://www.tt-forums.net/viewtopic.php?f=33&t=73469)。
-
 ```{toctree}
-:maxdepth: 2
-:caption: 目录
+:caption: JGRPP 百科
+:titlesonly:
+:hidden:
+:glob:
 
-beginners.md
-Features/Day-length.md
-Features/Network-server-administration.md
-Features/One-way-roads.md
-Features/Order-window-features.md
-Features/Other-features.md
-Features/Realistic-braking.md
-Features/Signalling.md
-Kale/kales_model_railway_tutorials.md
+Features/*
 ```
 
-NewGRF 拓展：
+```{toctree}
+:caption: Kale 的模型铁路教程
+:hidden:
+:glob:
+:titlesonly:
 
-* [NML 文档](https://jgrennison.github.io/OpenTTD-patches/newgrf-additions-nml.html)
-* [NFO 文档](https://jgrennison.github.io/OpenTTD-patches/newgrf-additions.html)
+简介 <Kale/kales_model_railway_tutorials.md>
+Kale/*
+```
+
+```{toctree}
+:titlesonly:
+:hidden:
+:caption: 其他
+
+extras.md
+百科自述文件 <readme.md>
+```
+
+```{toctree}
+:titlesonly:
+:hidden:
+:caption: 外部链接
+
+项目地址 <https://github.com/jgrennison/openttd-patches>
+NML 文档 <https://jgrennison.github.io/OpenTTD-patches/newgrf-additions-nml.html>
+NFO 文档 <https://jgrennison.github.io/OpenTTD-patches/newgrf-additions.html>
+TT-Forums 项目链接 <https://www.tt-forums.net/viewtopic.php?f=33&t=73469>
+```
+
+OpenTTD JGRPP，全称 OpenTTD JGR’s Patchpack（OpenTTD JGR 的补丁包，以下简称 JGRPP）。由 JGR 于 2015 年开始基于原版 OpenTTD 开发。
+JGRPP 保留了与原版的兼容性，其本身也基于原版代码库（包含原版的所有 commit，但代码上有作调整），因此可以读取原版存档，但反之则不可以。
+
+JGRPP 包含众多功能，包括真实制动与寻路限制。
+
+本百科基于官方页面，主要由 WenSim 翻译。翻译可能有欠缺或不足之处。你可以提交 Issue 指出，或者直接提交 PR
+进行更改。本人经验不足，还请见谅。

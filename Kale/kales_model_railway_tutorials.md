@@ -8,13 +8,6 @@
 Post by KaleTrans » 26 Jun 2024 09:53
 ```
 
-```{toctree}
-:maxdepth: 2
-:caption: 目录
-
-./scheduled_dispatch.md
-```
-
 ## 前言
 
 你好！我是 Kale，你们友好的社区版主。

@@ -26,6 +26,7 @@ epub_show_urls = "footnote"
 myst_heading_anchors = 3
 
 html_theme = "sphinx_rtd_theme"
+html_logo = "_static/logo.png"
 
 extensions = [
     "sphinx.ext.autodoc",
@@ -48,3 +49,7 @@ myst_enable_extensions = [
     "substitution",
     "tasklist",
 ]
+
+# add custom css
+html_static_path = ["_static"]
+html_css_files = ["css/kai.css"]
