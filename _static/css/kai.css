@@ -30,6 +30,26 @@ span.cm-em, /* 实时预览下 */
   font-family: "wenkai";
 }
 
+@font-face {
+  font-family: "sarasa_lline";
+  src: url(fonts/SarasaGothicSC-Regular.woff2) format("woff2"),
+    url(fonts/SarasaGothicSC-Regular.woff) format("woff");
+  /* regular */
+  font-weight: 400;
+  /* unicode range */
+  unicode-range: U+2014-2014;
+}
+
+@font-face {
+  font-family: "sarasa_lline";
+  src: url(fonts/SarasaGothicSC-Bold.woff2) format("woff2"),
+    url(fonts/SarasaGothicSC-Bold.woff) format("woff");
+  /* bold */
+  font-weight: 700;
+  /* unicode range */
+  unicode-range: U+2014-2014;
+}
+
 body,
 textarea,
 input[type="button"],
@@ -50,7 +70,7 @@ input[type="time"],
 input[type="url"],
 input[type="submit"],
 .btn {
-  font-family: Lato,"sarasa",proxima-nova, Helvetica Neue, Arial, sans-serif;
+  font-family: "sarasa_lline",Lato,"sarasa",proxima-nova, Helvetica Neue, Arial, sans-serif;
 }
 
 .rst-content .sidebar .sidebar-title,
@@ -62,5 +82,5 @@ h4,
 h5,
 h6,
 legend {
-  font-family: Roboto Slab,"sarasa", ff-tisa-web-pro, Georgia, Arial, sans-serif;
+  font-family: "sarasa_lline",Roboto Slab,"sarasa", ff-tisa-web-pro, Georgia, Arial, sans-serif;
 }

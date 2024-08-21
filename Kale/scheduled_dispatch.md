@@ -17,7 +17,7 @@
 我个人习惯单独制定停站时长，所以行车时间相对而言较为重要。
 之后开启“自动时刻表”并让列车运行即可。
 
-![alt text](images/60_Minute_timetabling_image-000.png)
+![alt text](images/60min_timetabling/image-000.png)
 
 [^3]: 译注：两者在名称上极为相似，但“计划调度”（Scheduled Dispatch）是 JGRPP 独有的功能，
 允许制定更复杂的时刻表，
@@ -27,7 +27,7 @@
 列车运行时会自动填充时刻表，同时也设立车站间运行的标准时间。
 时刻表窗口的右侧栏中就是确切的到发时间。
 
-![alt text](images/60_Minute_timetabling_image-001.png)
+![alt text](images/60min_timetabling/image-001.png)
 
 你可以在列车的时刻表填充完成之后查看列车的运行时间。
 确定所有运行时间之后就可以制定计划调度时刻表了。
@@ -37,19 +37,19 @@
 我在样例中规定每个站点的停站时间为一分钟。
 在修改完之后就可以打开计划调度页面了。
 
-![alt text](images/60_Minute_timetabling_image-002.png)
+![alt text](images/60min_timetabling/image-002.png)
 
 在启用计划调度之后，你还需要将时刻表指定到一项命令。
 这里我们将时刻表指定到“吉和北站”，也是东侧的终点站。
 
-![alt text](images/60_Minute_timetabling_image-003.png)
+![alt text](images/60min_timetabling/image-003.png)
 
-![alt text](images/60_Minute_timetabling_image-004.png)
+![alt text](images/60min_timetabling/image-004.png)
 
 我们已经设置完毕了计划调度指令，可以添加发车时间[^4]了。
 遵循这个时刻表的列车在该站时只会在发车时间发车。
 
-![alt text](images/60_Minute_timetabling_image-005.png)
+![alt text](images/60min_timetabling/image-005.png)
 
 [^4]: 译注：旧版译名为“出发条目”。
 
@@ -59,11 +59,11 @@
 不过制定 24 小时时刻表的时候你就需要手动添加发车时间了[^6]。
 在这里我将时刻表设定为从 0000 开始到 0100 结束，每 5 分钟一班。
 
-![alt text](images/60_Minute_timetabling_image-006.png)
+![alt text](images/60min_timetabling/image-006.png)
 
-![alt text](images/60_Minute_timetabling_image-007.png)
+![alt text](images/60min_timetabling/image-007.png)
 
-![alt text](images/60_Minute_timetabling_image-008.png)
+![alt text](images/60min_timetabling/image-008.png)
 
 [^5]: 译注：游戏时间。
 [^6]: 译注：实际上在 24 小时时刻表中也可以使用批量功能，
@@ -74,21 +74,21 @@
 计划调度时刻表窗口还提供了一些额外信息，
 如“本时刻表需要 3 辆载具”说明使用 3 部载具恰好完全利用所有出发时间。
 
-![alt text](images/60_Minute_timetabling_image-009.png)
+![alt text](images/60min_timetabling/image-009.png)
 
 这里我又购买了两列列车（在复制列车时按住 Ctrl 键点击就可以共享调度计划）
 来保证可以完全利用所有出发时间。
 
-![alt text](images/60_Minute_timetabling_image-010.png)
+![alt text](images/60min_timetabling/image-010.png)
 
 我们的系统已经开始运作了。列车每 5 分钟从吉和北站发车，在走完全程后又折回终点站，
 再次等候发车。如果操作正确，一次只应该有一列车在车站等候发车时间。
 
-![alt text](images/60_Minute_timetabling_image-011.png)
+![alt text](images/60min_timetabling/image-011.png)
 
 ---
 
-![alt text](images/60_Minute_timetabling_image-012.png)
+![alt text](images/60min_timetabling/image-012.png)
 
 这里有一个来自 Reddit JGR Server 3 的例子。LHAM 08 是一列普通列车，各站停车，
 而 EHAM 04 是一列快车，不在所有站点停靠。诚然，快车的路线可能比慢车短，
@@ -99,7 +99,7 @@
 
 ---
 
-![alt text](images/60_Minute_timetabling_image-013.png)
+![alt text](images/60min_timetabling/image-013.png)
 
 这是另外一个例子，同样来源于 Reddit JGR Server 3。图中是滨松市的铁路系统，
 其中淡蓝色意味着每小时三班车（即 20 分/班），红色是每小时六班车（10 分/班），

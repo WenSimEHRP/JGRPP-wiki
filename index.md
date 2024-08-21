@@ -46,6 +46,7 @@ extras.md
 :hidden:
 :caption: 外部链接
 
+百科地址 <https://github.com/wensimehrp/jgrpp-wiki>
 项目地址 <https://github.com/jgrennison/openttd-patches>
 NML 文档 <https://jgrennison.github.io/OpenTTD-patches/newgrf-additions-nml.html>
 NFO 文档 <https://jgrennison.github.io/OpenTTD-patches/newgrf-additions.html>
