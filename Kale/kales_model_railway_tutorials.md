@@ -22,7 +22,9 @@ Post by KaleTrans » 26 Jun 2024 09:53
 地图很小，基本功能缺失，拓展性也很差，所以我就不再玩了。
 一旦赚你了很多钱并买下了竞争对手，游戏就会很快变得无聊。
 
-![TTD 标题画面](./images/introduction_ttd_title_screen.png)
+```{figure} images/openttd-versions.png
+*不同版本的《运输大亨》*
+```
 
 可以肯定地说，就游戏性而言，《运输大亨》的潜力也就到此为止了：
 这款游戏的游戏性并不是太好。
@@ -38,8 +40,6 @@ Post by KaleTrans » 26 Jun 2024 09:53
 于是你就得到了现在的 OpenTTD：
 这款游戏经历了许许多多的更新，开发者们增加了许许多多的功能，
 玩家们创作了许许多多的 NewGRF，最重要的是——这款游戏的补丁包。
-
-![JGRPP 标题画面](./images/introduction_jgrpp_title_screen.png)
 
 我不会深入解释开源项目的根基，你只需要知道，这款游戏迄今为止最受欢迎的补丁包是 JGR 补丁包（JGRPP，JGR's Patch Pack）。
 JGRPP 添加了许多拿手功能，优化了游戏性能，实现了全新的功能机制，

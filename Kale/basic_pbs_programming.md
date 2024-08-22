@@ -1,4 +1,4 @@
-# 寻路限制
+# 寻路限制编程
 
 在这里我将介绍一些寻路限制在游戏中的运用实例。[^rspp]
 部分例子在预防冲突与节省基建时几乎是唯一解决方案。
@@ -15,12 +15,10 @@
 
 ## 如何配置
 
-![alt text](images/basic_pbs/image-000.png)
-
-![alt text](images/basic_pbs/image-001.png)
-
-![alt text](images/basic_pbs/image-002.png)
-
+```{figure} images/basic_pbs/zoning-restricted.png
+:width: 80%
+*高亮路由限制信号*
+```
 首先要介绍的就是分区功能当中的一个选项。
 你可以在分区选项中设置高亮寻路限制信号，这样就可以快速找到你特别设置过的信号灯。[^remove_signal]
 防止你误删除设置过的信号。
@@ -33,9 +31,9 @@
 点选后，点击你所需编程的信号。
 这就是寻路限制菜单了。
 
-![alt text](images/basic_pbs/image-003.png)
-
-![alt text](images/basic_pbs/image-004.png)
+```{figure} images/basic_pbs/routefinding-restriction-how-to-open.png
+*如何打开寻路限制菜单*
+```
 
 ## 简单信号路径优先
 
@@ -101,13 +99,14 @@
 “拒绝通过”在列车分类上至关重要——我最喜欢的例子就是将列车分流至快慢线路上。
 列车分类可以用极少的工作量极大地提升路网效率。
 
-假设你有一条复复线铁路[^fufuxian]，并希望慢车在外侧轨道上运行，快车在内部轨道上运行，
+假设你有一条双复线铁路[^fufuxian]，并希望慢车在外侧轨道上运行，快车在内部轨道上运行，
 你可以在线路开始的地方设置寻路限制程序。在程序里，你可以添加一个条件判断，
 根据列车的最高速度决定允许或拒绝列车通过。
 
 ![alt text](images/basic_pbs/image-010.png)
 
-[^fufuxian]: 译注：~~fufu 线~~四线铁路
+[^fufuxian]: 译注：~~複々線~~ [四线铁路](https://zh.wikipedia.org/zh-cn/%E5%9B%9B%E7%B7%9A%E9%90%B5%E8%B7%AF)
+（[百度百科](https://baike.baidu.com/item/%E5%9B%9B%E7%B7%9A%E9%90%B5%E8%B7%AF/15567746)）
 
 在“插入”选项卡中选择“如果”，选择“最高速度”作为判断的条件。
 在输入目标速度 120 千米/时后就需要选择判断范围。
@@ -144,7 +143,7 @@
 
 ![alt text](images/basic_pbs/image-017.png)
 
-在配置完成之后，你就得到了一条快慢分离的复复线线路。
+在配置完成之后，你就得到了一条快慢分离的双复线线路。
 快慢分离可以预防列车拥堵的潜在风险，
 因此在启用直通运转并且你的线路上有其他公司的慢车运行时非常重要，反之亦然。
 

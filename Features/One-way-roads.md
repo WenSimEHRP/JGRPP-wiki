@@ -1,10 +1,10 @@
-### One way roads and road vehicle overtaking
+# 单行道与超车
 
-Version 0.39 adds features for one way roads and road vehicle overtaking.
+单行道与超车功能于 0.39 被加入游戏。
 
-To make it easier to see one way roads, there is a zoning overlay mode to show one way road tiles, this is switched on in the screenshots below.
+这里有一些单行道的例子（这里开启分区功能以显示单行道）。如截图所示。
 
-**Road between one-way road tiles is now also one-way**
+### 单行道块之间的道路
 
 Road segments with no junctions or non-one-way road stops between one way road tiles are now one-way, as if every tile was manually made one way.
 

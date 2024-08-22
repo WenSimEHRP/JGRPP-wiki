@@ -1,4 +1,4 @@
-# OpenTTD JGRPP 中文百科
+# OpenTTD JGRPP 中文百科项目说明
 
 [![Documentation Status](https://readthedocs.org/projects/jgrzh/badge/?version=latest)](https://ottdzh.readthedocs.io/projects/jgrpp/latest/?badge=latest)
 [![Action status](https://github.com/WenSimEHRP/JGRPP-wiki/actions/workflows/build_doc.yml/badge.svg)](https://github.com/wensimehrp/jgrpp-wiki/actions)

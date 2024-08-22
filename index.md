@@ -39,6 +39,7 @@ Kale/*
 
 extras.md
 百科自述文件 <readme.md>
+contributing.md
 ```
 
 ```{toctree}

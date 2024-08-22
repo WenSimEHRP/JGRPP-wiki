@@ -8,8 +8,9 @@
 
 ## 贡献者
 
-感谢所有志愿者贡献的时间与精力：
+感谢所有贡献者贡献的时间与精力：
 
 * JGRennison
+* KaleTrans
 * WenSim
 * Mikhail
