@@ -61,7 +61,9 @@ This has the effect of adding a penalty for trains which could use the bay platf
 
 ### 样例二：单越行线车站
 
-![寻路限制样例二](images/routing-restrictions-example-1.png)
+```{figure} images/station-with-single-passing-line.png
+*单越行线车站。车站为五格长，惩罚和为 4000*
+```
 
 图中为双向单越行线车站的一种可行设计。
 
