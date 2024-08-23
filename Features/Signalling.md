@@ -40,13 +40,12 @@
 
 ### 样例一：港湾与通过式混合车站特殊调度规则
 
-![寻路限制样例一](images/routing-restrictions-example-0.png)
+```{figure} images/mixed-station-terminal-roro.png
+*港湾与通过式混合车站，注意寻路限制程序区别*
+```
 
 图中为港湾与通过式混合车站的一种可行设计。
-我们规定，来自南方“未来南站”的列车只停靠港湾式站台。
-
-如果列车从信号灯后方驶入，而下一个指令（在新贝德敦呼叫后的指令）**是南向车站**，则直通月台信号灯会增加一个探路惩罚。
-这样做的效果是对可以使用港湾式站台的列车增加了惩罚，因此如果有港湾式站台，这些列车将始终使用港湾式站台。但是，如果所有月台都满员或无法到达，列车仍可使用直通月台，之后再倒车驶出。
+我们规定，前往*蓝兰栏站*的列车只使用
 
 This is a possible way to implement a combined bay and through station.
 The example assumes that only bay-platform traffic calls next at "Southerly Station", which is to the south-east.
