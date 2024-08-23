@@ -1,66 +1,66 @@
 # 经济速度（日长因子）
 
-“经济速度因子”[^1]设置可以用来调整游戏经济周期的时长。
-当设置为 1 时，经济速度与原版相同。
+经济速度因子可以用来调整游戏经济周期的时长。
+当设置为 1 时，经济速度与原版相同。[^timekeeping]
 
-[^1]: 自 0.61.0 起由“日长因子”修改为“经济速度因子”。
+[^timekeeping]: 经济速度因子的旧版译名为“日长因子”。除此之外，
+经济速度与时间自 OpenTTD 14 以来分为“日历式”与“挂钟式”。
+“日历式”中，经济周期与日历时间绑定；
+“挂钟式”中，经济周期独立运行。
+在不同模式下，经济周期、时间长度等有关时间的事物会有细微差别。
+更详细的解释参见[官方博客](https://www.openttd.org/news/2024/03/23/timekeeping)。
 
 ## 日历计时模式
 
-在此模式中，经济周期与日期绑定。即货物生产、城镇发展、车站评价等都与日期绑定。
+在日历计时模式下，经济周期与日期绑定。即货物生产、城镇发展、车站评价等都与日期绑定。
 自然，经济速度因子越大，一天时间越长。
 
+### 与日历速度绑定的事件（日历计时模式）
 
-由于日历速度较慢 (在日历计时模式下)，在实时中按比例减慢的事物
+下面列出的事件与日历绑定，使用日历年、月，或者日作为计算单位。
+在日历计时模式下，经济速度因子越大，一日长度越长，这些事件发生/重新计算的频率也因此降低：
 
-### 这里哪里 todo
+* 城镇与货物生产
+（可以使用城镇和工业货物缩放设置补偿）
+* 城镇发展
+* 树木与草的生长
+* 季节性变化，如雪线
+* 基建维护费用
+* 城镇与车站评价
+* 经济补贴
+* 载具维护间隔（不使用百分比时）
+* 通货膨胀
+* 载具、物件、车站、房屋的登场与退场
+* 载具老化
 
-### Things which are proportionally slowed in real time, due to a slower calendar speed (in calendar timekeeping mode)
+## 挂钟计时模式
 
-These still happen on a per calendar day, per calendar month or per calendar year basis.
-As the day length setting is increased, these will occur more slowly in real time.
+在挂钟计时模式下，日历速度（即一日的长度）不受经济速度因子影响。
+经济速度因子只影响经济模拟速度，如货物生产、城镇发展，与车站评价。
+挂钟计时模式中的“经济周期”与日历计时模式中的“一年”对等。
+自然，经济速度因子越大，经济周期持续的时间越长。
 
-* 城镇与货物产出
-  (The town and industry cargo scaling settings can be used to compensate for this if needed).
-* Town growth
-* Grass and tree growth
-* Seasonal changes such as snow line movements
-* Infrastructure maintenance costs
-* Ratings calculations (towns and stations)
-* Subsidy durations
-* Vehicle service intervals (when not using percentage mode)
-* Inflation
-* Introduction and expiry of vehicle, object, station, house, etc. models
-* Vehicle ageing
+### 与经济速度绑定的事件（挂钟计时模式）
 
-## 挂钟计时时间
+下面列出的事件与经济周期绑定，使用经济周期（与生产周期，即经济周期的子周期）作为计算单位。
+经济速度因子越大，经济周期的长度越长，这些事件发生/重新计算的频率也因此降低：
 
-The calendar speed is unaffected by the day length factor setting.
+* 城镇与货物生产
+（可以使用城镇和工业货物缩放设置补偿）
+* 城镇发展
+* 树木与草的生长
+* 基建维护费用
+* 城镇与车站评价
+* 经济补贴
+* 载具维护间隔（不使用百分比时）
 
-The day length factor only affects the speed of the economy (e.g. cargo production, town growth, rating calculations, etc.).
-A "period" is the economy analogue of a year. Values larger than 1 increase the length of a period by this factor.
+## 不与经济或日历速度绑定的事件
 
-### Things which are proportionally slowed in real time, due to a slower economy speed (in wallclock timekeeping mode)
+这些事件发生/重新计算的概率与经济速度因子无关：
 
-These still happen on a per period (and subdivisions of a period) basis.
-As the day length setting is increased, these will occur more slowly in real time.
-
-* Town and industry cargo production
-  (The town and industry cargo scaling settings can be used to compensate for this if needed).
-* Town growth
-* Grass and tree growth
-* Infrastructure maintenance costs
-* Ratings calculations (towns and stations)
-* Subsidy durations
-* Vehicle service intervals (when not using percentage mode)
-
-## Things which stay the same in real time (in both calendar and wallclock timekeeping modes)
-
-These occur at the same real time speed regardless of the value of the day length factor setting.
-
-* Vehicle movement
-* Vehicle running costs
-  (Note that running costs are per unit real time that the vehicle is running, but as years becomes longer, the headline yearly figure also increases).
-* Ageing of cargo in vehicles
-* Animations and visual effects
-* Infrastructure sharing fees for using infrastructure owned by other companies, such as rail track and stations
+* 载具移动
+* 载具运行费用
+  （计算载具运行费用的依据是载具运行的游戏刻数，因此载具每刻运行费用不变。不过经济速度因子会改变一周期/年的游戏刻数，从而导致周期/年名义运行费用变大）。
+* 载具货物劣化（保鲜）
+* 动画与视效
+* 基建共享使用费
