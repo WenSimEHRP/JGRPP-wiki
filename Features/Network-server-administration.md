@@ -17,7 +17,10 @@
 
 [^when_open_to_all]: 译注：启用“允许联机玩家修改城镇设置”选项后所有玩家都可以修改城镇相关设置。
 
-需要注意的是，在使用之前需要通过设置 `network.settings_password` 设置密码。 (in the same way as the rcon password is set).
+需要注意的是，在使用之前需要通过设置 `network.settings_password` 设置密码
+（与设置远程控制密码的方式相同）。
+
+在控制台中运行
 
 Run `setting network.settings_password PASSWORD` or just `settings_password PASSWORD` on the server,
 or set the `settings_password` field in the `[network]` section of secrets.cfg before starting the server.
@@ -27,7 +30,10 @@ On the network client run `settings_access PASSWORD` in the console.
 To drop access if it is no longer required run `settings_access ""` in the console (i.e. an empty password).
 **The settings access password should be considered just as important to keep secure as the rcon password**
 
-## Company passwords
+## 公司密码
+
+公司密码以加密形式存储在服务端存档中。
+除此之外，
 
 Company passwords are stored in savegames made by the network server in an encrypted form,
 and are automatically restored when loaded by the same network server (with the same configuration secrets).

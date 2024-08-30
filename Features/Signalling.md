@@ -165,31 +165,31 @@ This checks which station the train last visited.
 
 This checks which side the train is entering the signal from: front, back, compass direction, or entering/exiting tunnel/bridge.
 
-#### Train group
+#### 列车分组
 
-This checks whether the train is in a particular group.
-This works with nested groups.
+检查当前列车是否在某一个特定的分组内
+本选项支持嵌套分组。
 
-#### Train owner
+#### 列车所有者
 
-This checks which company owns the train.
+检查列车所属的公司。
 
-#### Train status
+#### 列车状态
 
-This checks the current status of the train, the statuses which can be checked are:
+检查列车的状态。可检查的状态有：
 
-* Empty
-* Full
-* Broken down
-* Needs repair
-* Reversing
-* Heading to station or waypoint
-* Heading to depot
-* Loading
-* Waiting
-* Lost
-* Requires servicing
-* Stopping at station/waypoint
+* 空载
+* 满载
+* 损坏
+* 需要维修
+* 倒车中
+* 正前往车站或路点
+* 正前往车库
+* 装载中
+* 等候中
+* 已迷路
+* 需要维护
+* 在车站或路点停止中
 
 #### 重量
 
