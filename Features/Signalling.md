@@ -3,10 +3,10 @@
 * [**Routefinding restrictions**](#routefinding-restrictions)  
   Routefinding restriction programs can be attached to any kind of signal.  
   These programs are run by trains, and can check various train properties, and slot and counter values.  
-  These programs can be used to control pathfinding, PBS, slots, counters, reversing, speed restrictions and other miscellaneous operations.  
+  These programs can be used to control pathfinding, path reservation, slots, counters, reversing, speed restrictions and other miscellaneous operations.  
 * [**Programmable pre-signals**](#programmable-pre-signals)  
   Programmable pre-signals are combo pre-signals, with programmable conditions for whether the signal is red or green.  
-  Programmable pre-signals are block signals, with no support for PBS.
+  Programmable pre-signals are block signals, with no support for path signalling.
 * [**Slots**](#slots)  
   Slots are analogous to token systems used in real-life railways, in particular single-line sections.  
   A slot has a capacity, the number of trains which can be in the slot/have a token.  
@@ -22,7 +22,7 @@
 
 Routefinding restriction programs can be attached to any kind of signal.  
 These programs are run by trains, and can check various train properties, and slot and counter values.  
-These programs can be used to control pathfinding, PBS, slots, counters, reversing, speed restrictions and other miscellaneous operations.  
+These programs can be used to control pathfinding, path reservation, slots, counters, reversing, speed restrictions and other miscellaneous operations.  
 Routefinding restrictions require using the **YAPF pathfinder** for trains.
 
 By default, electric signals with a routefinding restriction program attached have a blue signal post.  
@@ -80,12 +80,12 @@ The current suggested values in the dropdown are: small = 500, medium = 2000, an
 
 ##### Reserve through
 
-PBS will not end a reservation at this PBS signal, it is as if the signal is not there at all in the forward direction.  
+Path reservations will not end a reservation at this path signal, it is as if the signal is not there at all in the forward direction.  
 This action has no effect when applied to a signalled tunnel/bridge entrance or exit.
 
 ##### Long reserve
 
-If a train makes a PBS reservation that ends at this PBS signal, a second separate reservation will be attempted starting from this signal.  
+If a train makes a path reservation that ends at this path signal, a second separate reservation will be attempted starting from this signal.  
 The first reservation is not cancelled if the second reservation is not possible.  
 This action has no effect when applied to a signalled tunnel/bridge entrance.
 
@@ -219,24 +219,24 @@ The more advanced features below are only shown if the "Show advanced routing re
 
 <ul>
 
-##### Wait at PBS signal
+##### Wait at path signal
 
 The sub-actions which this can take are:  
-* Wait at PBS signal  
-  The train waits at this PBS signal.
-* Cancel wait at PBS signal  
-  Cancels a previous wait at PBS signal action.
-* Wait at start PBS signal for reservation ending here  
-  If a train would make a PBS reservation which ends at this signal, the train will instead wait at the start signal and not make the reservation.
-* Cancel wait at start PBS signal for reservation ending here  
-  Cancel a previous wait at start PBS signal for reservation ending here.
+* Wait at path signal  
+  The train waits at this path signal.
+* Cancel wait at path signal  
+  Cancels a previous wait at path signal action.
+* Wait at start path signal for reservation ending here  
+  If a train would make a path reservation which ends at this signal, the train will instead wait at the start signal and not make the reservation.
+* Cancel wait at start path signal for reservation ending here  
+  Cancel a previous wait at start path signal for reservation ending here.
 
 ##### Slot operation
 
 See [**Slots**](#slots) section below for details of what slots are.  
 The sub-actions which this can take are:  
 * Acquire or wait  
-  Try to acquire membership in the slot, if the slot is full and the train cannot become a member, wait at this PBS signal.
+  Try to acquire membership in the slot, if the slot is full and the train cannot become a member, wait at this path signal.
 * Try to acquire  
   Try to acquire membership in the slot, if the slot is full and the train cannot become a member, carry on anyway.  
   When reserving ahead it is attempted when making the reservation, no second attempt is made when later passing the already reserved signal.
@@ -246,16 +246,16 @@ The sub-actions which this can take are:
   Release membership of this slot when the back of the train passes the signal.
 * Release (on reserve)  
   Release membership of this slot when making a reservation from this signal (this is the executed in the same conditions as the "acquire or wait" and "try to acquire" sub-actions).
-* PBS end: Acquire or wait  
-  When attempting to make a PBS reservation which ends at this signal, try to acquire membership in the slot, if the slot is full and the train cannot become a member, wait at the start PBS signal.
-* PBS end: Try to acquire  
-  When attempting to make a PBS reservation which ends at this signal, try to acquire membership in the slot, if the slot is full and the train cannot become a member, make the reservation anyway.
-* PBS end: Release  
-  When a PBS reservation is made which ends at this signal, release membership of this slot.
+* Path end: Acquire or wait  
+  When attempting to make a path reservation which ends at this signal, try to acquire membership in the slot, if the slot is full and the train cannot become a member, wait at the start path signal.
+* Path end: Try to acquire  
+  When attempting to make a path reservation which ends at this signal, try to acquire membership in the slot, if the slot is full and the train cannot become a member, make the reservation anyway.
+* Path end: Release  
+  When a path reservation is made which ends at this signal, release membership of this slot.
 
 ##### Reverse behind signal
 
-The train reverses behind this signal. The signal must be a PBS signal (not one-way), and the train must be entering from the back direction.
+The train reverses behind this signal. The signal must be a path signal (not one-way), and the train must be entering from the back direction.
 
 ##### Speed restriction
 
@@ -276,9 +276,9 @@ The sub-actions which this can take are:
 ##### Penalty config
 
 The sub-actions which this can take are:  
-* No PBS back penalty  
+* No path signal back penalty  
   Do not apply the pathfinder penalty for passing this signal from the back side.
-* Cancel no PBS back penalty  
+* Cancel no path signal back penalty  
   Cancel a previous do not apply the pathfinder penalty for passing this signal from the back side.
 
 ##### Speed adaptation control
@@ -337,27 +337,27 @@ The time values which can be tested are:
 This checks the number of tiles of reservation ahead of the train (rounded down). This requires the realistic train braking model.  
 This is mainly useful to control the long reserve action.
 
-##### PBS reservation passes tile
+##### Path reservation passes tile
 
 This checks whether the train's reservation passes through the tile, at any point along its length.  
 
-##### PBS entry signal
+##### Path entry signal
 
-This checks the tile of the PBS signal where the PBS reservation is starting from.  
-Note: When a PBS reservation passes through a signal using the "Reserve through" or "Long reserve" actions, the passed signal does not become the PBS entry signal.  
-This is mainly useful to control the long reserve, reserve through and possibly wait at start PBS signal for reservation ending here actions.  
+This checks the tile of the path signal where the path reservation is starting from.  
+Note: When a path reservation passes through a signal using the "Reserve through" or "Long reserve" actions, the passed signal does not become the path entry signal.  
+This is mainly useful to control the long reserve, reserve through and possibly wait at start path signal for reservation ending here actions.  
 This condition may not be used with the signal mode control action.
 
-##### PBS end signal
+##### Path end signal
 
-This checks the tile of the PBS signal at the current end of the PBS reservation. This requires the realistic train braking model.  
-Note: When a PBS reservation passes through a signal using the "Reserve through" action, the passed signal does not become the PBS end signal.  
-Note: When a second PBS reservation is started at a signal using the "Long reserve" action or due to the train reserving ahead, the signal does become the new reservation end signal.  
-This test should be used when checking which signal is used to enter a block when using realistic braking, instead of the PBS entry signal condition, which could return a signal closer to the train.  
-This is mainly useful to control the reserve through and possibly wait at start PBS signal for reservation ending here actions. This is not useful for controlling the long reserve action.  
+This checks the tile of the path signal at the current end of the path reservation. This requires the realistic train braking model.  
+Note: When a path reservation passes through a signal using the "Reserve through" action, the passed signal does not become the path end signal.  
+Note: When a second path reservation is started at a signal using the "Long reserve" action or due to the train reserving ahead, the signal does become the new reservation end signal.  
+This test should be used when checking which signal is used to enter a block when using realistic braking, instead of the path entry signal condition, which could return a signal closer to the train.  
+This is mainly useful to control the reserve through and possibly wait at start path signal for reservation ending here actions. This is not useful for controlling the long reserve action.  
 This condition may not be used with the signal mode control action.
 
-##### PBS reservation end tile
+##### Path reservation end tile
 
 This condition may ONLY be used with the signal mode control action.  
 This condition checks the tile at the end of the reservation (the last reserved tile), after the reservation has been made from this signal.  
@@ -365,15 +365,15 @@ This requires the realistic train braking model.
 
 </ul>
 
-Note that the PBS entry/end signal conditionals are somewhat tricky to use and can have non-intuitive behaviour when used with pathfinding/penalty actions,
-because pathfinding also takes place beyond the current signal block where any reservation is being made. In this case a prediction of what the PBS signal would be
+Note that the path entry/end signal conditionals are somewhat tricky to use and can have non-intuitive behaviour when used with pathfinding/penalty actions,
+because pathfinding also takes place beyond the current signal block where any reservation is being made. In this case a prediction of what the path signal would be
 is made.
 
 
 ### Programmable pre-signals
 
 Programmable pre-signals are combo pre-signals, with programmable conditions for whether the signal is red or green.  
-Programmable pre-signals are block signals, with no support for PBS.  
+Programmable pre-signals are block signals, with no support for path signalling.  
 Programmable pre-signal programs cannot test any properties of trains, and are run even if there is no train approaching the signal.  
 In most cases, routefinding restrictions are more useful.
 
