@@ -1,19 +1,18 @@
-## Day length
+## Calendar and economy speeds
 
-The day length factor setting adjusts the passage of time in the game.  
+The economy speed reduction factor setting adjusts the speed of economic processes (e.g. cargo production, town growth, rating calculations) in the game.  
 A value of 1 is the same as in vanilla OpenTTD.  
+This was previously known as the day length factor setting.
 
 ### Calendar timekeeping mode
 
+In calendar timekeeping mode, the calendar speed (day, month, year progression) is the same as the economy speed.  
 Values larger than 1 increase the length of a calendar day by this factor.
 
-In calendar timekeeping mode, the speed of the economy (e.g. cargo production, town growth, rating calculations, etc.) runs at the same speed as the calendar.  
-The economy speed is therefore also slowed by the same factor.
-
-#### Things which are proportionally slowed in real time, due to a slower calendar speed (in calendar timekeeping mode)
+#### Things which are proportionally slowed in real time, due to slower economy and calendar speeds (in calendar timekeeping mode)
 
 These still happen on a per calendar day, per calendar month or per calendar year basis.  
-As the day length setting is increased, these will occur more slowly in real time.
+As the economy speed reduction factor setting is increased, these will occur more slowly in real time.
 
 * Town and industry cargo production  
   (The town and industry cargo scaling settings can be used to compensate for this if needed).
@@ -30,15 +29,15 @@ As the day length setting is increased, these will occur more slowly in real tim
 
 ### Wallclock timekeeping mode
 
-The calendar speed is unaffected by the day length factor setting.
+The calendar speed is unaffected by the economy speed reduction factor setting.
 
-The day length factor only affects the speed of the economy (e.g. cargo production, town growth, rating calculations, etc.).  
+The economy speed reduction factor only affects the speed of the economy (e.g. cargo production, town growth, rating calculations, etc.).  
 A "period" is the economy analogue of a year. Values larger than 1 increase the length of a period by this factor.
 
 #### Things which are proportionally slowed in real time, due to a slower economy speed (in wallclock timekeeping mode)
 
 These still happen on a per period (and subdivisions of a period) basis.  
-As the day length setting is increased, these will occur more slowly in real time.
+As the economy speed reduction factor setting is increased, these will occur more slowly in real time.
 
 * Town and industry cargo production  
   (The town and industry cargo scaling settings can be used to compensate for this if needed).
@@ -51,7 +50,7 @@ As the day length setting is increased, these will occur more slowly in real tim
 
 ### Things which stay the same in real time (in both calendar and wallclock timekeeping modes)
 
-These occur at the same real time speed regardless of the value of the day length factor setting.
+These occur at the same real time speed regardless of the value of the economy speed reduction factor setting.
 
 * Vehicle movement
 * Vehicle running costs  

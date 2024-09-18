@@ -5,7 +5,7 @@ This wiki contains information/examples on how to use a few of the features in t
 * [One way roads](wiki/One-way-roads)
 * [Realistic train braking](wiki/Realistic-braking)
 * [Order window features](wiki/Order-window-features)
-* [Day length](wiki/Day-length)
+* [Calendar and economy speeds (day length)](wiki/Calendar-and-economy-speeds)
 * [Other features](wiki/Other-features)
 * [Network server administration](wiki/Network-server-administration)
 
