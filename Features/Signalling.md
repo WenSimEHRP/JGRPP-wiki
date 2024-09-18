@@ -253,9 +253,21 @@ The sub-actions which this can take are:
 * Path end: Release  
   When a path reservation is made which ends at this signal, release membership of this slot.
 
-##### Reverse behind signal
+##### Reverse
 
-The train reverses behind this signal. The signal must be a path signal (not one-way), and the train must be entering from the back direction.
+The sub-actions which this can take are:  
+* Reverse behind signal  
+  The train reverses behind this signal.  
+  The signal must be a path signal (not one-way), and the train must be entering from the back direction.  
+  The pathfinder can follow reverse being signal actions, (within the number of signals where routing restriction programs are evaluated).
+* Cancel reverse behind signal  
+  Cancel a previous reverse behind signal.
+* Reverse at path signal  
+  The trains reverses at this path signal, the train must be approaching from the front direction.  
+  The pathfinder cannot follow reverse at path signal actions.  
+  In most cases, reverse behind signal should be used instead.
+* Cancel reverse at path signal  
+  Cancel a previous reverse at path signal.
 
 ##### Speed restriction
 
