@@ -92,6 +92,28 @@ This action has no effect when applied to a signalled tunnel/bridge entrance.
 The "Long reserve (unless stopping)" sub-action can be used to only enable long reserve when the train is not stopping at a station or waypoint,
 earlier in the train's reservation. This is useful for signals at platform ends where it would not be useful to enable long reserve for trains which will be stopping.
 
+##### Slot operation
+
+See [**Slots**](#slots) section below for details of what slots are.  
+The sub-actions which this can take are:  
+* Acquire or wait  
+  Try to acquire membership in the slot, if the slot is full and the train cannot become a member, wait at this path signal.
+* Try to acquire  
+  Try to acquire membership in the slot, if the slot is full and the train cannot become a member, carry on anyway.  
+  When reserving ahead it is attempted when making the reservation, no second attempt is made when later passing the already reserved signal.
+* Release (front)  
+  Release membership of this slot when the front of the train passes the signal.
+* Release (back)  
+  Release membership of this slot when the back of the train passes the signal.
+* Release (on reserve)  
+  Release membership of this slot when making a reservation from this signal (this is the executed in the same conditions as the "acquire or wait" and "try to acquire" sub-actions).
+* Path end: Acquire or wait  
+  When attempting to make a path reservation which ends at this signal, try to acquire membership in the slot, if the slot is full and the train cannot become a member, wait at the start path signal.
+* Path end: Try to acquire  
+  When attempting to make a path reservation which ends at this signal, try to acquire membership in the slot, if the slot is full and the train cannot become a member, make the reservation anyway.
+* Path end: Release  
+  When a path reservation is made which ends at this signal, release membership of this slot.
+
 ##### News control
 
 This allows turning off the train is stuck/lost news messages for trains waiting at this particular signal.
@@ -230,28 +252,6 @@ The sub-actions which this can take are:
   If a train would make a path reservation which ends at this signal, the train will instead wait at the start signal and not make the reservation.
 * Cancel wait at start path signal for reservation ending here  
   Cancel a previous wait at start path signal for reservation ending here.
-
-##### Slot operation
-
-See [**Slots**](#slots) section below for details of what slots are.  
-The sub-actions which this can take are:  
-* Acquire or wait  
-  Try to acquire membership in the slot, if the slot is full and the train cannot become a member, wait at this path signal.
-* Try to acquire  
-  Try to acquire membership in the slot, if the slot is full and the train cannot become a member, carry on anyway.  
-  When reserving ahead it is attempted when making the reservation, no second attempt is made when later passing the already reserved signal.
-* Release (front)  
-  Release membership of this slot when the front of the train passes the signal.
-* Release (back)  
-  Release membership of this slot when the back of the train passes the signal.
-* Release (on reserve)  
-  Release membership of this slot when making a reservation from this signal (this is the executed in the same conditions as the "acquire or wait" and "try to acquire" sub-actions).
-* Path end: Acquire or wait  
-  When attempting to make a path reservation which ends at this signal, try to acquire membership in the slot, if the slot is full and the train cannot become a member, wait at the start path signal.
-* Path end: Try to acquire  
-  When attempting to make a path reservation which ends at this signal, try to acquire membership in the slot, if the slot is full and the train cannot become a member, make the reservation anyway.
-* Path end: Release  
-  When a path reservation is made which ends at this signal, release membership of this slot.
 
 ##### Reverse
 
@@ -403,8 +403,6 @@ A slot has a capacity, the number of trains which can be in the slot/have a toke
 A train can be a member of any number of different slots at once (have any number of different tokens at once).  
 Trains can acquire or release membership of slots (acquire or release tokens) at signals, or using conditional orders.  
 Slots can be used in conditionals in routefinding restrictions and programmable pre-signal programs, and in conditional orders.
-
-Slots are not shown in the user interace by default, **"Show advanced routing restriction features"** must be enabled.
 
 Slots can be created, deleted, renamed, have their capacity changes, and have trains manually added/removed from the slot by selecting "Manage slots" in the train list window "Manage list" dropdown.
 
