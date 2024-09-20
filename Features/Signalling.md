@@ -108,6 +108,29 @@ This has the effect of adding a penalty for trains which could use the bay platf
 “接续预留（除非停车）”子操作只在列车的第一段路径不经过其将要停靠的车站或路点时才会尝试开始预留另一段路径。
 本子操作用于站台末的信号时可以防止停靠的列车使用接续预留导致效率降低。
 
+#### 槽位操作
+
+[**槽位**](#槽位) 的详细解释在下方。\
+所有子操作：
+
+* 占用或等待
+  Try to acquire membership in the slot, if the slot is full and the train cannot become a member, wait at this PBS signal.
+* 尝试占用
+  Try to acquire membership in the slot, if the slot is full and the train cannot become a member, carry on anyway.
+  When reserving ahead it is attempted when making the reservation, no second attempt is made when later passing the already reserved signal.
+* 车头退出
+  Release membership of this slot when the front of the train passes the signal.
+* 车尾退出
+  Release membership of this slot when the back of the train passes the signal.
+* 预留退出
+  Release membership of this slot when making a reservation from this signal (this is the executed in the same conditions as the "acquire or wait" and "try to acquire" sub-actions).
+* PBS end: Acquire or wait
+  When attempting to make a PBS reservation which ends at this signal, try to acquire membership in the slot, if the slot is full and the train cannot become a member, wait at the start PBS signal.
+* PBS end: Try to acquire
+  When attempting to make a PBS reservation which ends at this signal, try to acquire membership in the slot, if the slot is full and the train cannot become a member, make the reservation anyway.
+* PBS end: Release
+  When a PBS reservation is made which ends at this signal, release membership of this slot.
+
 #### 新闻控制
 
 新闻控制功能可以关闭在该信号处等待列车的迷路信息。
@@ -230,7 +253,7 @@ This checks which direction the tile of the train's current or next order is in,
 
 The more advanced features below are only shown if the "Show advanced routing restriction features" setting is enabled.
 
-#### Wait at PBS signal
+#### Wait at path signal
 
 The sub-actions which this can take are:
 
@@ -243,32 +266,22 @@ The sub-actions which this can take are:
 * Cancel wait at start PBS signal for reservation ending here
   Cancel a previous wait at start PBS signal for reservation ending here.
 
-#### 槽位操作
+#### Reverse
 
-[**槽位**](#槽位)的详细解释在下方。\
-所有子操作：
+The sub-actions which this can take are:
 
-* 占用或等待
-  Try to acquire membership in the slot, if the slot is full and the train cannot become a member, wait at this PBS signal.
-* 尝试占用
-  Try to acquire membership in the slot, if the slot is full and the train cannot become a member, carry on anyway.
-  When reserving ahead it is attempted when making the reservation, no second attempt is made when later passing the already reserved signal.
-* 车头退出
-  Release membership of this slot when the front of the train passes the signal.
-* 车尾退出
-  Release membership of this slot when the back of the train passes the signal.
-* 预留退出
-  Release membership of this slot when making a reservation from this signal (this is the executed in the same conditions as the "acquire or wait" and "try to acquire" sub-actions).
-* PBS end: Acquire or wait
-  When attempting to make a PBS reservation which ends at this signal, try to acquire membership in the slot, if the slot is full and the train cannot become a member, wait at the start PBS signal.
-* PBS end: Try to acquire
-  When attempting to make a PBS reservation which ends at this signal, try to acquire membership in the slot, if the slot is full and the train cannot become a member, make the reservation anyway.
-* PBS end: Release
-  When a PBS reservation is made which ends at this signal, release membership of this slot.
-
-#### Reverse behind signal
-
-The train reverses behind this signal. The signal must be a PBS signal (not one-way), and the train must be entering from the back direction.
+* Reverse behind signal
+  The train reverses behind this signal.
+  The signal must be a path signal (not one-way), and the train must be entering from the back direction.
+  The pathfinder can follow reverse being signal actions, (within the number of signals where routing restriction programs are evaluated).
+* Cancel reverse behind signal
+  Cancel a previous reverse behind signal.
+* Reverse at path signal
+  The trains reverses at this path signal, the train must be approaching from the front direction.
+  The pathfinder cannot follow reverse at path signal actions.
+  In most cases, reverse behind signal should be used instead.
+* Cancel reverse at path signal
+  Cancel a previous reverse at path signal.
 
 #### Speed restriction
 
@@ -290,10 +303,9 @@ The sub-actions which this can take are:
 #### Penalty config
 
 The sub-actions which this can take are:
-
-* No PBS back penalty
+* No path signal back penalty
   Do not apply the pathfinder penalty for passing this signal from the back side.
-* Cancel no PBS back penalty
+* Cancel no path signal back penalty
   Cancel a previous do not apply the pathfinder penalty for passing this signal from the back side.
 
 #### Speed adaptation control
@@ -350,40 +362,40 @@ The time values which can be tested are:
 This checks the number of tiles of reservation ahead of the train (rounded down). This requires the realistic train braking model.
 This is mainly useful to control the long reserve action.
 
-#### PBS reservation passes tile
+#### Path reservation passes tile
 
 This checks whether the train's reservation passes through the tile, at any point along its length.
 
-#### PBS entry signal
+#### Path entry signal
 
-This checks the tile of the PBS signal where the PBS reservation is starting from.
-Note: When a PBS reservation passes through a signal using the "Reserve through" or "Long reserve" actions, the passed signal does not become the PBS entry signal.
-This is mainly useful to control the long reserve, reserve through and possibly wait at start PBS signal for reservation ending here actions.
+This checks the tile of the path signal where the path reservation is starting from.
+Note: When a path reservation passes through a signal using the "Reserve through" or "Long reserve" actions, the passed signal does not become the path entry signal.
+This is mainly useful to control the long reserve, reserve through and possibly wait at start path signal for reservation ending here actions.
 This condition may not be used with the signal mode control action.
 
-#### PBS end signal
+#### Path end signal
 
-This checks the tile of the PBS signal at the current end of the PBS reservation. This requires the realistic train braking model.
-Note: When a PBS reservation passes through a signal using the "Reserve through" action, the passed signal does not become the PBS end signal.
-Note: When a second PBS reservation is started at a signal using the "Long reserve" action or due to the train reserving ahead, the signal does become the new reservation end signal.
-This test should be used when checking which signal is used to enter a block when using realistic braking, instead of the PBS entry signal condition, which could return a signal closer to the train.
-This is mainly useful to control the reserve through and possibly wait at start PBS signal for reservation ending here actions. This is not useful for controlling the long reserve action.
+This checks the tile of the path signal at the current end of the path reservation. This requires the realistic train braking model.
+Note: When a path reservation passes through a signal using the "Reserve through" action, the passed signal does not become the path end signal.
+Note: When a second path reservation is started at a signal using the "Long reserve" action or due to the train reserving ahead, the signal does become the new reservation end signal.
+This test should be used when checking which signal is used to enter a block when using realistic braking, instead of the path entry signal condition, which could return a signal closer to the train.
+This is mainly useful to control the reserve through and possibly wait at start path signal for reservation ending here actions. This is not useful for controlling the long reserve action.
 This condition may not be used with the signal mode control action.
 
-#### PBS reservation end tile
+#### Path reservation end tile
 
 This condition may ONLY be used with the signal mode control action.
 This condition checks the tile at the end of the reservation (the last reserved tile), after the reservation has been made from this signal.
 This requires the realistic train braking model.
 
-Note that the PBS entry/end signal conditionals are somewhat tricky to use and can have non-intuitive behaviour when used with pathfinding/penalty actions,
-because pathfinding also takes place beyond the current signal block where any reservation is being made. In this case a prediction of what the PBS signal would be
+Note that the path entry/end signal conditionals are somewhat tricky to use and can have non-intuitive behaviour when used with pathfinding/penalty actions,
+because pathfinding also takes place beyond the current signal block where any reservation is being made. In this case a prediction of what the path signal would be
 is made.
 
 ## Programmable pre-signals
 
 Programmable pre-signals are combo pre-signals, with programmable conditions for whether the signal is red or green.
-Programmable pre-signals are block signals, with no support for PBS.
+Programmable pre-signals are block signals, with no support for path signalling.
 Programmable pre-signal programs cannot test any properties of trains, and are run even if there is no train approaching the signal.
 In most cases, routefinding restrictions are more useful.
 
@@ -399,8 +411,6 @@ Programmable signals are not shown in the signal window by default, **"Show prog
 槽位具有最大容量。一列火车可以同时在任意多个不同槽位中。
 列车可以通过信号或条件指令占用或退出槽位。
 在寻路限制和与可编程逻辑信号的程序中以及条件性命令中都可以使用槽位。
-
-默认情况下，“槽位”选项不会在界面中显示。必须启用“Show advanced routing restriction features”以显示槽位功能。
 
 在游戏中，可以通过列车列表下拉菜单中的“槽位管理”选项创建、删除、重命名槽位，改变槽位容量，以及
 手动添加列车至槽位与手动从槽位移除列车。
