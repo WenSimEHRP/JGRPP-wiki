@@ -13,19 +13,20 @@
 
 ## 反转调度命令
 
-To reverse a vehicle's order list, or append or reversed copy of the order list, click the **End of Orders** marker.
+如果需要反转调度命令，可以在调度窗口中选中“调度计划结束”（或者“共享调度计划结束”）之后，
+在“管理列表”下拉菜单中选择“反转调度列表”。如果想要将反转后的列表加到调度计划当中，
+可以在同一个下拉菜单中选择“将反转调度列表添加至计划末尾”。
 
-Then select the "Reverse order list" or "Append reversed order list" options in the "Manage List" drop-down box.
-(If the order management button toggle hasn't been enabled, the "Manage List" drop-down box can be temporarily shown by holding the **CTRL** key.)
+（如果“管理列表”按钮没有启用，可以尝试按{kbd}`Ctrl`键临时启用。）
 
-Orders at start:
+原始调度计划：
 
 ![Orders, showing manage list drop-down](images/reverse-orders-0.png)
 
-Orders after reversing:
+反转后的调度计划：
 
 ![Orders after reversing](images/reverse-orders-1.png)
 
-Orders after appending reversed orders:
+反转过后的调度计划添加至调度计划末：
 
 ![Orders after appending reversed orders](images/reverse-orders-2.png)
