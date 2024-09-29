@@ -30,10 +30,10 @@ On the network client run `settings_access PASSWORD` in the console.
 To drop access if it is no longer required run `settings_access ""` in the console (i.e. an empty password).
 **The settings access password should be considered just as important to keep secure as the rcon password**
 
-## 公司密码
+## 公司密码[^allow_list]
 
 公司密码以加密形式存储在服务端存档中。
-除此之外，
+除此之外，公司
 
 Company passwords are stored in savegames made by the network server in an encrypted form,
 and are automatically restored when loaded by the same network server (with the same configuration secrets).
@@ -53,3 +53,6 @@ This must be run on the network server (if necessary by using rcon), or can be u
 
 The `offer_company_sale COMPANY_ID` console command offers a company for sale to other companies/players in the same way as if it was about to go bankrupt.
 This must be run on the network server (if necessary by using rcon), or can be used in single-player mode.
+
+[^allow_list]: 从 OpenTTD 15 开始，多人游戏将使用“允许名单”而非密码。
+JGRPP 保留了公司密码的部分，至于“允许名单”，至目前为止（2024-09-29）未有消息。
