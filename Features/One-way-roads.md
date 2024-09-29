@@ -6,32 +6,29 @@
 
 ### 单行道块之间的道路
 
-Road segments with no junctions or non-one-way road stops between one way road tiles are now one-way, as if every tile was manually made one way.
+没有交叉口的道路路段或单行道格子之间没有设置为单行道的道路站点将被视为单行道，包括弯道、桥梁（包括自定义桥头）与隧道。（弯道、桥梁与隧道等在原版游戏中无法手动设置为单行道）
 
-This also applies to corners, bridges (including custom bridge heads) and tunnels. These cannot be manually made one way.
+![单行道路段](images/one-way-0.png)
 
-![One way road segments](images/one-way-0.png)
+### 单行道侧面交叉口
 
-**One way road side junctions**
+单行道可以在其侧面（即慢车道或缓行道）有丁字形交叉口，前提是在交叉口前后的两个道路格都为单行道。
 
-One way roads may have T-junctions on the drive side (i.e. the outer/slow lane), if there is a one way road tile before and after the junction.
+![单行道侧面交叉口](images/one-way-1.png)
 
-![One way road side junctions](images/one-way-1.png)
+### 单向道路站点
 
-**One way drive-through road stops**
+在建设道路站点时，可以将站点道路设置为单行道。这样就可以在同一方向使用两条车道。
+道路站点的站台格不止一格时，应当将所有道路格设置为单行道。
 
-Drive-through road stops may be made one way, this allows both lanes to be used in the same direction.
+![单向道路站点](images/one-way-2.png)
 
-Drive through roads stops with more than one tile should have all tiles made one way.
+### 超车行为
 
-![One way drive-through road stops](images/one-way-2.png)
+* 车辆在单行道上超车的限制较少，并且可以长时间保持在超车道上。
+* 车辆可以在桥梁和隧道中开始和完成超车。
 
-**Overtaking behaviour**
+### 限制
 
-* Road vehicles have fewer constraints on overtaking on one-way road, and may be remain in the overtaking lane indefinitely.
-* Road vehicles may now start and finish overtaking on bridges and in tunnels.
-
-**Limitations**
-
-* Articulated road vehicles may not go around a corner whilst overtaking.
-* Road vehicles will not start overtaking on bridges with custom bridge heads.
+* 铰接式车辆在超车时无法拐弯。
+* 所有车辆不会在有自定义桥头的桥梁上超车。
