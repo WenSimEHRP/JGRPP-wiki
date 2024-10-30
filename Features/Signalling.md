@@ -404,7 +404,7 @@ A train can be a member of any number of different slots at once (have any numbe
 Trains can acquire or release membership of slots (acquire or release tokens) at signals, or using conditional orders.  
 Slots can be used in conditionals in routefinding restrictions and programmable pre-signal programs, and in conditional orders.
 
-Slots can be created, deleted, renamed, have their capacity changes, and have trains manually added/removed from the slot by selecting "Manage slots" in the train list window "Manage list" dropdown.
+Slots can be created, deleted, renamed, have their capacity changed, and have trains manually added/removed from the slot by selecting "Manage slots" in the train list window "Manage list" dropdown.
 
 Road vehicles, aircraft and ships can also use slots. These can only use conditional orders to check and control slot membership (not signals), but otherwise function the same as train slots. Each vehicle type has a separate set of slots. 
 
