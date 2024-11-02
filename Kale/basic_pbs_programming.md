@@ -17,7 +17,7 @@
 
 ```{figure} images/basic_pbs/zoning-restricted.png
 :width: 80%
-*高亮路由限制信号*
+高亮路由限制信号
 ```
 首先要介绍的就是分区功能当中的一个选项。
 你可以在分区选项中设置高亮寻路限制信号，这样就可以快速找到你特别设置过的信号灯。[^remove_signal]
@@ -32,7 +32,7 @@
 这就是寻路限制菜单了。
 
 ```{figure} images/basic_pbs/routefinding-restriction-how-to-open.png
-*如何打开寻路限制菜单*
+如何打开寻路限制菜单
 ```
 
 ## 简单信号路径优先
@@ -41,7 +41,7 @@
 具体实现优先级需要这两种操作当中的一种，我个人认为接续预留的效果最好：
 
 ```{figure} images/basic_pbs/image-005.png
-*使用接续预留的例子*
+使用接续预留的例子
 ```
 
 * [延续预留](../Features/Signalling.md#延续预留)（Reserve through）
@@ -62,7 +62,7 @@
 专门用于针对特定种类的列车。
 
 ```{figure} images/basic_pbs/image-006.png
-*添加了如果声明的程序*
+添加了如果声明的程序
 ```
 
 比如，如果你只想让客运列车获得优先级，你可以将“如果”的条件改为“列车可以运载旅客”。

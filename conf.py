@@ -14,15 +14,13 @@ source_suffix = {
     ".rst": "restructuredtext",
     ".md": "markdown",
 }
-master_doc = "index"
-epub_show_urls = "footnote"
 
+'''
 latex_engine = 'xelatex'
 latex_elements = {
     'preamble': '\\usepackage[UTF8]{ctex}\n',
 }
-
-myst_heading_anchors = 3
+'''
 
 html_theme = "sphinx_rtd_theme"
 html_logo = "_static/logo.png"
@@ -51,4 +49,4 @@ myst_enable_extensions = [
 
 # add custom css
 html_static_path = ["_static"]
-html_css_files = ["css/kai.css"]
+html_css_files = ["fonts.css"]
