@@ -4,9 +4,6 @@
   Routefinding restriction programs can be attached to any kind of signal.  
   These programs are run by trains, and can check various train properties, and slot and counter values.  
   These programs can be used to control pathfinding, path reservation, slots, counters, reversing, speed restrictions and other miscellaneous operations.  
-* [**Programmable pre-signals**](#programmable-pre-signals)  
-  Programmable pre-signals are combo pre-signals, with programmable conditions for whether the signal is red or green.  
-  Programmable pre-signals are block signals, with no support for path signalling.
 * [**Slots**](#slots)  
   Slots are analogous to token systems used in real-life railways, in particular single-line sections.  
   A slot has a capacity, the number of trains which can be in the slot/have a token.  
@@ -17,6 +14,9 @@
   Counters are named variables which can be modified when a train passes a signal.  
   Counters can be used in conditionals in routefinding restrictions and programmable pre-signal programs, and in conditional orders.  
   In most cases, slots should be used instead.
+* [**Programmable pre-signals**](#programmable-pre-signals)  
+  Programmable pre-signals are combo pre-signals, with programmable conditions for whether the signal is red or green.  
+  Programmable pre-signals are block signals, with no support for path signalling.
 
 ### Routefinding restrictions
 
@@ -382,20 +382,6 @@ because pathfinding also takes place beyond the current signal block where any r
 is made.
 
 
-### Programmable pre-signals
-
-Programmable pre-signals are combo pre-signals, with programmable conditions for whether the signal is red or green.  
-Programmable pre-signals are block signals, with no support for path signalling.  
-Programmable pre-signal programs cannot test any properties of trains, and are run even if there is no train approaching the signal.  
-In most cases, routefinding restrictions are more useful.
-
-Unlike routefinding restrictions, programmable pre-signal programs end when the first "Set signal state" line is reached.
-
-Programmable signals are not shown in the signal window by default, **"Show programmable pre-signal feature"** must be enabled.
-
-![Programmable pre-signals example](Features/images/prog-presignals-0.png)
-
-
 ### Slots
 
 Slots are analogous to token systems used in real-life railways, in particular single-line sections.  
@@ -561,3 +547,17 @@ Counters are not shown in the user interace by default, **"Show advanced routing
 Counters can be created, deleted, renamed and have their value manually changed by selecting "Manage counters" in the train list window "Manage list" dropdown.
 
 ![Aesthetically suboptimal](Features/images/counter-before.png) ![A bit tidier, using counters](Features/images/counter-after.png) ![Details](Features/images/counter-detail.png)
+
+
+### Programmable pre-signals
+
+Programmable pre-signals are combo pre-signals, with programmable conditions for whether the signal is red or green.  
+Programmable pre-signals are block signals, with no support for path signalling.  
+Programmable pre-signal programs cannot test any properties of trains, and are run even if there is no train approaching the signal.  
+In most cases, routefinding restrictions are more useful.
+
+Unlike routefinding restrictions, programmable pre-signal programs end when the first "Set signal state" line is reached.
+
+Programmable signals are not shown in the signal window by default, **"Show programmable pre-signal feature"** must be enabled.
+
+![Programmable pre-signals example](Features/images/prog-presignals-0.png)
