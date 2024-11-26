@@ -503,6 +503,16 @@ until the northbound slot is empty, indicating that there are no trains using th
 This type of layout is useful when terrain, expense or other constraints make double-tracked lines impractical, but more capacity is required than can be achieved
 by not signalling the single track at all such that only one train could occupy the single track at once.
 
+
+**Variation:** The slot acquire and wait at the entrance to the single track section can be moved to the first signal within the single track section.  
+This is mainly useful when the transition between double track and single track is also a junction, and not all approaching trains are headed for the single track.
+
+Similarly, the slot release can be moved to the last signal within the single track section.
+
+The signal direction tests are needed so that the slot actions are not applied when passing the signals in the opposite direction.
+
+![Slots example](Features/images/slots-example-9.png)
+
 #### Example 5: Diverting slow trains into a siding to allow fast trains behind to overtake
 
 ![Slots example](Features/images/slots-example-8.png)
