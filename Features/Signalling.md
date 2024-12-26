@@ -137,134 +137,51 @@ This has the effect of adding a penalty for trains which could use the bay platf
 
 ### 条件控制
 
-* **如果**
-  开始条件控制块。只有在条件成立的情况下块内的操作才会被执行。
-* **否则如果**
-  本块的内容只有在条件成立，并且之前的所有条件都不成立的情况下才会被执行
-* **或如果**
-  The contents of this block are only executed if the condition is true AND none of the previous conditions in this conditional block were true, OR if the previous condition in this conditional block was true.
-* **否则**
-  The contents of this block are only executed if none of the previous conditions in this conditional block were true.
-* **结束**
-  This ends the conditional block.
+* **如果**：开始条件控制块。只有在条件成立的情况下块内的操作才会被执行。
+* **否则如果**：本块的内容只有在条件成立，并且之前的所有条件都不成立的情况下才会被执行。
+* **或如果**：本块的内容只有在条件成立，并且之前的所有条件都不成立的情况下，或者之前的条件成立的情况下才会被执行。
+* **否则**：本块的内容只有在之前所有条件都不成立的情况下才会被执行。
+* **结束**：结束条件控制块。
 
-Conditional blocks may be nested inside other conditional blocks.
+条件控制块可以嵌套在其他条件控制块内。
 
-When a conditional block is selected, clicking the "Remove" button removes the entire block and its contents.
-Ctrl-clicking the "Remove" button removes the condition but does not remove the contents of the block.
+当选择一个条件控制块时，点击“移除”按钮会移除整个块及其内容。
+按住 Ctrl 键点击“移除”按钮会移除条件但不会移除块内的内容。
 
 ### 条件
+| 条件类型 | 描述 |
+| --- | --- |
+| **列车长度** | 检查列车的长度，向上取整，以“格”为单位。 |
+| **最高速度** | 检查当前列车的最高速度。 |
+| **当前指令** | 检查列车当前指令的目的地。 |
+| **下条指令** | 检查列车下个指令的目的地。 |
+| **最后经过车站** | 检查列车最后经过的车站。 |
+| **货物** | 检查列车是否可以运载某种货物。 |
+| **装载百分比** | 检查列车已装载的比例。<br>如果列车没有货物容量，游戏将认为其装载比例为 100%。 |
+| **进入方向** | 检查列车从哪一侧进入信号所在的格子：<br>前方、后方、绝对方向，或进入/退出隧道/桥梁。 |
+| **列车分组** | 检查当前列车是否在某一个特定的分组内。本选项支持嵌套分组。 |
+| **列车所有者** | 检查列车所属的公司。 |
+| **列车状态** | 检查列车的状态。可检查的状态有：<br>空载、满载、损坏、需要维修、倒车中、<br>正前往车站或路点、正前往车库、装载中、<br>等候中、已迷路、需要维护、在车站或路点停止中。 |
+| **重量** | 检查当前列车的重量。 |
+| **功率** | 检查当前列车的功率。 |
+| **最大牵引力** | 检查当前列车的最大牵引力。 |
+| **功率/重量比例** | 检查当前列车的功率/重量比例。 |
+| **最大牵引力/重量比例** | 检查当前列车的最大牵引力/重量比例。 |
+| **机车类别** | 检查列车是否至少有一辆特定类别的机车。<br>机车类别为：蒸汽、内燃、电力、单轨、磁浮。 |
+| **指令目的地方向** | 检查列车当前或下一个指令的目的地相对于信号所在格子的方向。 |
 
-#### 列车长度
+### 高级操作
 
-检查列车的长度，向上取整，以“格”为单位。
+以下更高级的功能只会在启用“显示高级寻路限制功能”设置后显示。
 
-#### 最高速度
+#### 在路径信号处等待
 
-检查当前列车的最高速度。
+此操作有以下子操作：
 
-#### 当前指令
-
-检查列车当前指令的目的地。
-
-#### Next order
-
-检查列车下个指令的目的地。
-
-#### Last visited station
-
-This checks which station the train last visited.
-
-#### 货物
-
-检查列车是否可以运载某种货物。
-
-#### 装载百分比
-
-检查列车已装载的比例。
-如果列车没有货物容量，游戏将认为其装载比例为 100%。
-
-#### 进入方向
-
-This checks which side the train is entering the signal from: front, back, compass direction, or entering/exiting tunnel/bridge.
-
-#### 列车分组
-
-检查当前列车是否在某一个特定的分组内
-本选项支持嵌套分组。
-
-#### 列车所有者
-
-检查列车所属的公司。
-
-#### 列车状态
-
-检查列车的状态。可检查的状态有：
-
-* 空载
-* 满载
-* 损坏
-* 需要维修
-* 倒车中
-* 正前往车站或路点
-* 正前往车库
-* 装载中
-* 等候中
-* 已迷路
-* 需要维护
-* 在车站或路点停止中
-
-#### 重量
-
-检查当前列车的重量
-
-#### 功率
-
-检查当前列车的功率
-
-#### 最大牵引力
-
-检查当前列车的最大牵引力
-
-#### 功率/重量比例
-
-检查当前列车的功率/重量比例
-
-#### 最大牵引力/重量比例
-
-检查当前列车的最大牵引力/重量比例
-
-#### 机车类别
-
-检查列车是否至少有一辆特定类别的机车。\
-机车类别为：
-
-* 蒸汽
-* 内燃
-* 电力
-* 单轨
-* 磁浮
-
-#### Direction of order target
-
-This checks which direction the tile of the train's current or next order is in, relative to the signal tile.
-
-### Advanced actions
-
-The more advanced features below are only shown if the "Show advanced routing restriction features" setting is enabled.
-
-#### Wait at path signal
-
-The sub-actions which this can take are:
-
-* Wait at PBS signal
-  The train waits at this PBS signal.
-* Cancel wait at PBS signal
-  Cancels a previous wait at PBS signal action.
-* Wait at start PBS signal for reservation ending here
-  If a train would make a PBS reservation which ends at this signal, the train will instead wait at the start signal and not make the reservation.
-* Cancel wait at start PBS signal for reservation ending here
-  Cancel a previous wait at start PBS signal for reservation ending here.
+* **在路径信号处等待**：列车在此路径信号处等待。
+* **取消在路径信号处等待**：取消之前在路径信号处等待的操作。
+* **在起始路径信号处等待以结束此处的预留**：如果列车将进行一个以此信号结束的路径预留，列车将改为在起始信号处等待，并且不会进行预留。
+* **取消在起始路径信号处等待以结束此处的预留**：取消之前在起始路径信号处等待以结束此处预留的操作。
 
 #### Reverse
 
