@@ -6,10 +6,6 @@
   程序可以检查列车属性、槽位与计数器，并依此做出判断，执行特定的操作。
   寻路限制程序可以用来控制寻路系统、路径信号、槽位、限速、掉头与其他操作。
 
-* [**可编程逻辑信号**](#programmable-pre-signals)
-
-  可编程逻辑信号是带有可编程条件来决定灯号的复合信号，此类信号不是路径信号，因此没有路径信号的一些特性。[^1]
-
 * [**槽位**](#槽位)[^2]
 
   槽位类似于现实铁路中使用的令牌系统，尤其是单线区段。
@@ -23,6 +19,10 @@
   可以在寻路限制和可编程逻辑信号程序中使用，也可以在条件指令中使用。
   在大多数情况下应使用槽位替代计数器。
   计数器的主要用途是统计火车数量和循环操作。
+
+* [**可编程逻辑信号**](#programmable-pre-signals)
+
+  可编程逻辑信号是带有可编程条件来决定灯号的复合信号，此类信号不是路径信号，因此没有路径信号的一些特性。[^1]
 
 [^1]: 译注：在使用真实制动时无法使用可编程逻辑信号，因为真实制动只允许使用路径信号。详见[真实制动页面](./Realistic-braking.md)
 [^2]: 译注：旧版译名为“条目”
@@ -508,6 +508,15 @@ Programmable signals are not shown in the signal window by default, **"Show prog
 
 当地形、费用或其他限制因素导致修建双轨线路非常困难，但又需要更大的运载能力时，可以考虑使用这种布局。
 如果不在单线区间内设置信号，那么一次只能有一列火车在区间内行驶。
+
+**Variation:** The slot acquire and wait at the entrance to the single track section can be moved to the first signal within the single track section.
+This is mainly useful when the transition between double track and single track is also a junction, and not all approaching trains are headed for the single track.
+
+Similarly, the slot release can be moved to the last signal within the single track section.
+
+The signal direction tests are needed so that the slot actions are not applied when passing the signals in the opposite direction.
+
+![槽位样例](images/slots-example-9.png)
 
 ### 样例五：列车超车——慢速列车分流
 
