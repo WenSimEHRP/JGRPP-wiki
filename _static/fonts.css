@@ -15,7 +15,7 @@ span.cm-em,
 }
 
 /* normal text uses Source Han Sans CN */
-body, p, li, td, th, .caption-text, .ui-tooltip-content {
+h1, h2, h3, h4, h5, h6, body, p, li, td, th, .caption-text, .ui-tooltip-content {
   font-family: 'Source Han Sans CN', sans-serif !important;
 }
 
