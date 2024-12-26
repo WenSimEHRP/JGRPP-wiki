@@ -509,12 +509,12 @@ Programmable signals are not shown in the signal window by default, **"Show prog
 当地形、费用或其他限制因素导致修建双轨线路非常困难，但又需要更大的运载能力时，可以考虑使用这种布局。
 如果不在单线区间内设置信号，那么一次只能有一列火车在区间内行驶。
 
-**Variation:** The slot acquire and wait at the entrance to the single track section can be moved to the first signal within the single track section.
-This is mainly useful when the transition between double track and single track is also a junction, and not all approaching trains are headed for the single track.
+**变种：**槽位占用和在单线区段入口等待的部分可以移动到单线区段内的第一个信号处。
+当双线与单线区间的连接处刚好是一个主要交叉口，且不是所有列车都前往单线区间时，这种设计可以发挥其优势。
 
-Similarly, the slot release can be moved to the last signal within the single track section.
+同样，槽位退出的部分可以移动到单线区段内的最后一个信号处。
 
-The signal direction tests are needed so that the slot actions are not applied when passing the signals in the opposite direction.
+需要进行信号方向测试，以便在相反方向通过信号时不应用槽位操作。
 
 ![槽位样例](images/slots-example-9.png)
 
