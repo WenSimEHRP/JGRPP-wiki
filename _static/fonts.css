@@ -1,5 +1,6 @@
 @import url('https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.7.0/style.min.css');
 @import url('https://cdn.jsdelivr.net/npm/@fontsource/iosevka@5.1.0/index.min.css');
+@import url('https://cdn.jsdelivr.net/npm/@zf-web-font/sourcehansanscn@0.2.0/style.min.css');
 
 figcaption .caption-text {
     font-family: 'LXGW WenKai Screen', sans-serif !important;
@@ -11,6 +12,11 @@ span.cm-em,
 .cm-quote.cm-quote-1.cm-em {
   font-style: normal;
   font-family: "LXGW WenKai Screen", sans-serif;
+}
+
+/* normal text uses Source Han Sans CN */
+body, p, li, td, th, .caption-text, .ui-tooltip-content {
+  font-family: 'Source Han Sans CN', sans-serif !important;
 }
 
 /* code blocks */
