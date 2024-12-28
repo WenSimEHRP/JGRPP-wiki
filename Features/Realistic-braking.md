@@ -6,126 +6,138 @@
 
 真实制动由“列车制动模型”选项控制。
 “原版”模型允许列车立刻停止。
-如果使用“现实”模型，火车需要提前预留轨道以留出足够的制动距离，无法立刻停止。
+如果使用“现实”模型，列车需要提前预留轨道以留出足够的制动距离，无法立刻停止。
 
 真实列车制动是一项进阶功能，对信号系统和轨道设计有很大影响，因此可能不适合新手。
 启用真实制动时无法使用原版中的逻辑信号（出入口信号、复合信号、通过信号），
-只能使用路径信号。[^blocksig]
+只能使用路径信号。
 
-[^blocksig]: 在开启真实制动时，通过信号将使用路径信号的逻辑，游戏会将其作为路径信号处理。
-
-模型可以在游戏进行时被更改，但如果地图上尚存有不兼容的信号则无法更改。
+如果地图上没有有不兼容的信号，可以在游戏进行时更改制动模型。
 可以使用 `find_non_realistic_braking_signal` 控制台命令找到这些信号。
 
 ## 列车行为
 
-火车会提前制动，以便在其路径预留范围内停车，并满足预留范围内的任何速度限制。
-火车会尝试提前预留，直到制动距离足够长，以便以该信号的目标速度通过**下一个**信号。目标速度受以下因素影响：
+列车会提前制动，以便在其路径预留范围内停车，并满足预留范围内的任何速度限制。
+列车会尝试提前预留，直到制动距离足够长，以便以该信号的目标速度通过**下一个**信号。
+目标速度受以下因素影响：
 
-- 火车的最高速度
+- 列车的最高速度
 - 桥梁速度限制
 - 铁轨类型速度限制
 - 寻路限制速度限制
 
-此外，火车还会在以下设施/命令前提前制动：
+此外，列车还会在以下设施/命令前提前制动：
 
-- 停靠的车站/路标
-- 弯道（启用“真实加速”时）
+- 停靠的车站/路点
+- 弯道（启用“真实加速模型”时）
 - 反向信号或路点
 - 预留范围的终点（包括线路终点、车库等）
 - 当前指令速度限制
 
-Trains reserving ahead multiple signal blocks is implemented by the "Long Reserve" mechanism, see the [Signalling](./Signalling.md#寻路限制) page.
+列车提前预留多个信号区间的机制是通过“接续预留”实现的，
+详见[信号](./Signalling.md#寻路限制)页面。
+可以通过在信号机上设置寻路限制程序并使用“接续预留”和“取消接续预留”操作调整预留区间机制。
 
-Trains only extend their reservation when approaching/passing a signal. (This is the only time that the hypothetical train driver gets an update on how much track there is available ahead).
+列车只有在接近或通过信号时才会延长其预留区间，
+这也是列车司机（假设有这么一个人）可以获取前方轨道占用状态的唯一机会。
 
-The decision on whether to extend the reservation can be overriden on a per-signal basis by using the "Long reserve" and "Cancel long reserve" routing restriction actions.
-Occupied blocks and other routing restriction actions which block reservations continue to work in the same way as usual.
+以下两者仍以正常方式工作：
 
-Unlike the "original" train braking model, trains can reserve into, out of and through signalled bridges/tunnels.
+- 已被占用的信号区间
+- 其他阻止预留信号区间的寻路限制操作
 
-Changing the track layout in a way that would obstruct or affect the reservation of a moving train is not permitted. Here "moving" means either that the train has a non-zero speed or that it is not in the stopped state.
+与“原版”列车制动模型不同，列车可以在带有信号的桥梁上和隧道中预留空间，
+以进入、离开，或通过桥梁和隧道。
 
-## Signal behaviour changes
+改变轨道布局可能会阻碍或影响行驶中列车的预留区间。
+如果列车的预留区间被影响，将拒绝修改轨道。
+“正在行驶”指列车速度非零或者列车不处于停止状态。[^editing_track]
 
-Normal block signals on plain line track behave as automatic signals, and may show a green aspect even when there is no train reservation.
-In all other cases normal block signals default to a red aspect, the same as PBS signals.
-"Plain line" means that the track beyond the signal has no junctions, and leads to either another one-way signal in the same direction, or an end-of-line.
+[^editing_track]: 译注：通过启用游戏中“修改轨道时忽略真实制动”设置项可以取消此限制。
+
+## 信号行为改动
+
+在开启真实制动时，通过信号将使用路径信号的逻辑，游戏会将其作为路径信号处理。
+在所有其他情况下，通过信号灯默认显示红色，与路径信号相同。
+“普通线路”意味着信号后的轨道没有岔道，并且通向另一个同方向的单向信号或线路终点。[^signal_default_green]
+
+[^signal_default_green]: 译注：[OpenTTD#12857](https://github.com/OpenTTD/OpenTTD/pull/12857)修改了路径信号灯的默认行为。
+路径信号灯现在在无岔道的轨道区间前将默认显示为绿色。
 
 ![Plain link block signals](images/realistic-braking-auto-signals.png)
 
-## Speed/distance calculations
+## 速度/距离计算
 
-Train braking force and deceleration is calculated in a similar way to train acceleration, and so depends on whether the original or realistic acceleration model is used.
+列车制动力和减速度的计算方式类似于列车加速度，因此也可以使用原版或真实模型来计算。
+制动减速度最大值取决于列车是普通铁路列车、单轨列车，或磁悬浮列车。后者的上限更高。
 
-The braking deceleration is capped to a maximum value which depends on whether the train is a normal railway train, monorail or maglev. The latter have higher limits.
+除重型货运列车之外，大多数列车的制动减速度在运行时会达到上限。
+列车在下坡时可能会有较低的有效减速度，因此制动距离会更长。重型货运列车尤其如此。
 
-Most trains which are not heavy freight will meet the braking deceleration cap.
+制动距离与速度的平方成正比，即当行驶速度是原来的两倍时，制动距离是原来的四倍。
 
-Trains may have a lower effective deceleration and so a longer braking distance when going downhill. This mainly applies to heavy freight.
+以下是一些速度在平地上的最小制动距离表。
+需要注意的是，这些是用于速度管理和预留距离计算的制动距离，因此相对于防御性驾驶的绝对最小值略为保守。
 
-Braking distance are quadratic in distance with respect to speed, i.e. a train travelling twice as fast has a braking distance 4 times as long.
+| 速度（千米/时） | 铁路距离（格） | 单轨距离（格） | 磁悬浮距离（格） |
+|---------------|--------------|--------------|----------------|
+| 50            | 0.7          | 0.5          | 0.4            |
+| 100           | 2.6          | 1.9          | 1.4            |
+| 150           | 5.9          | 4.2          | 3.3            |
+| 200           | 10.4         | 7.4          | 5.8            |
+| 300           | 23.4         | 16.7         | 13.0           |
+| 400           | 41.7         | 29.8         | 23.1           |
 
-A table of minimum braking distance for a selection of speeds, on the flat, can be found below.
-Note that these are braking distances used for speed management and reservation distance calculations, and so are slightly conservative with respect to the absolute minimum values for the purposes of defensive driving.
+## 轨道布局/信号变化
 
-| Speed (km/h)  | Railway distance (tiles) | Monorail distance (tiles) | Maglev distance (tiles) |
-| ------------- | ------------------------ | ------------------------- | ----------------------- |
-|            50 |                      0.7 |                       0.5 |                     0.4 |
-|           100 |                      2.6 |                       1.9 |                     1.4 |
-|           150 |                      5.9 |                       4.2 |                     3.3 |
-|           200 |                     10.4 |                       7.4 |                     5.8 |
-|           300 |                     23.4 |                      16.7 |                    13.0 |
-|           400 |                     41.7 |                      29.8 |                    23.1 |
+在使用真实制动时，标准的单向轨道、固定间隔的信号，以及典型的交叉口和车站等设施的使用方法在很大程度上与使用原版制动模型的使用方法无异。
 
-## Track layout/signalling changes
+不过，单线区间的待避区间和单线分支可能需要修改。
+列车可能会预留超过一个待避区间或单线末端的轨道，
+以避免在末端信号前需要提前制动。
+为避免这种情况，应添加额外的信号，给假设的司机提前通知末端信号的状态。
+这些额外的信号应使用“延续预留”寻路限制操作，以免被视为预留结束的位置，
+否则会导致死锁或其他问题。
 
-Standard single-direction track with regularly spaced signals, and typical junction and station layouts, can be used in largely the same way as in the "original" braking model.
+![待避区间额外信号](images/realistic-braking-passing-loops.png)
 
-Single track line with passing loops and single line branches may need modifications.
-This is because trains may reserve more one than passing loop ahead or beyond the end of the single line to avoid needing to brake in advance of the signal at the end of the line or passing loop.
-To avoid this, additional signal(s) should be added which give the hypothetical driver advance notice of the state of the signal at the end of the line or passing loop.
-These extra signals should use the "reserve through" routing restriction action so that they are not considered a place to end a reservation, which would otherwise cause deadlocks or other problems.
+![单线出口额外信号](images/realistic-braking-branch.png)
 
-![Passing loop extra signals](images/realistic-braking-passing-loops.png)
+## 避免事项
 
-![Single line exit extra signal](images/realistic-braking-branch.png)
+避免轨道布局和调度计划中，列车没有合理的提前通知其行驶方向或是否需要停车的情况。
 
-## Things to avoid
+特别是不要在路点或其他非停车命令之后使用不可预测的条件性命令，
+尤其是在路点直接位于交叉口前，且列车可能使用交叉口的多条分叉，或路点位于列车经过或停车的的车站之前时。
 
-Avoid track layouts and order arrangements where the train does not have reasonable advance notice of which way it is going or whether it should be stopping.
+列车可能需要预留显著超过路点的轨道，以便以一定速度通过路点。
+如果预留的区间到达任何后续交叉口，列车将预测条件性命令的结果并相应预留对应的区间，
+但条件性命令实际上不会在路点之前被确定地评估。
+同样，如果列车需要在到达路点之前开始制动以在后续车站停车，
+如果条件命令预测错误，列车可能会超越车站或不必要地制动。
 
-In particular: do not use unpredictable conditional orders after a waypoint or other non-stopping order, where the waypoint is directly before a junction where the train could go either way,
-or directly before a station it may or may not need to stop at.
+出于类似原因，更改行驶中的列车的命令以停靠车站时，
+如果列车已经行驶过快且距离太近，列车可能无法在指定站点停车。
 
-The train may need to reserve significantly past the waypoint in order to pass the waypoint at speed.
-If the reservation reaches any following junction it will predict what the conditional order will be and reserve accordingly, however the conditional order would not be actually
-reached and definitively evaluated one way or the other until the waypoint is passed.
-Likewise, if train needs to begin braking before reaching the waypoint to stop at the following station it could overshoot the station or brake unnecessarily if the conditional order is mispredicted.
+AI 可能无法在此模式下建造和运营可行的铁路，特别是使用传统逻辑信号的 AI 可能表现不佳。
+在期望 AI 有效竞争之前，应在此模式下这些 AI。
 
-For similar reasons changing the orders of a moving train to call at a station could cause it to fail to stop if it is already going too fast and is too near.
+![错误使用条件命令](images/realistic-braking-bad-cond-orders.png)
 
-AIs may not be able to build and run a workable railway in this mode, in particular AIs which use traditional block signal patterns are unlikely to do well.
-AIs should be tested with this mode enabled before expecting them to usefully compete.
+## 多相信号灯
+NewGRF 可以替换信号图形和信号样式。当启用真实列车制动时，NewGRF 也可以包括额外的信号灯图形，而非仅仅是红灯和绿灯图形。
 
-![Bad use of conditional orders](images/realistic-braking-bad-cond-orders.png)
+![多相信号灯](images/multi-aspect-signals.png)
 
-## Multi-aspect signals
+一个这样的 GRF 示例是：[Multi-Aspect Signals NewGRF](https://github.com/JGRennison/multi-aspect-signals-grf)，可以在游戏内的在线内容下载器中找到。
 
-NewGRFs may provide alternative signal graphics and signal styles, and when realistic train braking is enabled, these can also include graphics for additional signal aspects, instead of just red and green.
+当启用“制动方向限制”设置时，列车司机可以看到的信号灯后的清晰距离被限制为信号灯可以显示的最大信号灯状态，由使用中的多相信号灯 GRF 定义。
 
-![Multi-aspect signals](images/multi-aspect-signals.png)
+实际操作中，列车司机不再能看到无限数量的前方信号灯。
 
-An example of such a GRF is: [Multi-Aspect Signals NewGRF](https://github.com/JGRennison/multi-aspect-signals-grf), this is available in the online content downloader, in-game.
+列车预留的长度仍然可能超过这个限制，例如使用延续预留和接续预留时，但列车司机将无法“看到”预留的全部长度。
 
-When the "Realistic train braking is aspect limited" setting is enabled, the distance that the train "driver" can tell is clear beyond the signal is limited to the maximum aspect that the signal
-could display, as defined by the multi-aspect signal GRF in use.
-In effect, the train "driver" can no longer see an unlimited number of signals ahead.
+启用此功能时，在设计轨道布局和选择信号灯的位置和间距时需要额外考虑，特别是在高速行驶时。
+这是一个高级功能，不适合初学者玩家。
 
-It is still possible for a train reservation to be longer than that, for example when using the long reserve or reserve through routing restriction actions, but the train "driver" will
-not then be able to "see" the full length of the reservation.
-
-When enabled, additional thought is required when designing track layouts and choosing where and at what spacing to place signals, especially at higher speeds.
-This is an advanced feature which is not suitable for beginner players.
-
-Additional signal styles which are are added by signal GRFs may propagate aspects between signals differently, or only be able to show a more restrictive set of signal aspects to the "driver".
+由信号 GRF 添加的额外信号样式可能会在信号之间传播不同的信号灯状态，或者只能向司机显示更有限的信号灯状态。
